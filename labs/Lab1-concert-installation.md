@@ -8,7 +8,7 @@
 
 You can install concert on a VM or in a kubernetes cluster. In this lab we will do a VM installation.
 
-> Official documentation [VM installation](https://www.ibm.com/docs/en/concert?topic=concert-deploying-virtual-machine-vm)
+> Official documentation [VM installation](https://www.ibm.com/docs/en/concert?topic=concert-deploying-virtual-machine-vm)  
 > Offcial documentation [Kubernetes installation](https://www.ibm.com/docs/en/concert?topic=concert-deploying-kubernetes)
 
 Connect on the machine you have provisioned on Techzone in Lab0
@@ -27,7 +27,7 @@ Create a $HOME/env.sh file
 vi $HOME/env.sh
 ```
 
-Copy Paste the content of [env.sh](files/env.sh) in this $HOME/env.sh file  
+Copy Paste the content of [env.sh](../files/env.sh) in this $HOME/env.sh file  
 Update the values for the following keys (other keys will be updated later):
 
 - CONCERT_REGISTRY_PASSWORD with your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key)
@@ -85,7 +85,7 @@ source ~/.bashrc
 Initialize environement variables
 
 If not already done during concert installation,
-Copy Paste the content of [env.sh](files/env.sh) in this $HOME/env.sh file  
+Copy Paste the content of [env.sh](../files/env.sh) in this $HOME/env.sh file  
 Update the values for the following keys (other keys will be updated later):
 
 - CONCERT_REGISTRY_PASSWORD with your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key)
@@ -119,7 +119,7 @@ export CONCERT_HUB_URL=https://localhost:12443
 --c-api-key=$CONCERT_APIKEY
 ```
 
-Replace values for **CONCERT_HUB_KEY** and **WORKFLOW_APIKEY** in your $HOME/env.sh file and note the values also somewhere for following steps.  
+Replace values given for for **CONCERT_HUB_KEY** and **WORKFLOW_APIKEY** in your $HOME/env.sh file and note the values also somewhere for following steps.  
 Source again $HOME/env.sh to set new environment variables values.
 
 ```bash
@@ -133,7 +133,7 @@ sudo vi /home/itzuser/workflows/bin/concert-workflows-values.yaml
 ```
 
 - Replace **VM IP address** with the IP address of the VM for **adress\* and **CONCERT_HUB_URL\*\* keys
-- Replace **CONCERT_HUB_KEY** with the CONCERT_HUB_KEY value returned by the get_concert_info.sh command
+- Replace **CONCERT_HUB_KEY** with the CONCERT_HUB_KEY value that you have noted (and also set in $HOME/env.sh file)
 - Add a new variable **CONCERT_API_KEY** under **CONCERT_HUB_KEY** and set its value to your WORKFLOW_APIKEY (in $HOME/env.sh file)
 - save your file (:wq)
 
