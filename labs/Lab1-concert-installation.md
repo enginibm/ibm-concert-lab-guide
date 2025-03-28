@@ -80,7 +80,7 @@ source ~/.bashrc
 
 ### Install Concert workflow
 
-> Official documentation: https://www.ibm.com/docs/en/concert?topic=workflows-installing-concert-vm
+> Official documentation: [Concert Worflow installation](https://www.ibm.com/docs/en/concert?topic=workflows-installing-concert-vm)
 
 Initialize environement variables
 
