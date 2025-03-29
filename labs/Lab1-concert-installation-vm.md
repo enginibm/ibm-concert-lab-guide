@@ -4,7 +4,7 @@
 - [II - Watsonx.ai integration](#wxaiIntegration)
 - [III - Concert workflow installation](#cwInstallation)
 
-## I - VM Installation <a name="vmInstallation"></a>
+## I - Installing IBM Concert on a VM <a name="vmInstallation"></a>
 
 You can install concert on a VM or in a kubernetes cluster. In this lab we will do a VM installation.
 
