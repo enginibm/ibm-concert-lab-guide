@@ -10,10 +10,10 @@ In this lab, you will provision an openshift cluster on techzone to prepare the 
 
 ## Content
 
-- [1. Provision an openshift cluster on techzone](#openshiftProvisionning)
-- [2. Provision a vm on techzone](#vmProvisionning)
+- [1. Provision an openshift cluster on techzone](#i---provision-an-openshift-cluster-on-techzone-)
+- [2. Provision a vm on techzone](##ii---provision-a-vm-on-techzone-)
 
-### I - Provision an openshift cluster on techzone <a name="openshiftProvisionning"></a>
+### I - Provision an openshift cluster on techzone
 
 ### Creating a reservation
 
@@ -78,7 +78,7 @@ chmod 755 helm-linux-amd64
 sudo mv helm-linux-amd64 /usr/local/bin/helm
 ```
 
-### II - Provision a vm on techzone <a name="vmProvisionning"></a>
+### II - Provision a vm on techzone
 
 ## VM Installation
 

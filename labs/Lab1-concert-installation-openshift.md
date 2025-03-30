@@ -12,11 +12,11 @@ You must have run before the [Lab0](LabO-setup.md) which explain how to reserve 
 
 Concert installation consist on 3 steps:
 
-- [I - Install IBM Concert on an openshift cluster](#ocpInstallation)
-- [II - Install IBM Concert workflow](#cwInstallation)
-- [III - Integrate IBM Concert with watsonx.ai](#wxaiIntegration)
+- [I - Install IBM Concert on an openshift cluster](#i---install-concert-on-an-openshift-cluster-)
+- [II - Install IBM Concert workflow](#ii---install-ibm-concert-workflow-)
+- [III - Integrate IBM Concert with watsonx.ai](#iii---integrate-ibm-concert-with-watsonxai-)
 
-### I - Install concert on an openshift cluster <a name="ocpInstallation"></a>
+### I - Install concert on an openshift cluster
 
 You can install concert on a VM or in a kubernetes cluster. In this lab we will do an Openshift cluster installation.
 
@@ -119,7 +119,7 @@ Save the file (:wq) and source the $HOME/env.sh file to set environment variable
 source $HOME/env.sh
 ```
 
-### II - Install IBM Concert workflow <a name="cwInstallation"></a>
+### II - Install IBM Concert workflow
 
 > Offical documentation [ocp installation]https://www.ibm.com/docs/en/concert?topic=workflows-installing-concert-ocp)
 
@@ -240,6 +240,6 @@ chmod +x bin/tethering/enable_concert_workflows.sh
 ./bin/tethering/enable_concert_workflows.sh --concert-url="$CONCERT_HUB_URL" --c-api-key="$CONCERT_APIKEY" --c-user="$CONCERT_USER" --workflow-apikey="$WORKFLOW_APIKEY"
 ```
 
-### III - Integrate IBM Concert with watsonx.ai <a name="wxaiIntegration"></a>
+### III - Integrate IBM Concert with watsonx.ai
 
 TODO (get content from DACH team ?)
