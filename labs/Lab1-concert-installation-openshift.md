@@ -130,7 +130,7 @@ oVpEFHPM
 2. Get concert workflow installation files
 
 ```bash
-cd $HOMEmv
+cd $HOME
 wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-k8s-workflows.tgz
 tar xfz ibm-concert-k8s-workflows.tgz
 ```
@@ -170,7 +170,7 @@ source $HOME/env.sh
 sudo vi /home/itzuser/workflows/bin/concert-workflows-values.yaml
 ```
 
-- Set **address** to the IP address of your cluster (you can do a ping to its url to retrieve it)
+- Set **address** to the IP address of your cluster (you can do a ping to its url to retrieve it) OR concert route ????
 - Set **CONCERT_HUB_URL** to the CONCERT_HUB_URL value return by get_concert_info.sh in step 4.
 - Set **CONCERT_HUB_KEY** to the CONCERT_HUB_KEY value return by get_concert_info.sh in step 4.
 - Add a new variable **CONCERT_API_KEY** under **CONCERT_HUB_KEY** and set its value to your CONCERT_APIKEY (in $HOME/env.sh file)
@@ -198,6 +198,8 @@ oc create secret docker-registry ibm-entitlement-key \
 cd /home/itzuser/workflows
 ./bin/deploy-k8s --namespace="${CW_NAMESPACE}"
 ```
+
+Wait until the end of the installation
 
 10. Update environment variables
 
