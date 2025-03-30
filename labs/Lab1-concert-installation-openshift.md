@@ -24,17 +24,20 @@ You can install concert on a VM or in a kubernetes cluster. In this lab we will 
 
 1. Connect on the bastion attached to the openshift you have created in Techzone in Lab0
 
+You can retreive the connections information on your reservation page as explain in Lab0
+
 ```bash
-ssh itzuser@api.67e79222561226085c8b191c.ocp.techzone.ibm.com -p 40222
-oVpEFHPM
+ssh itzuser@<cluster API address> -p 40222
 ```
+
+````
 
 2. Get concert installation files
 
 ```bash
 wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-k8s.tgz
 tar xfz ibm-concert-k8s.tgz
-```
+````
 
 2. Create a $HOME/env.sh file
 

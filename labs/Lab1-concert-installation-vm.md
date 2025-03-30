@@ -14,7 +14,7 @@ You can install concert on a VM or in a kubernetes cluster. In this lab we will 
 Connect on the machine you have provisioned on Techzone in Lab0
 
 ```bash
-ssh itzuser@169.44.147.111 -p 30288
+ssh itzuser@<VM ip address> -p 30288
 loginctl enable-linger itzuser
 cd /mnt/concert
 wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-std.tgz
@@ -42,7 +42,7 @@ ${DOCKER_EXE} login ${CONCERT_REGISTRY} --username=${CONCERT_REGISTRY_USER} --pa
 ibm-concert-std/bin/setup --license_acceptance=y --registry=${CONCERT_REGISTRY} --runtime=${DOCKER_EXE} --username=ibmconcert --password
 ```
 
-PROBLEM - Port 12443 not accessible on VM !!!!!!!
+!!!!!!!!! PROBLEM - Port 12443 not accessible on VM !!!!!!!
 
 ## II - Watsonx.ai integration <a name="wxaiIntegration"></a>
 

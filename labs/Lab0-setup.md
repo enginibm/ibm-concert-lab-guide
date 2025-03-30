@@ -47,7 +47,7 @@ In this lab, you will provision an openshift cluster on techzone to prepare the 
 - Once the virtual machine is provisioned, you will receive a mail will the **Ready** status.
 - By clicking the link **View my reervations** in the mail or from your account , in **My Reservations**, you can see your reservation with the **Ready** status.
 - By clicking the **Open this environment** button, you will access all the information required to connect to the cluster
-- Scroll down to the end of your page, in the **Reservation Details** section, you have:
+- Scroll down to the end of your page, in the **Reservation Details** section, you have (circled in orange in below screen capture)
 
   - OCP Console URL
   - Cluster Admin Username
@@ -64,8 +64,11 @@ In this lab, you will provision an openshift cluster on techzone to prepare the 
 
 ### Connecting to bastion
 
-ssh itzuser@api.67e79222561226085c8b191c.ocp.techzone.ibm.com -p 40222
-oVpEFHPM
+In order to connect to the bastion, you must use the informations circled in green in previous screen capture)
+
+```bash
+ssh itzuser@<cluster API address> -p 40222
+```
 
 Install HELM
 
