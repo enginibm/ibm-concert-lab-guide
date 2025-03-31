@@ -253,7 +253,7 @@ and make a reservation for IBM watsonx.ai
 
 #### Create a watsonx project
 
-!!!! Explain mail received for itz-watsonx user !!!!
+!!!! Explain mail received for itz-watsonx user !!!!  
 !!!! Explain how to log on ibm cloud and go in watsonx !!!!
 
 Navigate to the IBM Cloud Data Platform page and log on with your IBM Cloud account.
