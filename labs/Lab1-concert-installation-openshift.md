@@ -242,6 +242,8 @@ chmod +x bin/tethering/enable_concert_workflows.sh
 
 ### III - Integrate IBM Concert with watsonx.ai
 
+!!!! Concert require model ibm/granite-3-2-8b-instruct on x.ai !!!!
+
 #### Techzone reservation
 
 Make sure you already made a watsonx.ai reservation on IBM Techzone.
@@ -252,6 +254,9 @@ and make a reservation for IBM watsonx.ai
 <img width="341" alt="image" src="https://github.ibm.com/technology-garage-dach/ibm-concert-howto/assets/81536/0f4640d9-23f3-422b-93f6-554144864404">
 
 #### Create a watsonx project
+
+!!!! Explain mail received for itz-watsonx user !!!!
+!!!! Explain how to log on ibm cloud and go in watsonx !!!!
 
 Navigate to the IBM Cloud Data Platform page and log on with your IBM Cloud account.
 Make sure you switch to the account and region highlighted in the reservation details.
