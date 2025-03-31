@@ -17,3 +17,7 @@ export EXT_URL="https://169.48.153.178"
 
 export CONCERT_TLS_DIR="/home/itzuser/ibm-concert-std/localstorage/volumes/infra/tls"
 export BACKUP_FILE="${HOME}/concert-tls-backup.tar.gz"
+
+export WATSONX_API_KEY="CKxrMl95b0sPqZn15OSN95PxE5y5iUGWJNMMIEmnkrof"
+export WATSONX_API_PROJECT_ID="ce9ea358-1817-461e-b411-0aabd595d2e1"
+export WATSONX_API_URL="https://eu-de.ml.cloud.ibm.com"

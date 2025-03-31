@@ -242,4 +242,71 @@ chmod +x bin/tethering/enable_concert_workflows.sh
 
 ### III - Integrate IBM Concert with watsonx.ai
 
-TODO (get content from DACH team ?)
+#### Techzone reservation
+
+Make sure you already made a watsonx.ai reservation on IBM Techzone.
+
+Otherwise, navigate to [watsonx.ai on IBM Techzone](https://techzone.ibm.com/my/reservations/create/64b8490a564e190017b8f4eb)
+and make a reservation for IBM watsonx.ai
+
+<img width="341" alt="image" src="https://github.ibm.com/technology-garage-dach/ibm-concert-howto/assets/81536/0f4640d9-23f3-422b-93f6-554144864404">
+
+#### Create a watsonx project
+
+Navigate to the IBM Cloud Data Platform page and log on with your IBM Cloud account.
+Make sure you switch to the account and region highlighted in the reservation details.
+
+Scroll down to the Projects section and create a new project.
+
+![image](https://github.ibm.com/technology-garage-dach/ibm-concert-howto/assets/81536/3dcaf85a-498a-4a5e-9597-c4ae5f34a8f3)
+
+Provide a name and click Create
+
+![image](https://github.ibm.com/technology-garage-dach/ibm-concert-howto/assets/81536/ff959263-2e49-488c-a940-442630cd4f2b)
+
+Click on the Manage tab, and take note of your Project ID. Copy it and store it for later use.
+
+![image](https://github.ibm.com/technology-garage-dach/ibm-concert-howto/assets/81536/cf513e0c-5845-4be7-9198-db123ae24eb1)
+
+#### Create an IBM Cloud API key
+
+On the [IBM Cloud Console API Keys](https://cloud.ibm.com/iam/apikeys) page, create a new API Key.
+
+![image](https://github.ibm.com/technology-garage-dach/ibm-concert-howto/assets/81536/38a4abb9-8f27-42c3-8774-5729d9673288)
+
+Provide a name for the IBM Cloud API key, the rest of the defaults are fine. Create the API key.
+
+![image](https://github.ibm.com/technology-garage-dach/ibm-concert-howto/assets/81536/b58e82b9-8cc6-4a76-8749-ee65926a1cec)
+
+Take note of the IBM Cloud API key. Copy it and store it for later use.
+
+![image](https://github.ibm.com/technology-garage-dach/ibm-concert-howto/assets/81536/4c115845-c92a-426c-9a96-21bb3f8f9aae)
+
+#### Configure watsonx.ai in IBM Concert
+
+The watsonx.ai integration is simply done through setting some config parameters in the config files of IBM concert.
+
+List of wx.ai API URLs for different cloud regions:
+
+- London: https://eu-gb.ml.cloud.ibm.com
+- Frankfurt: https://eu-de.ml.cloud.ibm.com
+- Tokyo: https://jp-tok.ml.cloud.ibm.com
+- Dallas: https://us-south.ml.cloud.ibm.com
+
+For a OCP based installtion the parameters from the VM based installation and the IBM Concert namespace must be set in the configuration secret.
+This can be done in the following way:
+
+```
+export WATSONX_API_KEY=<WATSONX_API_KEY>
+export WATSONX_API_PROJECT_ID=<WATSONX_API_PROJECT_ID>
+export WATSONX_API_URL=<WATSONX_API_URL>
+export CONCERT_NAMESPACE=<CONCERT_NAMESPACE>
+kubectl patch secret/app-cfg-secret -n $CONCERT_NAMESPACE --type=merge -p '{
+  "data": {
+    "WATSONX_API_KEY": "'$(echo -n $WATSONX_API_KEY | base64 )'",
+    "WATSONX_API_PROJECT_ID": "'$(echo -n "$WATSONX_API_PROJECT_ID" | base64 )'",
+    "WATSONX_API_URL": "'$(echo -n "$WATSONX_API_URL" | base64 )'"
+  }
+}'
+kubectl rollout restart -n $CONCERT_NAMESPACE deployment/roja-py-utils
+```
