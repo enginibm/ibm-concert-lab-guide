@@ -51,7 +51,7 @@ Update the values for the following keys (other keys will be updated later):
 - CLUSTER_PASSWORD with your cluster password
 - CLUSTER_STORAGE_CLASS with the cluster storage class you will use (ex: ocs-storagecluster-cephfs)
 
-3. Source the $HOME/env.sh file to set environment variables
+Save the file (:wq) and source the $HOME/env.sh file to set environment variables
 
 ```bash
 source $HOME/env.sh
