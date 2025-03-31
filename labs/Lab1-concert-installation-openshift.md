@@ -37,7 +37,7 @@ wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-k8s.t
 tar xfz ibm-concert-k8s.tgz
 ```
 
-2. Create a $HOME/env.sh file
+3. Create a $HOME/env.sh file
 
 ```bash
 vi $HOME/env.sh

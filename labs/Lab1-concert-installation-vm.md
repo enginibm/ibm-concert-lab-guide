@@ -30,6 +30,8 @@ Copy Paste the content of [env.sh](../files/env.sh) in this $HOME/env.sh file
 Update the values for the following keys (other keys will be updated later):
 
 - CONCERT_REGISTRY_PASSWORD with your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key)
+- CONCERT_HUB_URL with your VM address
+- EXT_URL with your VM address
 
 3. Source the $HOME/env.sh file to set environment variables
 
@@ -119,25 +121,7 @@ wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-std-w
 tar xfz ibm-concert-std-workflows.tgz
 ```
 
-3. Update environement variables
-
-```bash
-vi $HOME/env.sh
-```
-
-Update the values for the following keys (other keys will be updated later):
-
-- CONCERT_REGISTRY_PASSWORD with your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key)
-- CONCERT_HUB_URL with your VM address
-- EXT_URL with your VM address
-
-Source the $HOME/env.sh file to set environment variables
-
-```bash
-source $HOME/env.sh
-```
-
-4. Log on docker
+3. Log on docker
 
 ```bash
 ${DOCKER_EXE} login ${CONCERT_REGISTRY} \
@@ -145,7 +129,7 @@ ${DOCKER_EXE} login ${CONCERT_REGISTRY} \
 --password=${CONCERT_REGISTRY_PASSWORD}
 ```
 
-5. Get concert infos and generate CONCERT_HUB_KEY
+4. Get concert infos and generate CONCERT_HUB_KEY
 
 ```bash
 cd /home/itzuser/workflows
@@ -157,7 +141,7 @@ cd /home/itzuser/workflows
 
 Copy the 3 last lines returned somewhere
 
-6. Update environment variables
+5. Update environment variables
 
 ```bash
 vi $HOME/env.sh
@@ -165,8 +149,8 @@ vi $HOME/env.sh
 
 Update the values for the following keys:
 
-- CONCERT_HUB_KEY with the value returned by get_concert_info.sh in step 5.
-- WORKFLOW_APIKEY with the value returned by get_concert_info.sh in step 5.
+- CONCERT_HUB_KEY with the value returned by get_concert_info.sh in step 4.
+- WORKFLOW_APIKEY with the value returned by get_concert_info.sh in step 4.
 
 Save the file (:wq) and source the $HOME/env.sh file to set environment variables
 
@@ -174,7 +158,7 @@ Save the file (:wq) and source the $HOME/env.sh file to set environment variable
 source $HOME/env.sh
 ```
 
-7. Edit the concert-workflows-values.yaml located in the /home/itzuser/workflows/bin folder:
+6. Edit the concert-workflows-values.yaml located in the /mnt/concert/workflows/bin folder:
 
 ```bash
 sudo vi /mnt/concert/workflows/bin/concert-workflows-values.yaml
@@ -185,13 +169,13 @@ sudo vi /mnt/concert/workflows/bin/concert-workflows-values.yaml
 - Add a new variable **CONCERT_API_KEY** under **CONCERT_HUB_KEY** and set its value to your WORKFLOW_APIKEY (in $HOME/env.sh file)
 - save your file (:wq)
 
-8. Create the concert workflow namespace in k3s cluster
+7. Create the concert workflow namespace in k3s cluster
 
 ```bash
 kubectl create ns $CW_NAMESPACE
 ```
 
-9. Create a secret called ibm-entitlement-key in the same namespace
+8. Create a secret called ibm-entitlement-key in the same namespace
 
 ```bash
 kubectl create secret docker-registry ibm-entitlement-key \
@@ -201,14 +185,14 @@ kubectl create secret docker-registry ibm-entitlement-key \
 --namespace="${CW_NAMESPACE}"
 ```
 
-10. Install concert worflow
+9. Install concert worflow
 
 ```bash
 cd /home/itzuser/workflows
 ./bin/setup --namespace="${CW_NAMESPACE}"
 ```
 
-11. Register Concert Workflows as an add-on to your Concert instance.
+10. Register Concert Workflows as an add-on to your Concert instance.
 
 ```bash
 ./bin/tethering/tether-to-hub.sh \
@@ -219,7 +203,7 @@ cd /home/itzuser/workflows
 --external-url="$EXT_URL"
 ```
 
-12. Establish authentication credentials and a reusable connection for Concert Workflows
+11. Establish authentication credentials and a reusable connection for Concert Workflows
 
 ```bash
 chmod +x bin/tethering/enable_concert_workflows.sh
