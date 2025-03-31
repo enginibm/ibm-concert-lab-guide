@@ -158,8 +158,8 @@ vi $HOME/env.sh
 
 Update the values for the following keys:
 
-- CONCERT_HUB_KEY with the value return by get_concert_info.sh in step 4.
-- WORKFLOW_APIKEY with the value return by get_concert_info.sh in step 4.
+- CONCERT_HUB_KEY with the value returned by get_concert_info.sh in step 4.
+- WORKFLOW_APIKEY with the value returned by get_concert_info.sh in step 4.
 
 Save the file (:wq) and source the $HOME/env.sh file to set environment variables
 
