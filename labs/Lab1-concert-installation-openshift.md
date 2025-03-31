@@ -30,14 +30,12 @@ You can retreive the connections information on your reservation page as explain
 ssh itzuser@<cluster API address> -p 40222
 ```
 
-````
-
 2. Get concert installation files
 
 ```bash
 wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-k8s.tgz
 tar xfz ibm-concert-k8s.tgz
-````
+```
 
 2. Create a $HOME/env.sh file
 
