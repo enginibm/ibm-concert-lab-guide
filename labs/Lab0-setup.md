@@ -127,13 +127,13 @@ sudo usermod --add-subuids 200000-201000 --add-subgids 200000-201000 itzuser
 
 2. Make a reservation for IBM watsonx.ai and choose **AMERICAS** as preferred geography (at the time we write this lab, only this region has the model used by IBM Concert inferences)
 
-When the reservation is ready, you should receive a mail from **IBM Cloud** to join an account in IBM Cloud.
+3. When the reservation is ready, you should receive a mail from **IBM Cloud** to join an account in IBM Cloud.
 
-2. Open the mail, click the **join now** link and follow the instructions.
+4. Open the mail, click the **join now** link and follow the instructions.
 
 <br><img src="../images/watsonxai-reservation.png" alt="drawing" width="400"/>
 
-3. When you have the IBM Cloud first screen, verify that you have the good account selected on the top bar
+5. When you have the IBM Cloud first screen, verify that you have the good account selected on the top bar
 
 <br><img src="../images/watsonx_accountid.png" alt="drawing" width="400"/>
 
