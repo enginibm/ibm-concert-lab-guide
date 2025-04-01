@@ -20,7 +20,7 @@ You must have an IBM Cloud user.
 ### Creating a reservation
 
 - Use this [link](https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3) to reserve your cluster
-  ![OpenShift Cluster (VMware on IBM Cloud) ](../images/tz_request_cluster_1.png)
+  <br><img src="../images/tz_request_cluster_1.png" alt="drawing" width="600"/>
 
 - Specify that you want to **Reserver now**.
 - On the next page, you have to specify the purpose. Select **Education**.  
@@ -33,16 +33,16 @@ You must have an IBM Cloud user.
 - Worker node flavor: 32 vCPU x 128GB - 300 GB ephemeral storage
 - Storage: Managed NFS - 2TB
 
-![Reservation form 1](../images/tz_request_cluster_2.png)
-![Reservation form 2](../images/tz_request_cluster_3.png)
+<br><img src="../images/tz_request_cluster_2.png" alt="drawing" width="600"/>
+<br><img src="../images/tz_request_cluster_3.png" alt="drawing" width="600"/>
 
 - Click **Submit**.
 
 - You will receive a **confirmation mail** with the status **provisioning**.
-  ![Confirmation mail - provisioning](../images/tz_request_cluster_4.png)
+  <br><img src="../images/tz_request_cluster_4.png" alt="drawing" width="600"/>
 
 - You can also see the reservation status from your account, in **My Reservations**.
-  ![My Reservations - provisioning](../images/tz_request_cluster_5.png)
+  <br><img src="../images/tz_request_cluster_5.png" alt="drawing" width="600"/>
 
 ### Connecting to the Openshift Cluster
 
@@ -55,8 +55,8 @@ You must have an IBM Cloud user.
   - Cluster Admin Username
   - Cluster Admin Password
 
-    ![My Reservations - details1](../images/tz_request_cluster_6.png)
-    ![My Reservations - details1](../images/tz_request_cluster_7.png)
+<br><img src="../images/tz_request_cluster_6.png" alt="drawing" width="600"/>
+<br><img src="../images/tz_request_cluster_7.png" alt="drawing" width="600"/>
 
 - You can then connect and authenticate to the cluster by clicking the OCP Console URL
 - On the ocp console login page, select kube:admin
