@@ -1,12 +1,13 @@
 # Lab setup
 
-Watsonx.ai (TZ (quand reservation Concert 5.0.1 ou celui d'IBM Cloud)
-
 ## Objective
 
-In this lab, you will provision an openshift cluster on techzone to prepare the platform necessary for following labs.
+In this lab, you will provision either an openshift cluster or a vm on techzone to prepare the platform necessary for following labs.
+You can also provision a watsonx.ai platform if you don't have one.
 
 ## Prerequisite
+
+You must have an IBM Cloud user.
 
 ## Content
 
