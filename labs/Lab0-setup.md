@@ -118,3 +118,67 @@ sudo dnf install podman
 sudo sysctl user.max_user_namespaces=15000
 sudo usermod --add-subuids 200000-201000 --add-subgids 200000-201000 itzuser
 ```
+
+### III - Provision a watsonx.ai on techzone
+
+#### Watsonx.ai Provisioning
+
+1. Navigate to [watsonx.ai on IBM Techzone](https://techzone.ibm.com/my/reservations/create/64b8490a564e190017b8f4eb)
+
+2. Make a reservation for IBM watsonx.ai and choose **AMERICAS** as preferred geography (at the time we write this lab, only this region has the model used by IBM Concert inferences)
+
+When the reservation is ready, you should receive a mail from **IBM Cloud** to join an account in IBM Cloud.
+
+2. Open the mail, click the **join now** link and follow the instructions.
+
+<br><img src="../images/watsonxai-reservation.png" alt="drawing" width="400"/>
+
+3. When you have the IBM Cloud first screen, verify that you have the good account selected on the top bar
+
+<br><img src="../images/watsonx_accountid.png" alt="drawing" width="400"/>
+
+#### Create a watsonx project and get project ID
+
+1. Select watsonx to from the burger menu on the left
+
+<br><img src="../images/select_watsonx.png" alt="drawing" width="400"/>
+
+2. Click Launch in the watsonx.ai tile
+
+<br><img src="../images/watsonxai_launch.png" alt="drawing" width="400"/>
+
+3. Scroll down in the page that appear and click **Create a sandbox project** in the Projects tile
+
+<br><img src="../images/watsonxai_create_project.png" alt="drawing" width="400"/>
+
+4. Select the sandbox that have been created
+
+<br><img src="../images/watsonx_sandbox.png" alt="drawing" width="400"/>
+
+5. In manage tab, copy the "Project ID" and store it somewhere
+
+<br><img src="../images/watsonxai_get_projectid.png" alt="drawing" width="400"/>
+
+#### Get API Key and service ID information
+
+1. From your techzone reservation screen, retrieve the APIKey and the service ID and store them somewhere
+
+<br><img src="../images/watsonxai_reservation_details.png" alt="drawing" width="400"/>
+
+#### API key - import the Service ID as part of the project
+
+1. From your watsonx screen, in the **manage** tab, select **Access control** in the left menu
+
+<br><img src="../images/watsonxai_apikey1.png" alt="drawing" width="400"/>
+
+2. Click the **Add Collaborators** button and select **Add Access Group**.
+
+<br><img src="../images/watsonxai_apikey2.png" alt="drawing" width="400"/>
+
+3. Enter your Access Group name (you can find your access group name under environment on your reservation page).
+
+<br><img src="../images/watsonxai_apikey3.png" alt="drawing" width="400"/>
+
+4. Give admin right to your access group
+
+<br><img src="../images/watsonxai_apikey4.png" alt="drawing" width="400"/>
