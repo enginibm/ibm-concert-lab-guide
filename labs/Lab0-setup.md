@@ -1,6 +1,31 @@
 # Lab setup
 
+- [Lab setup](#lab-setup)
+  - [Objective](#objective)
+  - [Prerequisite](#prerequisite)
+  - [I - Provision an openshift cluster on techzone](#i---provision-an-openshift-cluster-on-techzone)
+    - [Creating a reservation](#creating-a-reservation)
+    - [Connecting to the Openshift Cluster](#connecting-to-the-openshift-cluster)
+    - [Connecting to bastion](#connecting-to-bastion)
+  - [II - Provision a vm on techzone](#ii---provision-a-vm-on-techzone)
+    - [Provision VM from techzone](#provision-vm-from-techzone)
+    - [Prepare VM disk](#prepare-vm-disk)
+  - [III - Provision a watsonx.ai on techzone](#iii---provision-a-watsonxai-on-techzone)
+    - [Watsonx.ai Provisioning](#watsonxai-provisioning)
+    - [Create a watsonx project and get project ID](#create-a-watsonx-project-and-get-project-id)
+    - [Get API Key and service ID information](#get-api-key-and-service-id-information)
+    - [API key - import the Service ID as part of the project](#api-key---import-the-service-id-as-part-of-the-project)
+  - [Create an IBM Github token to clone the github repo](#create-an-ibm-github-token-to-clone-the-github-repo)
+
+
 ## Objective
+
+This lab covers the prerequisite to the IBM COncert bootcamp.
+
+It will cover:
+-  booking a VM or an Openshift cluster on Techzone, where IBM Concert will be deployed
+-  booking a watsonx.ai instance on Techzone
+-  creating a github token to clone the required files
 
 In this lab, you will provision either an openshift cluster or a vm on techzone to prepare the platform necessary for following labs.
 You can also provision a watsonx.ai platform if you don't have one.
@@ -9,13 +34,7 @@ You can also provision a watsonx.ai platform if you don't have one.
 
 You must have an IBM Cloud user.
 
-## Content
-
-- [I - Provision an openshift cluster on techzone](#i---provision-an-openshift-cluster-on-techzone-)
-- [II - Provision a vm on techzone](##ii---provision-a-vm-on-techzone-)
-- [III - Provision a watsonx.ai on techzone](##ii----provision-a-watsonx.ai-on-techzone-)
-
-### I - Provision an openshift cluster on techzone
+## I - Provision an openshift cluster on techzone
 
 ### Creating a reservation
 
@@ -80,9 +99,7 @@ chmod 755 helm-linux-amd64
 sudo mv helm-linux-amd64 /usr/local/bin/helm
 ```
 
-### II - Provision a vm on techzone
-
-## VM Installation
+## II - Provision a vm on techzone
 
 ### Provision VM from techzone
 
@@ -93,16 +110,17 @@ VM - 16 vCPUs/32GB RAM/512GB Disk
 logon in VM
 
 ```bash
-ssh itzuser@169.44.147.111 -p 30288
+ssh itzuser@169.44.147.111 -p 2322
 sudo -i
+lsblk
 mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdc
 blkid | grep /dev/vdc
 
 mkdir -p /mnt/concert
-chmod 777 /mnt/concert
 
 cp /etc/fstab /etc/fstab.orig
 vi /etc/fstab
+
 ```
 
 insert: UUID=6b6320a6-f7cb-45fa-9fc1-6aaedeeb8e18 /mnt/concert ext4 discard,defaults,nofail 0 0
@@ -111,19 +129,14 @@ insert: UUID=6b6320a6-f7cb-45fa-9fc1-6aaedeeb8e18 /mnt/concert ext4 discard,defa
 mount -a
 systemctl daemon-reload
 lsblk
+chmod 777 /mnt/concert
+
 ```
 
-### install podman
 
-```bash
-sudo dnf install podman
-sudo sysctl user.max_user_namespaces=15000
-sudo usermod --add-subuids 200000-201000 --add-subgids 200000-201000 itzuser
-```
+## III - Provision a watsonx.ai on techzone
 
-### III - Provision a watsonx.ai on techzone
-
-#### Watsonx.ai Provisioning
+### Watsonx.ai Provisioning
 
 1. Navigate to [watsonx.ai on IBM Techzone](https://techzone.ibm.com/my/reservations/create/64b8490a564e190017b8f4eb)
 
@@ -139,13 +152,17 @@ sudo usermod --add-subuids 200000-201000 --add-subgids 200000-201000 itzuser
 
 <br><img src="../images/watsonx_accountid.png" alt="drawing" width="400"/>
 
-#### Create a watsonx project and get project ID
+The IBM Cloud account selected should match the Cloud Account specified in the IBM TechZone reservation.
+
+<br><img src="../images/ibm-cloud-account-check.png" alt="drawing" width="400"/>
+
+### Create a watsonx project and get project ID
 
 1. Select watsonx to from the burger menu on the left
 
 <br><img src="../images/select_watsonx.png" alt="drawing" width="400"/>
 
-2. Click Launch in the watsonx.ai tile
+2. Click **Launch** in the watsonx.ai tile
 
 <br><img src="../images/watsonxai_launch.png" alt="drawing" width="400"/>
 
@@ -157,17 +174,17 @@ sudo usermod --add-subuids 200000-201000 --add-subgids 200000-201000 itzuser
 
 <br><img src="../images/watsonx_sandbox.png" alt="drawing" width="400"/>
 
-5. In manage tab, copy the "Project ID" and store it somewhere
+5. In **Manage** tab, copy the "Project ID" and store it somewhere
 
 <br><img src="../images/watsonxai_get_projectid.png" alt="drawing" width="400"/>
 
-#### Get API Key and service ID information
+### Get API Key and service ID information
 
 1. From your techzone reservation screen, retrieve the APIKey and the service ID and store them somewhere
 
 <br><img src="../images/watsonxai_reservation_details.png" alt="drawing" width="400"/>
 
-#### API key - import the Service ID as part of the project
+### API key - import the Service ID as part of the project
 
 1. From your watsonx screen, in the **manage** tab, select **Access control** in the left menu
 
@@ -177,10 +194,24 @@ sudo usermod --add-subuids 200000-201000 --add-subgids 200000-201000 itzuser
 
 <br><img src="../images/watsonxai_apikey2.png" alt="drawing" width="400"/>
 
-3. Enter your Access Group name (you can find your access group name under environment on your reservation page).
+3. Enter your Access Group name. The access Group Name is the IBM Cloud Service ID on your TechZone reservation page.
 
 <br><img src="../images/watsonxai_apikey3.png" alt="drawing" width="400"/>
 
 4. Give admin right to your access group
 
 <br><img src="../images/watsonxai_apikey4.png" alt="drawing" width="400"/>
+
+
+## Create an IBM Github token to clone the github repo
+
+Create a GitHub Token to clone using cli thru HTTPS:
+
+- Login to [https://github.ibm.com](https://github.ibm.com)
+- Click your profile in the right top
+- Settings —&gt; Developer settings —&gt; Personal access tokens
+- Click **Generate new token**
+- Enter a name you can remember, for example **IBM GitHub Clone**
+- Check **repo**, the underlying boxes such as `repo:status` will also be checked
+- Click **Generate token**
+- Copy your token and store it in a safe place as you won't be able to retrieve it (but you can generate a new one)

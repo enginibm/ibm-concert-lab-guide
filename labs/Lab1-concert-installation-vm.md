@@ -1,18 +1,34 @@
 # Concert installation
 
-- [I - VM installation](#vmInstallation)
-- [II - Install IBM Concert workflow](#cwInstallation)
-- [III - Watsonx.ai integration](#wxaiIntegration)
+- [Concert installation](#concert-installation)
+  - [Objective](#objective)
+  - [Prerequisite](#prerequisite)
+  - [I - Installing IBM Concert on a VM](#i---installing-ibm-concert-on-a-vm)
+  - [II - Install IBM Concert workflow ](#ii---install-ibm-concert-workflow-)
+    - [Install preprequisites](#install-preprequisites)
+    - [Install Concert workflow](#install-concert-workflow)
+  - [III - Watsonx.ai integration ](#iii---watsonxai-integration-)
+    - [Techzone reservation](#techzone-reservation)
+    - [Configure watsonx.ai in IBM Concert](#configure-watsonxai-in-ibm-concert)
 
-## I - Installing IBM Concert on a VM <a name="vmInstallation"></a>
 
+
+## Objective
+
+In this lab, you will install IBM Concert on a standalone server.
+
+## Prerequisite
+
+You must have run before the [Lab0](LabO-setup.md) which explain how to reserve a virtual machine on Techzone.
+
+## I - Installing IBM Concert on a VM
 > Add part about adding the disk
 
 You can install concert on a VM or in a kubernetes cluster. In this lab we will do a VM installation.
 
 > Official documentation [VM installation](https://www.ibm.com/docs/en/concert?topic=concert-deploying-virtual-machine-vm)
 
-1/ Connect on the machine you have provisioned on Techzone in Lab0
+1. Connect on the machine you have provisioned on Techzone in Lab0
 
 ```bash
 ssh itzuser@<VM ip address> -p 2223
@@ -48,8 +64,8 @@ ${DOCKER_EXE} login ${CONCERT_REGISTRY} --username=${CONCERT_REGISTRY_USER} --pa
 ibm-concert-std/bin/setup --license_acceptance=y --registry=${CONCERT_REGISTRY} --runtime=${DOCKER_EXE} --username=ibmconcert --password
 ```
 
-The isntaller will prompt for a password.  
-This will define the defautl password for the GUI user `ibmconcert`
+The installer will prompt for a password.  
+This will define the default password for the GUI user `ibmconcert`
 
 5. Connect on Concert and create an API Key
 
@@ -223,4 +239,30 @@ chmod +x bin/tethering/enable_concert_workflows.sh
 
 ## III - Watsonx.ai integration <a name="wxaiIntegration"></a>
 
-TODO (get content from DACH team ?)
+> !!!! Concert require model ibm/granite-3-2-8b-instruct on x.ai !!!!
+
+### Techzone reservation
+
+Be sure to reserve a watsonx.ai instance as explained in [Lab 0 - III - Provision a watsonx.ai on techzone](Lab0-setup.md#iii---provision-a-watsonxai-on-techzone).
+
+### Configure watsonx.ai in IBM Concert
+
+The watsonx.ai integration is simply done through setting some config parameters in the config files of IBM concert.  
+
+You will need to update the $HOME/env.sh file.
+```
+vim $HOME/env.sh
+```
+
+Update the following variables:
+- **WATSONX_API_KEY**: use the API key you got in [Lab 0 - Get API Key and service ID information](Lab0-setup.md#get-api-key-and-service-id-information), from your techzone wx.ai reservation page
+- **WATSONX_API_PROJECT_ID**: use the project ID you got from [Lab 0 - Create a watsonx project and get project ID](Lab0-setup.md#create-a-watsonx-project-and-get-project-id),
+- **WATSONX_API_URL**: https://us-south.ml.cloud.ibm.com , since the instance is provision is US.
+
+Then you need to start the appropriate service:
+
+```
+cd /mnt/concert
+source $HOME/env.sh
+ibm-concert-std/bin/start_service ibm-roja-py-utils
+```

@@ -1,5 +1,15 @@
 # Concert installation
 
+- [Concert installation](#concert-installation)
+  - [Objective](#objective)
+  - [Prerequisite](#prerequisite)
+  - [I - Install concert on an openshift cluster](#i---install-concert-on-an-openshift-cluster)
+  - [II - Install IBM Concert workflow](#ii---install-ibm-concert-workflow)
+  - [III - Integrate IBM Concert with watsonx.ai](#iii---integrate-ibm-concert-with-watsonxai)
+    - [Techzone reservation](#techzone-reservation)
+    - [Configure watsonx.ai in IBM Concert](#configure-watsonxai-in-ibm-concert)
+
+
 ## Objective
 
 In this lab, you will install IBM Concert on an Openshift Cluster.
@@ -8,15 +18,7 @@ In this lab, you will install IBM Concert on an Openshift Cluster.
 
 You must have run before the [Lab0](LabO-setup.md) which explain how to reserve an Openshift cluster on Techzone.
 
-## Content
-
-Concert installation consist on 3 steps:
-
-- [I - Install IBM Concert on an openshift cluster](#i---install-concert-on-an-openshift-cluster-)
-- [II - Install IBM Concert workflow](#ii---install-ibm-concert-workflow-)
-- [III - Integrate IBM Concert with watsonx.ai](#iii---integrate-ibm-concert-with-watsonxai-)
-
-### I - Install concert on an openshift cluster
+## I - Install concert on an openshift cluster
 
 You can install concert on a VM or in a kubernetes cluster. In this lab we will do an Openshift cluster installation.
 
@@ -117,7 +119,7 @@ Save the file (:wq) and source the $HOME/env.sh file to set environment variable
 source $HOME/env.sh
 ```
 
-### II - Install IBM Concert workflow
+## II - Install IBM Concert workflow
 
 > Offical documentation [ocp installation]https://www.ibm.com/docs/en/concert?topic=workflows-installing-concert-ocp)
 
@@ -238,43 +240,34 @@ chmod +x bin/tethering/enable_concert_workflows.sh
 ./bin/tethering/enable_concert_workflows.sh --concert-url="$CONCERT_HUB_URL" --c-api-key="$CONCERT_APIKEY" --c-user="$CONCERT_USER" --workflow-apikey="$WORKFLOW_APIKEY"
 ```
 
-### III - Integrate IBM Concert with watsonx.ai
+## III - Integrate IBM Concert with watsonx.ai
 
-!!!! Concert require model ibm/granite-3-2-8b-instruct on x.ai !!!!
+> !!!! Concert require model ibm/granite-3-2-8b-instruct on x.ai !!!!
 
-#### Techzone reservation
+### Techzone reservation
 
-Make sure you already made a watsonx.ai reservation on IBM Techzone.
+Be sure to reserve a watsonx.ai instance as explained in [Lab 0 - III - Provision a watsonx.ai on techzone](Lab0-setup.md#iii---provision-a-watsonxai-on-techzone).
 
-Otherwise, navigate to [watsonx.ai on IBM Techzone](https://techzone.ibm.com/my/reservations/create/64b8490a564e190017b8f4eb)
-and make a reservation for IBM watsonx.ai
-
-<img width="341" alt="image" src="https://github.ibm.com/technology-garage-dach/ibm-concert-howto/assets/81536/0f4640d9-23f3-422b-93f6-554144864404">
-
-#### Configure watsonx.ai in IBM Concert
+### Configure watsonx.ai in IBM Concert
 
 The watsonx.ai integration is simply done through setting some config parameters in the config files of IBM concert.  
-In Lab0, you have provision a watsonx.ai and note somewhere the values for
 
-- WATSONX_API_KEY
-- WATSONX_API_PROJECT_ID
+You will need to update the $HOME/env.sh file.
+```
+vim $HOME/env.sh
+```
 
-In your $HOME/env.sh file, you have the value for
-
-- CONCERT_NAMESPACE
-
-As you have reserved you watsonx.ai instance in America,
-
-- WATSONX_API_URL is https://us-south.ml.cloud.ibm.com
+Update the following variables:
+- WATSONX_API_KEY: use the API key you got in [Lab 0 - Get API Key and service ID information](Lab0-setup.md#get-api-key-and-service-id-information), from your techzone wx.ai reservation page
+- WATSONX_API_PROJECT_ID: use the project ID you got from [Lab 0 - Create a watsonx project and get project ID](Lab0-setup.md#create-a-watsonx-project-and-get-project-id),
+- WATSONX_API_URL: https://us-south.ml.cloud.ibm.com , since the instance is provision is US.
 
 For a OCP based installation the parameters must be set in the configuration secret.
 This can be done in the following way:
 
 ```
-export WATSONX_API_KEY=<WATSONX_API_KEY>
-export WATSONX_API_PROJECT_ID=<WATSONX_API_PROJECT_ID>
-export WATSONX_API_URL=<WATSONX_API_URL>
-export CONCERT_NAMESPACE=<CONCERT_NAMESPACE>
+source $HOME/env.sh
+
 kubectl patch secret/app-cfg-secret -n $CONCERT_NAMESPACE --type=merge -p '{
   "data": {
     "WATSONX_API_KEY": "'$(echo -n $WATSONX_API_KEY | base64 )'",
