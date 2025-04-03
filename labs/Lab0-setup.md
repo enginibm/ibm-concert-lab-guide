@@ -27,9 +27,6 @@ It will cover:
 -  booking a watsonx.ai instance on Techzone
 -  creating a github token to clone the required files
 
-In this lab, you will provision either an openshift cluster or a vm on techzone to prepare the platform necessary for following labs.
-You can also provision a watsonx.ai platform if you don't have one.
-
 ## Prerequisite
 
 You must have an IBM Cloud user.
