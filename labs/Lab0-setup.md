@@ -1,6 +1,6 @@
-# Lab setup
+# IBM Concert bootcamp - Lab setup
 
-- [Lab setup](#lab-setup)
+- [IBM Concert bootcamp - Lab setup](#ibm-concert-bootcamp---lab-setup)
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
   - [I - Provision an openshift cluster on techzone](#i---provision-an-openshift-cluster-on-techzone)
