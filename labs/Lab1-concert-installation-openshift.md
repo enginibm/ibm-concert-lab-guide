@@ -1,6 +1,6 @@
-# Concert installation
+# IBM Concert installation on an openshift cluster
 
-- [Concert installation](#concert-installation)
+- [IBM Concert installation on an openshift cluster](#ibm-concert-installation-on-an-openshift-cluster)
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
   - [I - Install concert on an openshift cluster](#i---install-concert-on-an-openshift-cluster)

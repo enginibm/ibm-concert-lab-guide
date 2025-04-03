@@ -1,6 +1,6 @@
-# Concert installation
+# Concert workflow installation
 
-- [Concert installation](#concert-installation)
+- [Concert workflow installation](#concert-workflow-installation)
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
   - [A - Install IBM Concert workflow for a on openshift IBM concert installation](#a---install-ibm-concert-workflow-for-a-on-openshift-ibm-concert-installation)

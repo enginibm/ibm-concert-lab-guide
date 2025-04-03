@@ -1,6 +1,6 @@
-# Concert installation
+# IBM Concert installation on a virtual machine
 
-- [Concert installation](#concert-installation)
+- [IBM Concert installation on a virtual machine](#ibm-concert-installation-on-a-virtual-machine)
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
   - [I - Installing IBM Concert on a VM](#i---installing-ibm-concert-on-a-vm)
