@@ -95,23 +95,32 @@ chmod 777 SBOMs-ingestion/concert_data
 
 ```bash
 cd SBOMs-ingestion/scripts
-./simulate_cicd_pipeline-rhel.sh hr-app
-./simulate_cicd_pipeline-rhel.sh summarization-svc
-```
-
-#### Upload SBOMs on IBM concert
-
-```bash
-cd SBOMs-ingestion/scripts
-./upload.sh
+./generate-sboms.sh hr-app
+./generate-sboms.sh summarization-svc
 ```
 
 - Explain environment variables
 - Explain concert-toolkit
-- Explain simulate_cicd_pipeline.sh
+- Explain generate-sboms.sh
 
-- Launch simulate_cicd_pipeline.sh
-- Show arena view on concert + walkthrough
+#### Upload SBOMs on IBM concert
+
+TODO Explain upload.sh
+  
+1. Update **app-common-variables.variables** file to specify Concert variables:
+
+- CONCERT_HOST
+- CONCERT_PORT
+- CONCERT_APIKEY
+  
+2. Run the upload script
+  
+```bash
+cd SBOMs-ingestion/scripts
+./upload.sh hr-app
+./upload.sh summarization-svc
+```
+3. Log on concert and look at the Arena view
 
 ### b - Jenkins Pipeline
 
