@@ -3,6 +3,10 @@ export CLUSTER_USER="kubeadmin"
 export CLUSTER_PASSWORD="w3Vs4-ihG4C-2evCC-7wRdb"
 export CLUSTER_STORAGE_CLASS="ocs-storagecluster-cephfs"
 
+export CONCERT_REGISTRY=cp.icr.io/cp/concert
+export CONCERT_REGISTRY_USER=cp
+export CONCERT_REGISTRY_PASSWORD=${ENTITLEMENT_API_KEY}
+
 export CONCERT_NAMESPACE="concert"
 export CONCERT_USER="kubeadmin"
 export CONCERT_URL=""

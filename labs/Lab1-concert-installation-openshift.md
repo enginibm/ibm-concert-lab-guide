@@ -9,7 +9,6 @@
     - [Techzone reservation](#techzone-reservation)
     - [Configure watsonx.ai in IBM Concert](#configure-watsonxai-in-ibm-concert)
 
-
 ## Objective
 
 In this lab, you will install IBM Concert on an Openshift Cluster.
@@ -189,9 +188,9 @@ oc create namespace $CW_NAMESPACE
 
 ```bash
 oc create secret docker-registry ibm-entitlement-key \
---docker-server=cp.icr.io \
---docker-username=cp \
---docker-password=$ENTITLEMENT_API_KEY \
+--docker-server=$CONCERT_REGISTRY \
+--docker-username=$CONCERT_REGISTRY_USER \
+--docker-password=$CONCERT_REGISTRY_PASSWORD \
 --namespace="$CW_NAMESPACE"
 ```
 
@@ -250,14 +249,16 @@ Be sure to reserve a watsonx.ai instance as explained in [Lab 0 - III - Provisio
 
 ### Configure watsonx.ai in IBM Concert
 
-The watsonx.ai integration is simply done through setting some config parameters in the config files of IBM concert.  
+The watsonx.ai integration is simply done through setting some config parameters in the config files of IBM concert.
 
 You will need to update the $HOME/env.sh file.
+
 ```
 vim $HOME/env.sh
 ```
 
 Update the following variables:
+
 - WATSONX_API_KEY: use the API key you got in [Lab 0 - Get API Key and service ID information](Lab0-setup.md#get-api-key-and-service-id-information), from your techzone wx.ai reservation page
 - WATSONX_API_PROJECT_ID: use the project ID you got from [Lab 0 - Create a watsonx project and get project ID](Lab0-setup.md#create-a-watsonx-project-and-get-project-id),
 - WATSONX_API_URL: https://us-south.ml.cloud.ibm.com , since the instance is provision is US.
