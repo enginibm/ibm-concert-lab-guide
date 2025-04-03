@@ -1,10 +1,28 @@
 # Concert Walkthrough
 
-## Log on Concert and load demo data
+- [Concert Walkthrough](#concert-walkthrough)
+  - [Objective](#objective)
+  - [Prerequisite](#prerequisite)
+  - [I - Log on Concert and load demo data](#i---log-on-concert-and-load-demo-data)
+  - [II - Walkthrough](#ii---walkthrough)
+  - [III - Reset concert data](#iii---reset-concert-data)
+    - [For an Openshift installation](#for-an-openshift-installation)
+    - [For a VM installation](#for-a-vm-installation)
 
-## Walkthrough
 
-## Reset concert data
+## Objective
+
+In this lab, you will install IBM Concert on a standalone server.
+
+## Prerequisite
+
+You must have run before the [Lab0](LabO-setup.md) which explain how to reserve a virtual machine on Techzone.
+
+## I - Log on Concert and load demo data
+
+## II - Walkthrough
+
+## III - Reset concert data
 
 ### For an Openshift installation
 

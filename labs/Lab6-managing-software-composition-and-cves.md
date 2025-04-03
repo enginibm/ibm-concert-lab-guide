@@ -1,5 +1,20 @@
 # Managing Software Composition and CVEs
 
+- [Managing Software Composition and CVEs](#managing-software-composition-and-cves)
+  - [Objective](#objective)
+  - [Prerequisite](#prerequisite)
+  - [Content](#content)
+  - [I - Data ingestion](#i---data-ingestion)
+    - [a - Manual ingestion](#a---manual-ingestion)
+      - [Clone the micro-services](#clone-the-micro-services)
+      - [Clone the SBOM ingestion scripts](#clone-the-sbom-ingestion-scripts)
+      - [Execute the SBOM generation script](#execute-the-sbom-generation-script)
+      - [Upload SBOMs on IBM concert](#upload-sboms-on-ibm-concert)
+    - [b - Jenkins Pipeline](#b---jenkins-pipeline)
+  - [II - Managing Software Composition](#ii---managing-software-composition)
+  - [III - Managing CVEs](#iii---managing-cves)
+
+
 ## Objective
 
 In this lab, you will learn how to ingest application data from micro-services development in IBM Concert. Then you will see the result and the related functionnalities of IBM Concert concerning these data.
@@ -72,12 +87,19 @@ mkdir SBOMs-ingestion/concert_data
 chmod 777 SBOMs-ingestion/concert_data
 ```
 
-#### Execute the ingestion script
+#### Execute the SBOM generation script
 
 ```bash
 cd SBOMs-ingestion/scripts
 ./simulate_cicd_pipeline.sh hr-app
 ./simulate_cicd_pipeline.sh summarization-svc
+```
+
+#### Upload SBOMs on IBM concert
+
+```bash
+cd SBOMs-ingestion/scripts
+./upload.sh
 ```
 
 - Explain environment variables
