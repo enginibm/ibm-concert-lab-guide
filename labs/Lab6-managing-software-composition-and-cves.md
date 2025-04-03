@@ -6,7 +6,7 @@
   - [Content](#content)
   - [I - Data ingestion](#i---data-ingestion)
     - [a - Manual ingestion](#a---manual-ingestion)
-      - [Clone the micro-services](#clone-the-micro-services)
+      - [Clone and build the micro-services](#clone-and-build-the-micro-services)
       - [Clone the SBOM ingestion scripts](#clone-the-sbom-ingestion-scripts)
       - [Execute the SBOM generation script](#execute-the-sbom-generation-script)
       - [Upload SBOMs on IBM concert](#upload-sboms-on-ibm-concert)
@@ -39,13 +39,17 @@ We will use this toolkit to generate the SBOMs of a very simple provided python 
 
 ### a - Manual ingestion
 
-#### Clone the micro-services
+#### Clone and build the micro-services
 
 You will start to clone the 2 micro-services composing the application.
 
-!!! Connect on Concert VM !!!
+1. Connect on the machine you have provisioned on Techzone in Lab0
 
-1. Create a folder named **concert-bootcamp**
+```bash
+ssh itzuser@<VM ip address> -p 2223
+```
+
+2. Create a folder named **concert-bootcamp**
 
 ```bash
 umask 022
@@ -53,7 +57,7 @@ mkdir -p concert-bootcamp/Applications
 cd concert-bootcamp/Applications
 ```
 
-2. Clone the hr-app component
+3. Clone and build the hr-app component
 
 ```bash
 git clone https://github.ibm.com/HCS-Concert-Projects/hr-app.git
@@ -62,7 +66,7 @@ cd hr-app
 cd ..
 ```
 
-- Clone summarization-svc component
+4. Clone and build summarization-svc component
 
 ```bash
 git clone https://github.ibm.com/HCS-Concert-Projects/summarization-svc.git
