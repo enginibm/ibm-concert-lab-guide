@@ -3,14 +3,14 @@
 - [IBM Concert bootcamp - Lab setup](#ibm-concert-bootcamp---lab-setup)
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
-  - [I - Provision an openshift cluster on techzone](#i---provision-an-openshift-cluster-on-techzone)
+  - [Option A - Provision a vm on techzone](#option-a---provision-a-vm-on-techzone)
+    - [Provision VM from techzone](#provision-vm-from-techzone)
+    - [Prepare VM disk](#prepare-vm-disk)
+  - [Option B - Provision an openshift cluster on techzone](#option-b---provision-an-openshift-cluster-on-techzone)
     - [Creating a reservation](#creating-a-reservation)
     - [Connecting to the Openshift Cluster](#connecting-to-the-openshift-cluster)
     - [Connecting to bastion](#connecting-to-bastion)
-  - [II - Provision a vm on techzone](#ii---provision-a-vm-on-techzone)
-    - [Provision VM from techzone](#provision-vm-from-techzone)
-    - [Prepare VM disk](#prepare-vm-disk)
-  - [III - Provision a watsonx.ai on techzone](#iii---provision-a-watsonxai-on-techzone)
+  - [Provision a watsonx.ai on techzone](#provision-a-watsonxai-on-techzone)
     - [Watsonx.ai Provisioning](#watsonxai-provisioning)
     - [Create a watsonx project and get project ID](#create-a-watsonx-project-and-get-project-id)
     - [Get API Key and service ID information](#get-api-key-and-service-id-information)
@@ -31,7 +31,41 @@ It will cover:
 
 You must have an IBM Cloud user.
 
-## I - Provision an openshift cluster on techzone
+## Option A - Provision a vm on techzone
+
+### Provision VM from techzone
+
+VM - 16 vCPUs/32GB RAM/512GB Disk
+
+### Prepare VM disk
+
+logon in VM
+
+```bash
+ssh itzuser@169.44.147.111 -p 2322
+sudo -i
+lsblk
+mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdc
+blkid | grep /dev/vdc
+
+mkdir -p /mnt/concert
+
+cp /etc/fstab /etc/fstab.orig
+vi /etc/fstab
+
+```
+
+insert: UUID=6b6320a6-f7cb-45fa-9fc1-6aaedeeb8e18 /mnt/concert ext4 discard,defaults,nofail 0 0
+
+```bash
+mount -a
+systemctl daemon-reload
+lsblk
+chmod 777 /mnt/concert
+
+```
+
+## Option B - Provision an openshift cluster on techzone
 
 ### Creating a reservation
 
@@ -96,42 +130,8 @@ chmod 755 helm-linux-amd64
 sudo mv helm-linux-amd64 /usr/local/bin/helm
 ```
 
-## II - Provision a vm on techzone
 
-### Provision VM from techzone
-
-VM - 16 vCPUs/32GB RAM/512GB Disk
-
-### Prepare VM disk
-
-logon in VM
-
-```bash
-ssh itzuser@169.44.147.111 -p 2322
-sudo -i
-lsblk
-mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdc
-blkid | grep /dev/vdc
-
-mkdir -p /mnt/concert
-
-cp /etc/fstab /etc/fstab.orig
-vi /etc/fstab
-
-```
-
-insert: UUID=6b6320a6-f7cb-45fa-9fc1-6aaedeeb8e18 /mnt/concert ext4 discard,defaults,nofail 0 0
-
-```bash
-mount -a
-systemctl daemon-reload
-lsblk
-chmod 777 /mnt/concert
-
-```
-
-
-## III - Provision a watsonx.ai on techzone
+## Provision a watsonx.ai on techzone
 
 ### Watsonx.ai Provisioning
 
