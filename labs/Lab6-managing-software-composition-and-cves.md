@@ -80,7 +80,7 @@ cd ..
 Then you will clone a project containing a directory structure and a script to generate SBOMs using the Concert Toolkit and upload them in concert using IBM Concert APIs.
 
 ```bash
-cd ..
+cd ../..
 git clone https://github.ibm.com/HCS-Concert-Projects/SBOMs-ingestion.git
 ```
 
@@ -95,8 +95,8 @@ chmod 777 SBOMs-ingestion/concert_data
 
 ```bash
 cd SBOMs-ingestion/scripts
-./simulate_cicd_pipeline.sh hr-app
-./simulate_cicd_pipeline.sh summarization-svc
+./simulate_cicd_pipeline-rhel.sh hr-app
+./simulate_cicd_pipeline-rhel.sh summarization-svc
 ```
 
 #### Upload SBOMs on IBM concert
