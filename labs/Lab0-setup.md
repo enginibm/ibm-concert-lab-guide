@@ -1,8 +1,24 @@
 # IBM Concert bootcamp - Lab setup
 
+## Objective
+
+This lab covers the prerequisite to the IBM COncert bootcamp.
+
+It will cover:
+-  booking a VM or an Openshift cluster on Techzone, where IBM Concert will be deployed
+-  booking a watsonx.ai instance on Techzone
+-  creating a github token to clone the required files
+
+## Prerequisite
+
+- You must have an IBM Cloud user.
+
+## Content
+
 - [IBM Concert bootcamp - Lab setup](#ibm-concert-bootcamp---lab-setup)
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
+  - [Content](#content)
   - [Option A - Provision a vm on techzone](#option-a---provision-a-vm-on-techzone)
     - [Provision VM from techzone](#provision-vm-from-techzone)
     - [Prepare VM disk](#prepare-vm-disk)
@@ -16,20 +32,6 @@
     - [Get API Key and service ID information](#get-api-key-and-service-id-information)
     - [API key - import the Service ID as part of the project](#api-key---import-the-service-id-as-part-of-the-project)
   - [Create an IBM Github token to clone the github repo](#create-an-ibm-github-token-to-clone-the-github-repo)
-
-
-## Objective
-
-This lab covers the prerequisite to the IBM COncert bootcamp.
-
-It will cover:
--  booking a VM or an Openshift cluster on Techzone, where IBM Concert will be deployed
--  booking a watsonx.ai instance on Techzone
--  creating a github token to clone the required files
-
-## Prerequisite
-
-You must have an IBM Cloud user.
 
 ## Option A - Provision a vm on techzone
 

@@ -1,21 +1,24 @@
 # IBM Concert installation on a virtual machine
 
-- [IBM Concert installation on a virtual machine](#ibm-concert-installation-on-a-virtual-machine)
-  - [Objective](#objective)
-  - [Prerequisite](#prerequisite)
-  - [I - Installing IBM Concert on a VM](#i---installing-ibm-concert-on-a-vm)
-  - [II - Watsonx.ai integration](#ii---watsonxai-integration)
-    - [Techzone reservation](#techzone-reservation)
-    - [Configure watsonx.ai in IBM Concert](#configure-watsonxai-in-ibm-concert)
-
 ## Objective
 
 In this lab, you will install IBM Concert on a standalone server.
 
 ## Prerequisite
 
-You must have run before the [Lab0](LabO-setup.md) which explain how to reserve a virtual machine on Techzone.
+- An virtual machine must have been provisionned on Techzone 
 
+## Content
+
+- [IBM Concert installation on a virtual machine](#ibm-concert-installation-on-a-virtual-machine)
+  - [Objective](#objective)
+  - [Prerequisite](#prerequisite)
+  - [Content](#content)
+  - [I - Installing IBM Concert on a VM](#i---installing-ibm-concert-on-a-vm)
+  - [II - Watsonx.ai integration](#ii---watsonxai-integration)
+    - [Techzone reservation](#techzone-reservation)
+    - [Configure watsonx.ai in IBM Concert](#configure-watsonxai-in-ibm-concert)
+  
 ## I - Installing IBM Concert on a VM
 > Add part about adding the disk
 

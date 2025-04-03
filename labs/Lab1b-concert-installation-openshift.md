@@ -1,20 +1,23 @@
 # IBM Concert installation on an openshift cluster
 
-- [IBM Concert installation on an openshift cluster](#ibm-concert-installation-on-an-openshift-cluster)
-  - [Objective](#objective)
-  - [Prerequisite](#prerequisite)
-  - [I - Install concert on an openshift cluster](#i---install-concert-on-an-openshift-cluster)
-  - [II - Integrate IBM Concert with watsonx.ai](#ii---integrate-ibm-concert-with-watsonxai)
-    - [Techzone reservation](#techzone-reservation)
-    - [Configure watsonx.ai in IBM Concert](#configure-watsonxai-in-ibm-concert)
-
 ## Objective
 
 In this lab, you will install IBM Concert on an Openshift Cluster.
 
 ## Prerequisite
 
-You must have run before the [Lab0](LabO-setup.md) which explain how to reserve an Openshift cluster on Techzone.
+- An openshift cluster must have been provisionned on Techzone 
+  
+## Content
+
+- [IBM Concert installation on an openshift cluster](#ibm-concert-installation-on-an-openshift-cluster)
+  - [Objective](#objective)
+  - [Prerequisite](#prerequisite)
+  - [Content](#content)
+  - [I - Install concert on an openshift cluster](#i---install-concert-on-an-openshift-cluster)
+  - [II - Integrate IBM Concert with watsonx.ai](#ii---integrate-ibm-concert-with-watsonxai)
+    - [Techzone reservation](#techzone-reservation)
+    - [Configure watsonx.ai in IBM Concert](#configure-watsonxai-in-ibm-concert)
 
 ## I - Install concert on an openshift cluster
 

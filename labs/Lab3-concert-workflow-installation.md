@@ -1,21 +1,23 @@
 # Concert workflow installation
 
-- [Concert workflow installation](#concert-workflow-installation)
-  - [Objective](#objective)
-  - [Prerequisite](#prerequisite)
-  - [A - Install IBM Concert workflow for a VM concert installation](#a---install-ibm-concert-workflow-for-a-vm-concert-installation)
-    - [Install preprequisites](#install-preprequisites)
-    - [Install Concert workflow](#install-concert-workflow)
-  - [B - Install IBM Concert workflow for a on openshift IBM concert installation](#b---install-ibm-concert-workflow-for-a-on-openshift-ibm-concert-installation)
-
-
 ## Objective
 
 In this lab, you will install IBM Concert workflow.
 
 ## Prerequisite
 
-You must have a IBM Concert installed
+- IBM Concert must be installed
+
+## Content
+
+- [Concert workflow installation](#concert-workflow-installation)
+  - [Objective](#objective)
+  - [Prerequisite](#prerequisite)
+  - [Content](#content)
+  - [A - Install IBM Concert workflow for a VM concert installation](#a---install-ibm-concert-workflow-for-a-vm-concert-installation)
+    - [Install preprequisites](#install-preprequisites)
+    - [Install Concert workflow](#install-concert-workflow)
+  - [B - Install IBM Concert workflow for a on openshift IBM concert installation](#b---install-ibm-concert-workflow-for-a-on-openshift-ibm-concert-installation)
 
 ## A - Install IBM Concert workflow for a VM concert installation
 
