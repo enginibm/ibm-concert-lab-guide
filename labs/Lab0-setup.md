@@ -2,7 +2,7 @@
 
 ## Objective
 
-This lab covers the prerequisite to the IBM COncert bootcamp.
+This lab covers the prerequisite to the IBM Concert bootcamp.
 
 It will cover:
 -  booking a VM or an Openshift cluster on Techzone, where IBM Concert will be deployed

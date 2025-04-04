@@ -24,7 +24,15 @@ In this lab, we will load demo data on concert and walkthrough IBM Concert funct
 
 ## I - Log on Concert and load demo data
 
+1. From a browser, enter the URL of your concert instance and log with you concert username and password.
+2. If it is the first time you log in, you are invited to upload sample data on the right of the window. 
+3. Otherwise, you can upload sample data by clicking the question mark at the top right of the window.
+
+<br><img src="../images/concert_sample_data.png" alt="drawing" width="400"/>
+
 ## II - Walkthrough
+
+This part is done by the instructor.
 
 ## III - Reset concert data
 

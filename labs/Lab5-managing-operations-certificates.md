@@ -20,8 +20,14 @@ In this lab, you will complete the script of the manual data ingestion to upload
 
 ## Certificates data ingestion
 
-Add certificate ingestion in manual steps
-upload on concert
+Certificates can be ingested in Concert following several way:
+
+- using built-in concert workflow certificate ingestion from a kubeadm (in Administration->Integration->Create Ingestion job)
+- using concert-toolkit for applications certificates during the CI/CD process
+  
+You will now update the **generate-sboms.sh** and **upload.sh** scripts you used in Lab4 to get and upload your application certificates to IBM Concert
+
+TO CONTINUE
 
 ## Certificates management
 

@@ -138,7 +138,10 @@ cd $HOME/concert-bootcamp/SBOMs-ingestion/scripts
 
 ### b - Jenkins Pipeline
 
-Jenkins pipeline on same base than Manual - walktrough
+During the micro-services development phase, data ingestion should be done during the CI/CD process.
+In each component code of this lab (hr-app and summarization-svc) you will find a Jenkins file as a pipeline example. Any other tools can be use (teckton, ...)
+
+Jenkins demo done by the instructor.
 
 ## II - Managing Software Composition
 
@@ -146,4 +149,4 @@ Show result of data ingestion on Concert - walthrough
 
 ## III - Managing CVEs
 
-Show resule of CVE data ingestion on Concert - walkthrough
+Show result of CVE data ingestion on Concert - walkthrough
