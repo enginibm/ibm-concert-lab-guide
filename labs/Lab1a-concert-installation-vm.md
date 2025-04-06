@@ -104,7 +104,7 @@ Be sure to reserve a watsonx.ai instance as explained in [Lab 0 - III - Provisio
 
 The watsonx.ai integration is simply done through setting some config parameters in the config files of IBM concert.  
 
-You will need to update the $HOME/env.sh file.
+1. You will need to update the $HOME/env.sh file.
 ```bash
 vim $HOME/env.sh
 ```
@@ -114,7 +114,15 @@ Update the following variables:
 - **WATSONX_API_PROJECT_ID**: use the project ID you got from [Lab 0 - Create a watsonx project and get project ID](Lab0-setup.md#create-a-watsonx-project-and-get-project-id),
 - **WATSONX_API_URL**: https://us-south.ml.cloud.ibm.com , since the instance is provision is US.
 
-Then you need to start the appropriate service:
+2. Apply the watsonx.ai configuration
+
+```bash
+echo "WATSONX_API_KEY=$WATSONX_API_KEY" >> ibm-concert-std/etc/local_config.env
+echo "WATSONX_API_PROJECT_ID=$WATSONX_API_PROJECT_ID" >> ibm-concert-std/etc/local_config.env
+echo WATSONX_API_URL=$WATSONX_API_URL >> ibm-concert-std/etc/local_config.env
+```
+
+3. Then you need to start the appropriate service:
 
 ```bash
 cd /mnt/concert

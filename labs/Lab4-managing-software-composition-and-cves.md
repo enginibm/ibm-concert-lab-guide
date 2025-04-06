@@ -48,10 +48,10 @@ We will use this toolkit to generate the SBOMs of a very simple provided python 
 
 #### Clone and build the micro-services
 
-TODO - Explain micro services
-TODO - Explain environment variables
-TODO - Explain concert-toolkit
-TODO - Explain generate-sboms.sh
+TODO - Explain micro services   
+TODO - Explain environment variables   
+TODO - Explain concert-toolkit   
+TODO - Explain generate-sboms.sh   
 
 You will start to clone the 2 micro-services composing the application.
 

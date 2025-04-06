@@ -46,7 +46,7 @@ On the provisionned VM, a 500GB disk is present but you need to prepare it.
 logon in VM
 
 ```bash
-ssh itzuser@<YOUR_VM_IP> -p 2322
+ssh itzuser@<VMaddress> -p 2322
 sudo -i
 lsblk
 mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdd
