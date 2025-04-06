@@ -47,8 +47,8 @@ logon in VM
 ssh itzuser@169.44.147.111 -p 2322
 sudo -i
 lsblk
-mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdc
-blkid | grep /dev/vdc
+mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdd
+blkid | grep /dev/vdd
 
 mkdir -p /mnt/concert
 
@@ -57,7 +57,8 @@ vi /etc/fstab
 
 ```
 
-insert: UUID=6b6320a6-f7cb-45fa-9fc1-6aaedeeb8e18 /mnt/concert ext4 discard,defaults,nofail 0 0
+in line: UUID=YOUR_UUID /mnt/concert ext4 discard,defaults,nofail 0 0  
+replace YOUR_UUID by the one listed by the **blkid | grep /dev/vdd** command
 
 ```bash
 mount -a
