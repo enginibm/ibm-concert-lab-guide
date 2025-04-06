@@ -37,14 +37,16 @@ It will cover:
 
 ### Provision VM from techzone
 
-VM - 16 vCPUs/32GB RAM/512GB Disk
+Provision your concert VM from this [link](https://techzone.ibm.com/my/reservations/create/67ebfd2549ad003ad4a71a6d).   
+The minimum requirements to install IBM Concert and Concert workflox are: 16 vCPUs/32GB RAM/512GB Disk.     
+On the provisionned VM, a 500GB disk is present but you need to prepare it.   
 
 ### Prepare VM disk
 
 logon in VM
 
 ```bash
-ssh itzuser@169.44.147.111 -p 2322
+ssh itzuser@<YOUR_VM_IP> -p 2322
 sudo -i
 lsblk
 mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdd
