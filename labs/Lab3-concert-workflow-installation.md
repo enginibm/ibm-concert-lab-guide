@@ -59,10 +59,11 @@ source ~/.bashrc
 
 > Official documentation: [Concert Worflow installation](https://www.ibm.com/docs/en/concert?topic=workflows-installing-concert-vm)
 
-1. Connect to the VM you have created on Techzone in Lab0
+1. Connect to the VM you have created on Techzone in Lab0 and source environment variables
 
 ```bash
 ssh itzuser@<VM ip address> -p 2223
+source $HOME/env.sh
 ```
 
 2. Get concert workflow installation files
