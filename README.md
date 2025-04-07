@@ -1,4 +1,4 @@
-# ibm-concert-lab-guide
+# IBM Concert bootcamp
 
 In this bootcamp, based on a simple python application composed of 2 micro services, you will learn to:
 
