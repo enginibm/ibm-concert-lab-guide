@@ -16,7 +16,7 @@ export EXTNS_DIR="/mnt/concert/workflows/extns"
 export ADDON_NAME="concert_workflows"
 export EXT_URL="https://YOUR_VM_IP"
 
-export CONCERT_TLS_DIR="/home/itzuser/ibm-concert-std/localstorage/volumes/infra/tls"
+export CONCERT_TLS_DIR="/mnt/concert/ibm-concert-std/localstorage/volumes/infra/tls"
 export BACKUP_FILE="${HOME}/concert-tls-backup.tar.gz"
 
 export WATSONX_API_KEY=""
