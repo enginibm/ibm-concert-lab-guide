@@ -158,6 +158,8 @@ cd /mnt/concert/workflows
 --external-url="$EXT_URL"
 ```
 
+**IMPORTANT**: Wait at least 5 minutes
+
 11. Establish authentication credentials and a reusable connection for Concert Workflows
 
 ```bash
