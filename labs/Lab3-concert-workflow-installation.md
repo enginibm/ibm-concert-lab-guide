@@ -117,12 +117,12 @@ source $HOME/env.sh
 vi /mnt/concert/workflows/bin/concert-workflows-values.yaml
 ```
 
-- Replace **VM IP address** with the IP address of the VM for **adress\* and **CONCERT_HUB_URL\*\* keys
+- Replace **VM IP address** with the IP address of the VM for **address** and **CONCERT_HUB_URL** keys
 - Replace **CONCERT_HUB_KEY** with the CONCERT_HUB_KEY value that you have noted (and also set in $HOME/env.sh file)
 - Add a new variable **CONCERT_API_KEY** under **CONCERT_HUB_KEY** and set its value to your WORKFLOW_APIKEY (in $HOME/env.sh file)
 - save your file (:wq)
 
-7. Create the concert workflow namespace in k3s cluster
+1. Create the concert workflow namespace in k3s cluster
 
 ```bash
 kubectl create ns $CW_NAMESPACE
@@ -144,6 +144,8 @@ kubectl create secret docker-registry ibm-entitlement-key \
 cd /mnt/concert/workflows
 ./bin/setup --namespace="${CW_NAMESPACE}"
 ```
+
+**IMPORTANT**: Wait until the end of the installation. Be patient, it can take some times (20 minutes).
 
 10. Register Concert Workflows as an add-on to your Concert instance.
 
