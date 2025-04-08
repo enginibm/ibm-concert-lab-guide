@@ -11,6 +11,20 @@ In this lab, you will use concert workflow to ingest compliance data from a rhel
   
 ## Content
 
+- [Managing Compliance](#managing-compliance)
+  - [Objective](#objective)
+  - [Prerequisite](#prerequisite)
+  - [Content](#content)
+  - [Run compliance workflow](#run-compliance-workflow)
+      - [Create an environment](#create-an-environment)
+    - [Create a compliance catalog and a compliance profile](#create-a-compliance-catalog-and-a-compliance-profile)
+    - [Install the workflow in IBM Concert](#install-the-workflow-in-ibm-concert)
+    - [Create an Authentication to ssh the Concert VM](#create-an-authentication-to-ssh-the-concert-vm)
+    - [Run manually the workflow](#run-manually-the-workflow)
+    - [Run the workflow from an ingestion job](#run-the-workflow-from-an-ingestion-job)
+    - [Scheduling the workflow job](#scheduling-the-workflow-job)
+  - [Compliance Management](#compliance-management)
+
 ## Run compliance workflow
 
 > Offical documentation is [here](https://www.ibm.com/docs/en/concert?topic=cd-using-concert-workflows-generate-import-cis-rhel9-openscap-compliance-scan)
