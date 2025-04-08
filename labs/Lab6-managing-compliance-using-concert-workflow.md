@@ -13,7 +13,7 @@ In this lab, you will use concert workflow to ingest compliance data from a rhel
 
 ## Run compliance workflow
 
-> Offical documentation: https://www.ibm.com/docs/en/concert?topic=cd-using-concert-workflows-generate-import-cis-rhel9-openscap-compliance-scan
+> Offical documentation is [here](https://www.ibm.com/docs/en/concert?topic=cd-using-concert-workflows-generate-import-cis-rhel9-openscap-compliance-scan)
 
 The **CIS RHEL9 OpensSCAP Compliance Scan** workflow  automates the CIS compliance scan for RHEL 9 using OpenSCAP. In order to be able to ingest compliance data in IBM Concert, you must have an environment defined in IBM Concert with the hostname of the machine that will be scanned.
 
@@ -22,16 +22,30 @@ The **CIS RHEL9 OpensSCAP Compliance Scan** workflow  automates the CIS complian
 1. From your VM Rhel 9 reservation page, get the VM hostname.
   <br><img src="../images/tz_vm_hostname.png" alt="drawing" width="600"/>
 
-2. From the arena view on your concert UI, select** Define and upload->Define Environment->From resources**
+2. From the arena view on your concert UI, select **Define and upload->Define Environment->From resources**
   <br><img src="../images/concert_define_environment.png" alt="drawing" width="600"/>
 
 3. In the **Define an environment** screen, enter following informations:
 
-- name: your VM hostname
-- type: other
-- purpose: what you want
+- **name**: your VM hostname
+- **type**: other
+- **purpose**: what you want
 
 Then click **next**, **next** and **Create**
+
+### Create a compliance catalog and a compliance profile
+
+> Official documentation is [here](https://www.ibm.com/docs/en/concert?topic=dimension-overview-assessing-compliance)
+
+1. Navigate to **Dimensions->Compliance**
+2. Select **Catalog** tab and click **Add catalog** button
+3. Select **CIS Controls** entry and click Add
+4. Select **Profile** tab and click **Create profile** button
+5. Enter following values and click **Create** button
+
+- **Name**: cis_profile
+- Select one or more **catalogs**: select **CIS Controls** catalog
+- Select **crontrols**: Click Select all (or choose specific compliance rules)
 
 ### Install the workflow in IBM Concert
 
@@ -48,12 +62,12 @@ Then click **next**, **next** and **Create**
 1. On concert UI, select **Workflows->Authentications** menu 
 2. Click the **Create authentication** button and enter following informations:
 
-- name: concert-vm-ssh
-- service: SSH
-- Host: your VM Ip public address (from your reservation page)
-- Port: 2223
-- Username: itzuser
-- RSA Private Key: the content of your VM pem key (downloaded from your reservation page)
+- **name**: concert-vm-ssh
+- **service**: SSH
+- **Host**: your VM Ip public address (from your reservation page)
+- **Port**: 2223
+- **Username**: itzuser
+- **RSA Private Key**: the content of your VM pem key (downloaded from your reservation page)
 
   <br><img src="../images/cw_compliance_ssh_authentication.png" alt="drawing" width="600"/>
 
@@ -76,14 +90,16 @@ Then click **next**, **next** and **Create**
   <br><img src="../images/cw_run.png" alt="drawing" width="400"/>
   <br><img src="../images/cw_run_inputs.png" alt="drawing" width="400"/>
 
+>
 > Note: You can also run the workflow in debug mode. In this case you must give the authentication values in the workflow Start box
+>
 
 7. Check the ingested data
 
 - When the workflow is finished, navigate to **Administration->Event log** menu and check that the compliance file upload is successfull
   <br><img src="../images/cw_compliance_file_upload.png" alt="drawing" width="600"/>
 
-- Navigate to **Dimensions->Compliance** menu and consult the result of your concert VM imported compliance data
+- Navigate to **Dimensions->Compliance** menu and consult compliance data for your concert VM.
 
 ### Run the workflow from an ingestion job
 
@@ -93,19 +109,20 @@ You can create an ingestion job to run the compliance scan
 2. Click **Create ingestion job** button
 3. Enter following values and click Create
 
-- Name: Concert VM Compliance
-- Connection type: Concert Workflows
-- Connection: CONCERT_WORKFLOWS
-- Workflow reference: /User/CIS_RHEL9_OpenSCAP_Compliance_Scan
-- Concert auth: ibmconcert@0000-0000-0000-0000/ConcertAPIKey
-- Ssh authentication: ibmconcert@0000-0000-0000-0000/concert-vm-ssh
+- **Name**: Concert VM Compliance
+- **Connection type**: Concert Workflows
+- **Connection**: CONCERT_WORKFLOWS
+- **Workflow reference**: /User/CIS_RHEL9_OpenSCAP_Compliance_Scan
+- **Concert auth**: ibmconcert@0000-0000-0000-0000/ConcertAPIKey
+- **Ssh authentication**: ibmconcert@0000-0000-0000-0000/concert-vm-ssh
 
 4. Then you can launch the job
 
   <br><img src="../images/cw_ingestion_job.png" alt="drawing" width="600"/>
 
+>
 > Note: you need to reload the page to see if the job is finished
-
+>
 
 ### Scheduling the workflow job
 
