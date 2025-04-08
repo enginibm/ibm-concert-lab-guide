@@ -37,16 +37,28 @@ It will cover:
 
 ### Provision VM from techzone
 
-Provision your concert VM from this [link](https://techzone.ibm.com/my/reservations/create/67ebfd2549ad003ad4a71a6d).   
+Provision your concert VM from this [link](https://techzone.ibm.com/my/reservations/create/67ebbf075322ab022fecaa12).   
 The minimum requirements to install IBM Concert and Concert workflox are: 16 vCPUs/32GB RAM/512GB Disk.     
-On the provisionned VM, a 500GB disk is present but you need to prepare it.   
+On the provisionned VM, a 500GB disk is present but you need to prepare it.
+
+Once your reservation is provisioned, all the connection information are available from the reservation page:
+
+![Reservation information](../images/vm-reservation-info.png "Reservation information")
+
+From your reservation page, download the ssh key to connect to your VM instance.
+Save it somewhere, you will need to use it to connect to your instance using SSH.
+
+> Note: On Linux/MacOS, you need to modify the SSH Key permission to be able to use it.
+```bash 
+chmod 600 /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+```
 
 ### Prepare VM disk
 
 logon in VM
 
 ```bash
-ssh itzuser@<VMaddress> -p 2322
+ssh itzuser@<VMaddress> -p 2322 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 sudo -i
 lsblk
 mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdd
