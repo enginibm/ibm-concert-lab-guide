@@ -21,4 +21,4 @@ export BACKUP_FILE="${HOME}/concert-tls-backup.tar.gz"
 
 export WATSONX_API_KEY=""
 export WATSONX_API_PROJECT_ID=""
-export WATSONX_API_URL=""
+export WATSONX_API_URL="https://us-south.ml.cloud.ibm.com"

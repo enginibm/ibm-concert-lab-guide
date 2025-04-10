@@ -33,6 +33,7 @@ ssh itzuser@<VM ip address> -p 2223
 loginctl enable-linger itzuser
 cd /mnt/concert
 wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-std.tgz
+wget https://github.com/IBM/Concert/releases/download/v1.0.5.4/ibm-concert-std.tgz
 tar xfz ibm-concert-std.tgz
 ```
 
