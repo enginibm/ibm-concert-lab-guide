@@ -70,7 +70,7 @@ source $HOME/env.sh
 
 ```bash
 cd /mnt/concert
-wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-std-workflows.tgz
+wget https://github.com/IBM/Concert/releases/download/v1.0.5.4/ibm-concert-std-workflows.tgz
 tar xfz ibm-concert-std-workflows.tgz
 ```
 
