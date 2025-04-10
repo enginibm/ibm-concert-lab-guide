@@ -62,7 +62,7 @@ source ~/.bashrc
 1. Connect to the VM you have created on Techzone in Lab0 and source environment variables
 
 ```bash
-ssh itzuser@<VM ip address> -p 2223
+ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 source $HOME/env.sh
 ```
 

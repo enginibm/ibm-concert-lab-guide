@@ -43,7 +43,7 @@ This part is done by the instructor.
 1. Connect on the machine you have provisioned on Techzone in Lab0
 
 ```bash
-ssh itzuser@<VM ip address> -p 2223
+ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 ```
 
 2. Source the file containing you environment variables

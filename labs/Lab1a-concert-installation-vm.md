@@ -29,7 +29,7 @@ You can install concert on a VM or in a kubernetes cluster. In this lab we will 
 1. Connect on the machine you have provisioned on Techzone in Lab0
 
 ```bash
-ssh itzuser@<VM ip address> -p 2223
+ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 loginctl enable-linger itzuser
 cd /mnt/concert
 wget https://github.com/IBM/Concert/releases/download/v1.0.5.4/ibm-concert-std.tgz
