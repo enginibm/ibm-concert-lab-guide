@@ -17,6 +17,7 @@ In this lab, you will use and create a concert workflow to ingest resilience dat
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
   - [Content](#content)
+  - [Activate the Resilience](#activate-the-resilience)
   - [Import Resilience data using a workflow](#import-resilience-data-using-a-workflow)
     - [Import a resilience library](#import-a-resilience-library)
     - [Define resilience profiles](#define-resilience-profiles)
@@ -25,6 +26,23 @@ In this lab, you will use and create a concert workflow to ingest resilience dat
     - [Complete the resilience workflow previously imported](#complete-the-resilience-workflow-previously-imported)
     - [Run the workflow to populate you application resilience posture](#run-the-workflow-to-populate-you-application-resilience-posture)
   - [Resilience Management](#resilience-management)
+
+## Activate the Resilience
+
+1. From Concert UI, navigate to **Administration->Settings**
+2. Select ***Miscellaneous** tab
+3. Enable resilience and resilience custom library
+
+  <br><img src="../images/enable_resilience.png" alt="drawing" width="600"/>
+
+You must also enable resilience for your application:
+
+1. From Concert UI, navigate to **Inventory->Applications**
+2. Select your **hr-application**
+3. Select **Settings** tab
+4. In Resilience menu, enable resilience
+
+  <br><img src="../images/enable_resilience_app.png" alt="drawing" width="600"/>
 
 ## Import Resilience data using a workflow
 
@@ -161,4 +179,10 @@ TODO ... ADD THE UPLOAD CONCERT SUBFLOW
 
 ## Resilience Management
 
-Walkthrough the uploaded data
+Walkthrough the uploaded certificates:
+
+- Home page - Resilience Lens
+- Resilience Dimension
+  - Select one entry
+    - Open a change request
+    - Select an assessment

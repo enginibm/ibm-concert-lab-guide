@@ -151,4 +151,11 @@ Alternatively, you can also schedule a workflow job for ingestion of compliance 
 
 ## Compliance Management
 
-Walkthrough the uploaded data
+Walkthrough the uploaded certificates:
+
+- Home page - Compliance Lens
+- Compliance Dimension
+- Select an entry
+  - Sort by results
+  - Expand one
+  - Open ticket
