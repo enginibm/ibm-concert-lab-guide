@@ -7,7 +7,7 @@ In this lab, you will learn how to ingest application data from micro-services d
 ## Prerequisite
 
 You must have installed IBM Concert and integrate IBM Concert with watsonx.ai (Lab0 and Lab1)
-
+∏
 ## Content
 
 - [Managing Software Composition and CVEs](#managing-software-composition-and-cves)
@@ -58,7 +58,7 @@ You will start to clone the 2 micro-services composing the application.
 1. Connect on the machine you have provisioned on Techzone in Lab0
 
 ```bash
-ssh itzuser@<VM ip address> -p 2223
+ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 ```
 
 2. Create a folder named **concert-bootcamp**
@@ -72,7 +72,7 @@ mkdir -p $HOME/concert-bootcamp/Applications
 
 ```bash
 cd $HOME/concert-bootcamp/Applications
-git clone https://github.ibm.com/HCS-Concert-Projects/hr-app.git
+git clone https://github.ibm.com/concert-bootcamp/hr-app.git
 cd hr-app
 ./buildImage.sh
 ```
@@ -81,7 +81,7 @@ cd hr-app
 
 ```bash
 cd $HOME/concert-bootcamp/Applications
-git clone https://github.ibm.com/HCS-Concert-Projects/summarization-svc.git
+git clone https://github.ibm.com/concert-bootcamp/summarization-svc.git
 cd summarization-svc
 ./buildImage.sh
 ```
@@ -92,7 +92,7 @@ Then you will clone a project containing a directory structure and a script to g
 
 ```bash
 cd $HOME/concert-bootcamp
-git clone https://github.ibm.com/HCS-Concert-Projects/SBOMs-ingestion.git
+git clone https://github.ibm.com/concert-bootcamp/SBOMs-ingestion.git
 ```
 
 Create an output directory for the generated SBOMs
@@ -123,7 +123,7 @@ vi app-common-variables.variables
 
 Put your concert values for:
 
-- CONCERT_HOST
+- CONCERT_HOST (just the server IP address, in the form aaa.bbb.ccc.ddd)
 - CONCERT_PORT
 - CONCERT_APIKEY
   

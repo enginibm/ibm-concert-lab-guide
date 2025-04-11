@@ -40,7 +40,7 @@ umask 022
 
 ```bash
 cd $HOME/concert-bootcamp/SBOMs-ingestion/templates
-vi cert-config-values.yaml.template
+vi cert-sbom-config-values.yaml.template
 ```
 
 In this file you can see that it is possible to generate certificate SBOMs using 3 ways:
@@ -89,7 +89,7 @@ vi $HOME/concert-bootcamp/SBOMs-ingestion/concert_data/${COMPONENT_NAME}/certifi
 - Modify the **validity_start_date** and **validity_end_date** format by adding **+0000 GMT** at the end
 <br><img src="../images/certificate_modif2.png" alt="drawing" width="400"/>
 
-- Reduce the number of **dns_names** values
+- Reduce the number of **dns_names** entries
 <br><img src="../images/certificate_modif3.png" alt="drawing" width="400"/>
 
 - Save the file (:wq)
