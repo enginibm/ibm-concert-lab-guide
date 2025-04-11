@@ -11,10 +11,10 @@ In this lab, you will use concert workflow to ingest an openshift resilience dat
   
 ## Content
 
-## Run resilience workflow
+## Build your own resilience workflow
 
-[Concert workflowlibrary](https://automation-library.ibm.com/workflows)
-TO TEST
+Upload our workflow and add a branch
+
 
 ## Resilience Management
 
