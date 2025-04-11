@@ -6,7 +6,7 @@ In this lab, you will install IBM Concert on a standalone server.
 
 ## Prerequisite
 
-- An virtual machine must have been provisionned on Techzone 
+- An virtual machine must have been provisionned on Techzone and configured as explained in [Lab0](./Lab0-setup.md)
 
 ## Content
 
@@ -20,9 +20,6 @@ In this lab, you will install IBM Concert on a standalone server.
     - [Configure watsonx.ai in IBM Concert](#configure-watsonxai-in-ibm-concert)
   
 ## I - Installing IBM Concert on a VM
-> Add part about adding the disk
-
-You can install concert on a VM or in a kubernetes cluster. In this lab we will do a VM installation.
 
 > Official documentation [VM installation](https://www.ibm.com/docs/en/concert?topic=concert-deploying-virtual-machine-vm)
 

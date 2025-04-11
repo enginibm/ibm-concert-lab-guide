@@ -151,4 +151,4 @@ Alternatively, you can also schedule a workflow job for ingestion of compliance 
 
 ## Compliance Management
 
-TO DO
+Walkthrough the uploaded data

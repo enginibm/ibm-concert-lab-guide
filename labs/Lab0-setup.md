@@ -5,7 +5,7 @@
 This lab covers the prerequisite to the IBM Concert bootcamp.
 
 It will cover:
--  booking a VM or an Openshift cluster on Techzone, where IBM Concert will be deployed
+-  booking a VM on Techzone, where IBM Concert will be deployed
 -  booking a watsonx.ai instance on Techzone
 -  creating a github token to clone the required files
 
@@ -19,13 +19,9 @@ It will cover:
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
   - [Content](#content)
-  - [Option A - Provision a vm on techzone](#option-a---provision-a-vm-on-techzone)
-    - [Provision VM from techzone](#provision-vm-from-techzone)
+  - [Provision a vm on techzone](#provision-a-vm-on-techzone)
+    - [Provision the VM](#provision-the-vm)
     - [Prepare VM disk](#prepare-vm-disk)
-  - [Option B - Provision an openshift cluster on techzone](#option-b---provision-an-openshift-cluster-on-techzone)
-    - [Creating a reservation](#creating-a-reservation)
-    - [Connecting to the Openshift Cluster](#connecting-to-the-openshift-cluster)
-    - [Connecting to bastion](#connecting-to-bastion)
   - [Provision a watsonx.ai on techzone](#provision-a-watsonxai-on-techzone)
     - [Watsonx.ai Provisioning](#watsonxai-provisioning)
     - [Create a watsonx project and get project ID](#create-a-watsonx-project-and-get-project-id)
@@ -33,9 +29,9 @@ It will cover:
     - [API key - import the Service ID as part of the project](#api-key---import-the-service-id-as-part-of-the-project)
   - [Create an IBM Github token to clone the github repo](#create-an-ibm-github-token-to-clone-the-github-repo)
 
-## Option A - Provision a vm on techzone
+## Provision a vm on techzone
 
-### Provision VM from techzone
+### Provision the VM
 
 Provision your concert VM from this [link](https://techzone.ibm.com/my/reservations/create/67ebbf075322ab022fecaa12).   
 The minimum requirements to install IBM Concert and Concert workflox are: 16 vCPUs/32GB RAM/512GB Disk.     
@@ -81,72 +77,6 @@ lsblk
 chmod 777 /mnt/concert
 
 ```
-
-## Option B - Provision an openshift cluster on techzone
-
-### Creating a reservation
-
-- Use this [link](https://techzone.ibm.com/my/reservations/create/63a3a25a3a4689001740dbb3) to reserve your cluster
-  <br><img src="../images/tz_request_cluster_1.png" alt="drawing" width="600"/>
-
-- Specify that you want to **Reserver now**.
-- On the next page, you have to specify the purpose. Select **Education**.  
-  Provide a **Purpose description**.  
-  Select a **Preferred Geography**: it is the datacenter where your virtual machine will be provisioned. Choose a datacenter as near from you as possible.
-- Scroll down the page and specify the cluster specifications:
-
-- Openshift version: 4.16
-- Worker node count: 5
-- Worker node flavor: 32 vCPU x 128GB - 300 GB ephemeral storage
-- Storage: Managed NFS - 2TB
-
-<br><img src="../images/tz_request_cluster_2.png" alt="drawing" width="600"/>
-<br><img src="../images/tz_request_cluster_3.png" alt="drawing" width="600"/>
-
-- Click **Submit**.
-
-- You will receive a **confirmation mail** with the status **provisioning**.
-  <br><img src="../images/tz_request_cluster_4.png" alt="drawing" width="600"/>
-
-- You can also see the reservation status from your account, in **My Reservations**.
-  <br><img src="../images/tz_request_cluster_5.png" alt="drawing" width="600"/>
-
-### Connecting to the Openshift Cluster
-
-- Once the virtual machine is provisioned, you will receive a mail will the **Ready** status.
-- By clicking the link **View my reervations** in the mail or from your account , in **My Reservations**, you can see your reservation with the **Ready** status.
-- By clicking the **Open this environment** button, you will access all the information required to connect to the cluster
-- Scroll down to the end of your page, in the **Reservation Details** section, you have (circled in orange in below screen capture)
-
-  - OCP Console URL
-  - Cluster Admin Username
-  - Cluster Admin Password
-
-<br><img src="../images/tz_request_cluster_6.png" alt="drawing" width="600"/>
-<br><img src="../images/tz_request_cluster_7.png" alt="drawing" width="600"/>
-
-- You can then connect and authenticate to the cluster by clicking the OCP Console URL
-- On the ocp console login page, select kube:admin
-  <br><img src="../images/ocp_login_1.png" alt="drawing" width="400"/>
-- Enter **Cluster Admin Username** and **Cluster Admin Password**
-  <br><img src="../images/ocp_login_2.png" alt="drawing" width="400"/>
-
-### Connecting to bastion
-
-In order to connect to the bastion, you must use the informations circled in green in previous screen capture)
-
-```bash
-ssh itzuser@<cluster API address> -p 40222
-```
-
-Install HELM
-
-```bash
-wget https://developers.redhat.com/content-gateway/file/pub/openshift-v4/clients/helm/3.15.4/helm-linux-amd64
-chmod 755 helm-linux-amd64
-sudo mv helm-linux-amd64 /usr/local/bin/helm
-```
-
 
 ## Provision a watsonx.ai on techzone
 

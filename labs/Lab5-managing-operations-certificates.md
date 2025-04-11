@@ -113,4 +113,4 @@ After logging in your IBM Concert UI, you can see your ingested certificate from
 
 ## Certificates management
 
-Show result of data ingestion on Concert - walthrough
+Walkthrough the uploaded data
