@@ -5,7 +5,8 @@
 Concert workflow is an embedded version of Rapid Infrastructure Automation in IBM Concert and is available as an add-on workflow automation service for on-premises deployments of Concert. 
 The add-on embeds workflow definition and automation capabilities so you can define, manage, and automate workflows within the Concert UI.
 The objective is to get data from an organisation environments and applications using flows.  
-A notion of remote worker exist in concert workflow to enable the ingestion of data in IBM Concert from environments that cannot be reached directly by IBM Concert VM. 
+
+By default a flow is executed in a worker located on IBM Concert host. A notion of remote worker exist in Concert Workflow to enable the ingestion of data in IBM Concert from environments that cannot be reached directly by IBM Concert host. The remote worker is located near from the environment, collect required data and ingest them to IBM Concert using Concert APIs.
 
 In this lab, you will install IBM Concert workflowon your concert VM.
 
