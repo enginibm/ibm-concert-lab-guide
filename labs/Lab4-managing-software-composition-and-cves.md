@@ -153,8 +153,6 @@ cd $HOME/concert-bootcamp/SBOMs-ingestion/scripts
 ```
 
 #### Upload SBOMs on IBM concert
-
-TODO Explain upload.sh
   
 1. Update **app-common-variables.variables** file to specify Concert variables:
 
