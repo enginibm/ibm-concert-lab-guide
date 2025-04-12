@@ -170,7 +170,7 @@ Alternatively, you can also schedule a workflow job for ingestion of compliance 
 
 Walkthrough the uploaded certificates:
 
-- Home page - Compliance Lens
+- Home page - Compliance dimension
 - Compliance Dimension
 - Select an entry
   - Sort by results

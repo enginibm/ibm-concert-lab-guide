@@ -181,7 +181,7 @@ TODO ... ADD THE UPLOAD CONCERT SUBFLOW
 
 Walkthrough the uploaded certificates:
 
-- Home page - Resilience Lens
+- Home page - Resilience dimension
 - Resilience Dimension
   - Select one entry
     - Open a change request

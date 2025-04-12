@@ -117,7 +117,7 @@ After logging in your IBM Concert UI, you can see your ingested certificate from
 
 Walkthrough the uploaded certificates:
 
-- Home page - Operations Lens
+- Home page - Operations dimension
 - Operation Dimension
 - Select a certificate
 - Renewal if expired
