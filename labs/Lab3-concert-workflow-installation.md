@@ -2,7 +2,11 @@
 
 ## Objective
 
-In this lab, you will install IBM Concert workflow.
+Concert workflow is an embedded version of Rapid Infrastructure Automation in IBM Concert.  
+Concert Workflows is available as an add-on workflow automation service for on-premises deployments of Concert. 
+The add-on embeds workflow definition and automation capabilities so you can define, manage, and automate workflows within the Concert UI.
+
+In this lab, you will install IBM Concert workflowon your concert VM.
 
 ## Prerequisite
 
