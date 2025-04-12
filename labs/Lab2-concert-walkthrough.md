@@ -34,20 +34,8 @@ This part is done by the instructor.
 
 ## III - Reset concert data
 
-1. Connect on the machine you have provisioned on Techzone in Lab0
-
-```bash
-ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
-```
-
-2. Source the file containing you environment variables
-
-```bash
-source $HOME/env.sh
-```
-
-3. Reset Concert data
-
 - Navigate in **Administration->Settings**
 - Select the **Miscellaneous tab**
 - Click the **Delete Sample data** button
+
+<br><img src="../images/concert_delete_sample_data.png" alt="drawing" width="400"/>
