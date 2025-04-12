@@ -2,7 +2,7 @@
 
 ## Objective
 
-In order to use resilience Lens, the client need to determine the non-functional requirements (NFRs) that apply to its applications, as well as the target values that must be achieved to meet contractual obligations or otherwise be considered resilient. Also, relevant data must be collected from the applications and their environment components in order to import them to Concert on a regular basis.
+In order to use Resilience dimension, an organisation need to determine the non-functional requirements (NFRs) that apply to its applications, as well as the target values that must be achieved to meet contractual obligations or otherwise be considered resilient. Also, relevant data must be collected from the applications and their environment components in order to import them to Concert on a regular basis.
 
 In this lab, you will use and create a concert workflow to ingest resilience data concerning the quality of docker images in IBM Concert. We will use the 2 images that you have build in lab4.
 

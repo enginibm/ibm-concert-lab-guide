@@ -2,6 +2,8 @@
 
 ## Objective
 
+In order to use Operation dimension, an organisation need to ingest its application certificates or environment certificates in IBM Concert using either Concert toolkit or workflows. Then in Concert we can view the list of certificates and their validity status. Then we can create tickets in third-party ticketing system to renew or replace expiring certificates.
+
 In this lab, you will manually use the concert toolkit to upload our micro-services certificates in IBM Concert.
 
 ## Prerequisite
@@ -24,9 +26,9 @@ Certificates can be ingested in Concert following several way:
 
 - using built-in concert workflow certificate ingestion from a kubeadm (in Administration->Integration->Create Ingestion job)
 <br><img src="../images/certificate_builtin_ingestion_jobs.png" alt="drawing" width="400"/>
+- using concert-toolkit for applications certificates during the CI/CD process
 
-- using concert-toolkit for applications certificates during the CI/CD process (it is what you are going to do)
-  
+We will use Concert toolkit to ingest a sample certificate in Concert.  
 Here are the manual steps to follow:
 
 1. Connect on the machine you have provisioned on Techzone in Lab0

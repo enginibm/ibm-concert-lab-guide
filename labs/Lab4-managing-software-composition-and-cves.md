@@ -2,6 +2,10 @@
 
 ## Objective
 
+In order to use Software composition dimension, an organisation need to ingest its application description in Concert using Software Bill of Materials (SBOMs). Then the Software composition dimension helps to identify and mitigate risks associated with packages and components based on several key indicators of reliability, maintainability, and security.  
+
+IBM® Concert fetches a set of reliability checks and generates an aggregate score measuring the reliability of each package. Based on its assessment, Concert recommends specific actions to address risks, such as those related to outdated or unsupported packages, licenses compliance issues, and exploitable vulnerabilities.
+
 In this lab, you will learn how to ingest application data from micro-services development in IBM Concert. Then you will see the result and the related functionnalities of IBM Concert concerning these data.
 
 ## Prerequisite
@@ -28,7 +32,7 @@ You must have installed IBM Concert and integrate IBM Concert with watsonx.ai (L
 ## I - Data ingestion
 
 Data ingestion in IBM Concert is done using SBOM (Software Bill of Materials).  
-IBM Concert provides a Concert Toolkit images to help in the SBOMs generation based on configuration yaml files and scanning products (for ex. Syft, CycloneDX, trivy, etc ....).
+IBM Concert provides a Concert Toolkit docker image to help in the SBOMs generation based on configuration yaml files and scanning products (for ex. Syft, CycloneDX, trivy, etc ....).
 For more information, the documentation is [here](https://www.ibm.com/docs/en/concert?topic=using-concert-toolkit)
 
 We will use this toolkit to generate the SBOMs of a very simple provided python application.

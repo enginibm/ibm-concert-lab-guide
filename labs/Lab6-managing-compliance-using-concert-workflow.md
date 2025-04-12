@@ -2,7 +2,10 @@
 
 ## Objective
 
-In this lab, you will use concert workflow to ingest compliance data from a rhel vm in IBM Concert. We will use your VM concert as the target of the compliance job.
+In order to use Compliance dimension, an organisation need to ingests compliance assessment data using Concert workflow. This will deliver a holistic view of the compliance posture of its application environments.
+
+In this lab, you will use concert workflow to ingest compliance data from a rhel vm in IBM Concert.   
+We will use your VM concert as the target of the compliance job.
 
 ## Prerequisite
 
@@ -27,11 +30,16 @@ In this lab, you will use concert workflow to ingest compliance data from a rhel
 
 ## Run compliance workflow
 
-> Offical documentation is [here](https://www.ibm.com/docs/en/concert?topic=cd-using-concert-workflows-generate-import-cis-rhel9-openscap-compliance-scan)
+You are going to use a workflow called **CIS RHEL9 OpensSCAP Compliance Scan** provided by IBM Concert to ingest compliance data in Concert.
+This workflow automates the CIS compliance scan for RHEL 9 using OpenSCAP. 
 
-The **CIS RHEL9 OpensSCAP Compliance Scan** workflow  automates the CIS compliance scan for RHEL 9 using OpenSCAP. In order to be able to ingest compliance data in IBM Concert, you must have an environment defined in IBM Concert with the hostname of the machine that will be scanned.
+> Official documentation is [here](https://www.ibm.com/docs/en/concert?topic=cd-using-concert-workflows-generate-import-cis-rhel9-openscap-compliance-scan)
 
 #### Create an environment 
+
+In order to be able to ingest compliance data in IBM Concert, you must have an environment defined in IBM Concert with the hostname of the machine that will be scanned.
+
+To create this environment, follow these steps:
 
 1. From your VM Rhel 9 reservation page, get the VM hostname.
   <br><img src="../images/tz_vm_hostname.png" alt="drawing" width="600"/>
@@ -51,11 +59,20 @@ Then click **next**, **next** and **Create**
 
 > Official documentation is [here](https://www.ibm.com/docs/en/concert?topic=dimension-overview-assessing-compliance)
 
+- A compliance catalog serves as the single source of truth for an client organization's compliance-related policies, procedures, and standards. Concert supports compliance catalogs based on the NIST 800-53 (Rev4 for OCP and Rev5), PCI, or a custom standard.
+
+To create a catalog for our  **CIS RHEL9 OpensSCAP Compliance Scan** workflow, follow these steps:
+
 1. Navigate to **Dimensions->Compliance**
 2. Select **Catalog** tab and click **Add catalog** button
 3. Select **CIS Controls** entry and click Add
-4. Select **Profile** tab and click **Create profile** button
-5. Enter following values and click **Create** button
+
+- A compliance profile represents a subset of controls from a compliance catalog. Each profile specifies a set of rules the scan results will use to assess the overall compliance of the application environments.
+
+To create a profile for our **CIS RHEL9 OpensSCAP Compliance Scan** workflow, follow these steps:
+
+1. Select **Profile** tab and click **Create profile** button
+2. Enter following values and click **Create** button
 
 - **Name**: cis_profile
 - Select one or more **catalogs**: select **CIS Controls** catalog
