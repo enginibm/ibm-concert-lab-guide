@@ -181,3 +181,28 @@ cd /mnt/concert/workflows
 chmod +x bin/tethering/enable_concert_workflows.sh
 ./bin/tethering/enable_concert_workflows.sh --concert-url="$CONCERT_HUB_URL" --c-api-key="$CONCERT_APIKEY" --c-user="$CONCERT_USER" --workflow-apikey="$WORKFLOW_APIKEY"
 ```
+
+The result of the command should be similar to that
+
+```txt
+Parsing option: '--concert-url', value: 'https://149.81.7.218:12443'
+Parsing option: '--c-api-key', value: 'aWJtY29uY2VydDpkNmJiMWZhYS1lMWNjLTQ1ODEtYmVkOS04N2RmYTU0OGY0Zjg='
+Parsing option: '--c-user', value: 'ibmconcert'
+Parsing option: '--workflow-apikey', value: '8cce88ca-4aa9-438d-9ad6-3b51a06918a1'
+----------
+PARAMETERS
+CONCERT_URL: (https://149.81.7.218:12443)
+C_API_KEY: (aWJtY29uY2VydDpkNmJiMWZhYS1lMWNjLTQ1ODEtYmVkOS04N2RmYTU0OGY0Zjg=)
+C_USER: (ibmconcert)
+WORKFLOW_APIKEY: (8cce88ca-4aa9-438d-9ad6-3b51a06918a1)
+Concert workflows authentication created
+CONNECTION Created :<{"id":"423935a8-b8ba-41f9-8308-7f8732500e2a","name":"CONCERT_WORKFLOWS","type":"","credentials":null,"expiry":0}>
+```
+
+12. Check Concert Workflow installation
+  
+- From a browser, enter the URL of your concert instance (https://YOUR_VM_IP:12443) and log with your concert username and password.
+- You should have now a **Worflows** menu
+- Navigate to **Workflows->Manage** and check that a page is displayed successfully
+- Navigate to **Administration->Integrations** and then in **Connections** tab
+- Check that you have a connection named **CONCERT_WORKFLOWS**
