@@ -29,7 +29,7 @@ In this lab, you will install IBM Concert on a standalone server.
 ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 loginctl enable-linger itzuser
 cd /mnt/concert
-wget https://github.com/IBM/Concert/releases/download/v1.0.5.4/ibm-concert-std.tgz
+wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-std.tgz
 tar xfz ibm-concert-std.tgz
 ```
 
