@@ -42,7 +42,7 @@ umask 022
 
 ```bash
 cd $HOME/concert-bootcamp/SBOMs-ingestion/templates
-vi cert-sbom-config-values.yaml.template
+vi cert-sbom-values.yaml.template
 ```
 
 In this file you can see that it is possible to generate certificate SBOMs using 3 ways:
