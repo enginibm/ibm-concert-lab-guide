@@ -112,7 +112,7 @@ mkdir -p $HOME/concert-bootcamp/Applications
 
 3. Clone and build the hr-app component
 
-> NOTE: `git clone` command will ask you a for username and password. Enter here your github.ibm email and the token you create in [lab0](https://github.ibm.com/concert-bootcamp/ibm-concert-lab-guide/blob/main/labs/Lab0-setup.md#iii---create-an-ibm-github-token-to-clone-the-github-repo)
+> NOTE: `git clone` command will ask you a for username and password. Enter here your github.ibm email and the token you create in Part III of [lab0](https://github.ibm.com/concert-bootcamp/ibm-concert-lab-guide/blob/main/labs/Lab0-setup.md)
 
 
 ```bash
@@ -122,7 +122,7 @@ cd hr-app
 ./buildImage.sh
 ```
 
-4. Clone and build summarization-svc component
+1. Clone and build summarization-svc component
 
 ```bash
 cd $HOME/concert-bootcamp/Applications
