@@ -41,7 +41,7 @@ In order to be able to ingest compliance data in IBM Concert, you must have an e
 
 To create this environment, follow these steps:
 
-1. From your VM Rhel 9 reservation page, get the VM hostname.
+1. From your VM Rhel 9 reservation page, get the VM hostname (If you are connected in ssh on your vm, you can also get your hostname with the `hostname`command)
   <br><img src="../images/tz_vm_hostname.png" alt="drawing" width="600"/>
 
 2. From the arena view on your concert UI, select **Define and upload->Define Environment->From resources**
@@ -90,6 +90,9 @@ To create a profile for our **CIS RHEL9 OpensSCAP Compliance Scan** workflow, fo
    
 ### Create an Authentication to ssh the Concert VM
 
+CIS_RHEL9_OpenSCAP_Compliance_Scan workflow will do an ssh connection to the target machine to run an OpenSCAP compliance scan. In our case, the target machine is our Concert VM.   
+Follow these step to create an SSH Authentication:
+
 1. On concert UI, select **Workflows->Authentications** menu 
 2. Click the **Create authentication** button and enter following informations:
 
@@ -124,6 +127,8 @@ To create a profile for our **CIS RHEL9 OpensSCAP Compliance Scan** workflow, fo
 >
 > Note: You can also run the workflow in debug mode. In this case you must give the authentication values in the workflow Start box
 >
+
+The execution of the flow take at least 5 minutes, be patient.
 
 7. Check the ingested data
 

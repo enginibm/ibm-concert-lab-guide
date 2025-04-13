@@ -1,4 +1,4 @@
-# Managing Compliance
+# Managing Resilience
 
 ## Objective
 
@@ -13,7 +13,7 @@ In this lab, you will use and create a concert workflow to ingest resilience dat
   
 ## Content
 
-- [Managing Compliance](#managing-compliance)
+- [Managing Resilience](#managing-resilience)
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
   - [Content](#content)
