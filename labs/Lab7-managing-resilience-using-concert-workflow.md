@@ -66,7 +66,7 @@ You will start to import a pre-defined workflow available [here](../files/workfl
 5. Click the **Import** button (top right of the window) and select the **docker_images_metrics.zip** workflow from your laptop
 
 
-This workflow get the hr-application images you have build in Lab4 from your concert VM. Then, for each images it will do a 'podman inspect' and calculate 2 metrics: the average number of layers per images and the percentage of images with a 'latest' tag.   
+This workflow get from your concert VM, the hr-application images you have build in Lab4 . Then, for each images it will do a `podman inspect` command and calculate 2 metrics: the average number of layers per images and the percentage of images with a 'latest' tag.   
 
 To be able to ssh you concert VM, you need to define an SSH Authentication:
 
@@ -85,13 +85,13 @@ To be able to ssh you concert VM, you need to define an SSH Authentication:
 
 ### Build your own workflow
 
-You will now create a workflow that will be used as a sub-worflow of **docker_images_metrics** worflow in order to define a new metric: the percentage of big image.
-The aim of this workflow is to extract the image size from a json object that have the format of the result of the 'podman inspect' command
+You will now create a workflow that will be used as a sub-worflow of **docker_images_metrics** worflow in order to define a new metric: the percentage of big images.
+The aim of this workflow is to extract the image size from a json object that have the format of the result of the `podman inspect` command
 
 1. From Concert UI, navigate to **Workflows->Manage**
 2. Navigate in **Shared->Everyone->Resilience** folder
 3. Click the button **Create workflow** (top right of the window)
-4. Call it **docker_images_size**
+4. Call it **docker_images_size** and click **Create** button
 5. Define your variables:
 
 | Name          |    Type       | Default Value  |Selected box    |
@@ -116,7 +116,7 @@ Then you are going to use a "jq" node in order to extract the size from the **js
     <br><img src="../images/resilience_cw_oneof3.png" alt="drawing" width="400"/>
    
 6. Enter value: $json_inspect
-7. For the Filter variable put the value: ".[].Size"
+7. For the Filter variable put the value: ".[].Size" (don't forget the quotes)
     <br><img src="../images/resilience_cw_jq_end.png" alt="drawing" width="400"/>
 
 You just need now to assign the result of the jq node in the **image_size** output variable of your flow
@@ -149,7 +149,7 @@ You are going to add a branch in the main workflow in order to add the percentag
 
     <br><img src="../images/resilience_cw_add_branch.png" alt="drawing" width="400"/>
 
-5. From the palette that is at the left pane of your window, navigate in **Common->Shared->Everyone->Resilience**
+5. From the palette that is at the left pane of your window, navigate in **Shared->Everyone->Resilience**
 6. Drag and drop the **docker_image_size** node in your new branch
 7. Name the node **get_image_size_flow**
 8. From the **Object Editor** that is in the right pane of your window, enter following values:
@@ -158,9 +158,9 @@ You are going to add a branch in the main workflow in order to add the percentag
   
 8. Then complete your branch as shown in following image
 
-    <br><img src="../images/resilience_cw_branch.png" alt="drawing" width="600"/>
-
 > TIPS: most common nodes can also be added by clicking the + that are in the flow where you want to add your node. 
+
+    <br><img src="../images/resilience_cw_branch.png" alt="drawing" width="600"/>
 
 You can test your workflow by selecting the Run button. Note that you can also run your workflow in debug if needed and put breakpoint on selected nodes.
 
