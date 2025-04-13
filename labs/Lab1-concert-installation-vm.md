@@ -94,7 +94,7 @@ source $HOME/env.sh
 
 ## II - Watsonx.ai integration
 
-> !!!! Concert require model ibm/granite-3-2-8b-instruct on x.ai !!!!
+> Note: Concert require model ibm/granite-3-2-8b-instruct on watsonx.ai, so watsonx.ai must be provision in US
 
 ### Techzone reservation
 

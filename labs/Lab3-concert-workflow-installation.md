@@ -8,7 +8,7 @@ The objective is to get data from an organisation environments and applications 
 
 By default a flow is executed in a worker located on IBM Concert host. A notion of remote worker exist in Concert Workflow to enable the ingestion of data in IBM Concert from environments that cannot be reached directly by IBM Concert host. The remote worker is located near from the environment, collect required data and ingest them to IBM Concert using Concert APIs.
 
-In this lab, you will install IBM Concert workflowon your concert VM.
+In this lab, you will install IBM Concert workflow as an add-on of your concert installation.
 
 ## Prerequisite
 
@@ -41,11 +41,21 @@ ssh itzuser@<VM ip address> -p 2223
 > Offical documentation [k3s installation](https://www.ibm.com/docs/en/rapid-infra-auto/1.1.x?topic=planning-software-requirements#software_requirements__k3s__title__1)
 
 ```bash
+cd $HOME
 curl -sfL https://get.k3s.io | sudo INSTALL_K3S_VERSION=v1.29.2+k3s1 sh -s - --write-kubeconfig-mode 644 --disable traefik
 ```
 
 3. Install Helm
 
+- Add /usr/local/bin in your path
+
+```bash
+echo "export PATH=$PATH:/usr/local/bin" >> ~/.bashrc
+source ~/.bashrc
+```
+
+- Download and install helm
+  
 ```bash
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
@@ -53,7 +63,7 @@ chmod 700 get_helm.sh
 sudo chmod 777 /usr/local/bin/helm
 ```
 
-4. Specify Kubernetes configuration file
+1. Specify Kubernetes configuration file
 
 ```bash
 echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> ~/.bashrc
@@ -68,14 +78,14 @@ source ~/.bashrc
 
 ```bash
 ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
-source $HOME/env.sh
 ```
 
 2. Get concert workflow installation files
 
 ```bash
+source $HOME/env.sh
 cd /mnt/concert
-wget https://github.com/IBM/Concert/releases/download/v1.0.5.4/ibm-concert-std-workflows.tgz
+wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-std-workflows.tgz
 tar xfz ibm-concert-std-workflows.tgz
 ```
 
@@ -97,9 +107,9 @@ cd /mnt/concert/workflows
 --c-api-key=$CONCERT_APIKEY
 ```
 
-Copy the 3 last lines returned somewhere
+Copy the 3 last lines returned somewhere, we will need the value of **CONCERT_HUB_KEY** and **WORKFLOW_APIKEY** later.
 
-5. Update environment variables
+1. Update environment variables
 
 ```bash
 vi $HOME/env.sh
@@ -122,9 +132,9 @@ source $HOME/env.sh
 vi /mnt/concert/workflows/bin/concert-workflows-values.yaml
 ```
 
-- Replace **VM IP address** with the IP address of the VM for **address** and **CONCERT_HUB_URL** keys
+- for **address** and **CONCERT_HUB_URL** keys, replace **VM IP address** with the IP address of the VM 
 - Replace **CONCERT_HUB_KEY** with the CONCERT_HUB_KEY value that you have noted (and also set in $HOME/env.sh file)
-- Add a new variable **CONCERT_API_KEY** under **CONCERT_HUB_KEY** and set its value to your WORKFLOW_APIKEY (in $HOME/env.sh file)
+- Add a new variable **CONCERT_API_KEY** under **CONCERT_HUB_KEY** and set its value to the WORKFLOW_APIKEY value that you have noted (and also set in $HOME/env.sh file)
 - save your file (:wq)
 
 1. Create the concert workflow namespace in k3s cluster
@@ -150,7 +160,7 @@ cd /mnt/concert/workflows
 ./bin/setup --namespace="${CW_NAMESPACE}"
 ```
 
-**IMPORTANT**: Wait until the end of the installation. Be patient, it can take some times (20 minutes).
+**IMPORTANT**: Wait until the end of the installation. Be patient, it can take up to 20 minutes.
 
 10. Register Concert Workflows as an add-on to your Concert instance.
 
