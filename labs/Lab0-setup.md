@@ -51,7 +51,7 @@ chmod 600 /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 
 ### Prepare VM disk
 
-logon in VM
+To prepare the 500Gb disk, execute the following commands:
 
 ```bash
 ssh itzuser@<VMaddress> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
@@ -59,23 +59,26 @@ sudo -i
 lsblk
 mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdd
 blkid | grep /dev/vdd
+```
 
+Copy the UUID value somewhere
+
+```bash
 mkdir -p /mnt/concert
 
 cp /etc/fstab /etc/fstab.orig
 vi /etc/fstab
-
 ```
 
-in line: UUID=YOUR_UUID /mnt/concert ext4 discard,defaults,nofail 0 0  
-replace YOUR_UUID by the one listed by the **blkid | grep /dev/vdd** command
+Insert this line at the end of the file: UUID=YOUR_UUID /mnt/concert ext4 discard,defaults,nofail 0 0     
+Replace YOUR_UUID by the one listed by the **blkid | grep /dev/vdd** command
+Save the file and continue with following commands:
 
 ```bash
 mount -a
 systemctl daemon-reload
 lsblk
 chmod 777 /mnt/concert
-
 ```
 
 ## Provision a watsonx.ai on techzone
