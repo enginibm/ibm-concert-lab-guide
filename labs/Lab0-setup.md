@@ -19,17 +19,17 @@ It will cover:
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
   - [Content](#content)
-  - [Provision a vm on techzone](#provision-a-vm-on-techzone)
+  - [I - Provision a vm on techzone](#i---provision-a-vm-on-techzone)
     - [Provision the VM](#provision-the-vm)
     - [Prepare VM disk](#prepare-vm-disk)
-  - [Provision a watsonx.ai on techzone](#provision-a-watsonxai-on-techzone)
+  - [II - Provision a watsonx.ai on techzone](#ii---provision-a-watsonxai-on-techzone)
     - [Watsonx.ai Provisioning](#watsonxai-provisioning)
     - [Create a watsonx project and get project ID](#create-a-watsonx-project-and-get-project-id)
     - [Get API Key and service ID information](#get-api-key-and-service-id-information)
     - [API key - import the Service ID as part of the project](#api-key---import-the-service-id-as-part-of-the-project)
-  - [Create an IBM Github token to clone the github repo](#create-an-ibm-github-token-to-clone-the-github-repo)
+  - [III - Create an IBM Github token to clone the github repo](#iii---create-an-ibm-github-token-to-clone-the-github-repo)
 
-## Provision a vm on techzone
+## I - Provision a vm on techzone
 
 ### Provision the VM
 
@@ -81,7 +81,7 @@ lsblk
 chmod 777 /mnt/concert
 ```
 
-## Provision a watsonx.ai on techzone
+## II - Provision a watsonx.ai on techzone
 
 ### Watsonx.ai Provisioning
 
@@ -150,7 +150,7 @@ The IBM Cloud account selected should match the Cloud Account specified in the I
 <br><img src="../images/watsonxai_apikey4.png" alt="drawing" width="400"/>
 
 
-## Create an IBM Github token to clone the github repo
+## III - Create an IBM Github token to clone the github repo
 
 Create a GitHub Token to clone using cli thru HTTPS:
 
