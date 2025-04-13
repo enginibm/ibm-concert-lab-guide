@@ -202,7 +202,7 @@ CONNECTION Created :<{"id":"423935a8-b8ba-41f9-8308-7f8732500e2a","name":"CONCER
 12. Check Concert Workflow installation
   
 - From a browser, enter the URL of your concert instance (https://YOUR_VM_IP:12443) and log with your concert username and password.
-- You should have now a **Worflows** menu
+- You should have now a **Workflows** menu
 - Navigate to **Workflows->Manage** and check that a page is displayed successfully
 - Navigate to **Administration->Integrations** and then in **Connections** tab
 - Check that you have a connection named **CONCERT_WORKFLOWS**
