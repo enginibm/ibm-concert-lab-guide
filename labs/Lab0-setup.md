@@ -54,7 +54,7 @@ chmod 600 /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 logon in VM
 
 ```bash
-ssh itzuser@<VMaddress> -p 2322 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+ssh itzuser@<VMaddress> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 sudo -i
 lsblk
 mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdd
