@@ -43,10 +43,10 @@ Copy Paste the content of [env.sh](../files/env.sh) in this $HOME/env.sh file
 Update the values for the following keys (other keys will be updated later):
 
 - CONCERT_REGISTRY_PASSWORD with your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key)
-- CONCERT_HUB_URL with your VM address
-- EXT_URL with your VM address
+- CONCERT_HUB_URL, replace YOUR_VM_IP with your VM address
+- EXT_URL: replace YOUR_VM_IP with your VM address
 
-3. Source the $HOME/env.sh file to set environment variables
+1. Source the $HOME/env.sh file to set environment variables
 
 ```bash
 source $HOME/env.sh
@@ -60,11 +60,14 @@ ibm-concert-std/bin/setup --license_acceptance=y --registry=${CONCERT_REGISTRY} 
 ```
 
 The installer will prompt for a password.  
-This will define the default password for the GUI user `ibmconcert`
+This will define the default password for the GUI user `ibmconcert`   
+Note this password somewhere to retrieve it easily    
+
+The installation take 5 to 7 minutes, be patient.    
 
 5. Connect on Concert and create an API Key
 
-- From a browser go to the Concert route (https://VMaddress:12443)
+- From a browser go to the Concert URL (https://YOUR_VM_IP:12443)
 - Log on concert using **ibmconcert** as user and with the password you have specified in step 4.
 - Click the circle at top right of the window and select **API Key**
   <br><img src="../images/concert_apikey_vm_1.png" alt="drawing" width="400"/>
@@ -80,8 +83,8 @@ vi $HOME/env.sh
 
 Update the values for the following keys:
 
-- CONCERT_URL with https://VMaddress:12443 (replace VMaddress with you own VM address)
 - CONCERT_APIKEY with the API Key you created in step 5.
+- CONCERT_URL with https://YOUR_VM_IP:12443 (replace YOUR_VM_IP with you own VM address)
 
 Save the file (:wq) and source the $HOME/env.sh file to set environment variables
 
@@ -109,7 +112,13 @@ vim $HOME/env.sh
 Update the following variables:
 - **WATSONX_API_KEY**: use the API key you got in [Lab 0 - Get API Key and service ID information](Lab0-setup.md#get-api-key-and-service-id-information), from your techzone wx.ai reservation page
 - **WATSONX_API_PROJECT_ID**: use the project ID you got from [Lab 0 - Create a watsonx project and get project ID](Lab0-setup.md#create-a-watsonx-project-and-get-project-id),
-- **WATSONX_API_URL**: https://us-south.ml.cloud.ibm.com , since the instance is provision is US.
+- **WATSONX_API_URL**: https://us-south.ml.cloud.ibm.com , since the instance is provision in US.
+
+Save the file (:wq) and source the $HOME/env.sh file to set environment variables
+
+```bash
+source $HOME/env.sh
+```
 
 2. Apply the watsonx.ai configuration
 
@@ -123,6 +132,21 @@ echo WATSONX_API_URL=$WATSONX_API_URL >> ibm-concert-std/etc/local_config.env
 
 ```bash
 cd /mnt/concert
-source $HOME/env.sh
 ibm-concert-std/bin/start_service ibm-roja-py-utils
 ```
+
+4. Test the integration 
+
+To verify that the integration with watsonx.ai is successfull, you can look at the **ibm-roja-py-utils** pod logs:
+
+```bash
+podman logs ibm-roja-py-utils
+```
+
+The 2 first lines of the logs should be:
+
+```txt
+{'timestamp': 2025-04-13:13:45:15, 'logLevel': info, 'callerMethod': client.py:L459, 'message': Client successfully initialized}
+{'timestamp': 2025-04-13:13:45:15, 'logLevel': info, 'callerMethod': genai.py:L129, 'message': Connection to watsonx.ai successful!}
+```
+
