@@ -4,7 +4,8 @@
 
 In order to use Resilience dimension, an organisation need to determine the non-functional requirements (NFRs) that apply to its applications, as well as the target values that must be achieved to meet contractual obligations or otherwise be considered resilient. Also, relevant data must be collected from the applications and their environment components in order to import them to Concert on a regular basis.
 
-In this lab, you will use and create a concert workflow to ingest resilience data concerning the quality of docker images in IBM Concert. We will use the 2 images that you have build in lab4.
+In this lab, you will use and create a concert workflow to ingest in IBM Concert resilience data concerning the quality of docker images.  
+We will use the 2 images that you have build in lab4.
 
 ## Prerequisite
 
@@ -19,10 +20,9 @@ In this lab, you will use and create a concert workflow to ingest resilience dat
   - [Content](#content)
   - [Activate the Resilience](#activate-the-resilience)
   - [Import Resilience data using a workflow](#import-resilience-data-using-a-workflow)
-    - [Import a resilience library](#import-a-resilience-library)
-    - [Define resilience profiles](#define-resilience-profiles)
+    - [Import a resilience library and a resilience profile](#import-a-resilience-library-and-a-resilience-profile)
     - [Import a resilience workflow](#import-a-resilience-workflow)
-    - [Build your own workflow](#build-your-own-workflow)
+    - [Build your own sub workflow](#build-your-own-sub-workflow)
     - [Complete the resilience workflow previously imported](#complete-the-resilience-workflow-previously-imported)
     - [Run the workflow to populate you application resilience posture](#run-the-workflow-to-populate-you-application-resilience-posture)
   - [Resilience Management](#resilience-management)
@@ -46,13 +46,31 @@ You must also enable resilience for your application:
 
 ## Import Resilience data using a workflow
 
-### Import a resilience library
+### Import a resilience library and a resilience profile
 
-WAIT FOR MATHIEU INPUTS
+For this lab, we provide a custom non-functional requirements (NFRs) library and profile. 
+The aim of this library is to determine the quality of your docker images based on three metrics:
+ 
+- Image size
+- Number of image layers
+- Images with latest tag
 
-### Define resilience profiles
+To import this library, follow these steps
 
-WAIT FOR MATHIEU INPUTS
+1. From Concert UI, navigate to **Dimensions->Resilience**
+2. Select **Libraries** tab
+3. Click **Upload Libraries** button
+4. Drag and drop the tar file defining the custom library and available [here](../files/resilience_library)
+  
+  <br><img src="../images/resilience_upload_library.png" alt="drawing" width="600"/>
+
+4. Click **Upload**
+
+Then you should have a new library called **Container build integrity Library** in the libraries list with 3 NFRs.
+
+  <br><img src="../images/resilience_images_library.png" alt="drawing" width="600"/>
+
+The next step consists in creating a workflow to get images metrics and upload an assessment in IBM Concert.
 
 ### Import a resilience workflow
 
@@ -62,13 +80,13 @@ You will start to import a pre-defined workflow available [here](../files/workfl
 2. Navigate in **Shared->Everyone** folder
 3. Create a folder called **Resilience** by clicking **Create folder**
   <br><img src="../images/resilience_cw_create_folder.png" alt="drawing" width="600"/>
-4. Navigate in the **Resilience** folder you just create
-5. Click the **Import** button (top right of the window) and select the **docker_images_metrics.zip** workflow from your laptop
+4. Navigate in the **Resilience** folder you just created
+5. Click the **Import** button (top right of the window) and select the **absolute_docker_images_metrics.zip** workflow from your laptop
 
 
-This workflow get from your concert VM, the hr-application images you have build in Lab4 . Then, for each images it will do a `podman inspect` command and calculate 2 metrics: the average number of layers per images and the percentage of images with a 'latest' tag.   
+This workflow get from your concert VM, the hr-application images you have build in Lab4. Then, for each images it will do a `podman inspect` command and calculate 2 metrics: the average number of layers per images and the percentage of images with a 'latest' tag.   
 
-To be able to ssh you concert VM, you need to define an SSH Authentication:
+To be able to ssh your concert VM, you need to define an SSH Authentication:
 
 1. Navigate to **Workflows->Authentications**
 2. Click the **Create authentication** button (top right of the window)
@@ -83,9 +101,9 @@ To be able to ssh you concert VM, you need to define an SSH Authentication:
 
   <br><img src="../images/resilience_cw_ssh_auth.png" alt="drawing" width="600"/>
 
-### Build your own workflow
+### Build your own sub workflow
 
-You will now create a workflow that will be used as a sub-worflow of **docker_images_metrics** worflow in order to define a new metric: the percentage of big images.
+You will now create a workflow that will be used as a sub-worflow of **docker_images_metrics** workflow in order to define a new metric: the percentage of big images.
 The aim of this workflow is to extract the image size from a json object that have the format of the result of the `podman inspect` command
 
 1. From Concert UI, navigate to **Workflows->Manage**
@@ -97,7 +115,7 @@ The aim of this workflow is to extract the image size from a json object that ha
 | Name          |    Type       | Default Value  |Selected box    |
 | :------------ | :-------------| :------------- | :-------------: |
 | json_inspect  | Array         | [{"Architecture": "amd64", "Os": "linux", "Size": 1378729490}] | in / required |
-| image_size    | Number        | 0                                                            | out / log     |
+| image_size    | Number        | 0                                                              | out / log     |
 
 
 Then you are going to use a "jq" node in order to extract the size from the **json_inspect** input variable:
@@ -160,29 +178,33 @@ You are going to add a branch in the main workflow in order to add the percentag
 
 > TIPS: most common nodes can also be added by clicking the + that are in the flow where you want to add your node. 
 
-    <br><img src="../images/resilience_cw_branch.png" alt="drawing" width="600"/>
+  <br><img src="../images/resilience_cw_branch.png" alt="drawing" width="600"/>
 
-You can test your workflow by selecting the Run button. Note that you can also run your workflow in debug if needed and put breakpoint on selected nodes.
 
 ### Run the workflow to populate you application resilience posture
 
-Now that your flow is running and get values for our three metrics, you will add another subflow at the end to upload the resilience values in Concert.
+Before running your flow, you need to modify the value of these variables:
 
-1. Download the **upload_to_concert.zip** workflow on your laptop from [here](../files/workflows_lab7/upload_to_concert.zip)
-2. From Concert UI, navigate to **Workflows->Manage**
-3. Navigate in **Shared->Everyone->Resilience** folder
-4. Click the **Import** button (top right of the window) and select the **upload_to_concert.zip** workflow from your laptop 
-5. Open the **docker_images_metrics** workflow
-6. Scroll and the end of the flow
+| Name          |    Value    |
+| :------------ | :-------------| 
+| concert_host     | The IP address of your Concert VM                                                                |
+| concert_api_key  | The API key of your concert installation (can be retrieved from your env.sh file create in lab1) |
 
-TODO ... ADD THE UPLOAD CONCERT SUBFLOW
+Now, you can now run your flow.   
+The best to begin is to run it in debug mode and put a breakpoint for example on node **Upload_to_concert** and take a look at the value of your **concert_data** variable
+
+<br><img src="../images/resilience_cw_breakpoint.png" alt="drawing" width="400"/>
+<br><img src="../images/resilience_cw_check_value.png" alt="drawing" width="400"/>
+
 
 ## Resilience Management
 
-Walkthrough the uploaded certificates:
+Walkthrough the uploaded assessment:
 
 - Home page - Resilience dimension
 - Resilience Dimension
-  - Select one entry
-    - Open a change request
+  - Select "component_images_posture"
+    - Open a change request on an assessment
     - Select an assessment
+
+<br><img src="../images/resilience_assessment.png" alt="drawing" width="600"/>
