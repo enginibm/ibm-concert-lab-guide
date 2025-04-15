@@ -70,11 +70,11 @@ Then you should have a new library called **Container build integrity Library** 
 
   <br><img src="../images/resilience_images_library.png" alt="drawing" width="600"/>
 
-The next step consists in creating a workflow to get images metrics and upload an assessment in IBM Concert.
+The next steps consists in creating a workflow to get images metrics and upload an assessment in IBM Concert.
 
 ### Import a resilience workflow
 
-You will start to import a pre-defined workflow available [here](../files/workflows_lab7/docker_images_metrics.zip).   
+You will start to import a pre-defined workflow available [here](../files/workflows_lab7).   
 
 1. From Concert UI, navigate to **Workflows->Manage**
 2. Navigate in **Shared->Everyone** folder
