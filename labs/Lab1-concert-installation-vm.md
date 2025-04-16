@@ -25,6 +25,8 @@ In this lab, you will install IBM Concert on a standalone server.
 
 1. Connect on the machine you have provisioned on Techzone in Lab0
 
+IMPORTANT: if you are already logged on the VM, verify that you are connected as itzuser (not root).   
+
 ```bash
 ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 loginctl enable-linger itzuser
@@ -42,11 +44,13 @@ vi $HOME/env.sh
 Copy Paste the content of [env.sh](../files/env.sh) in this $HOME/env.sh file  
 Update the values for the following keys (other keys will be updated later):
 
-- CONCERT_REGISTRY_PASSWORD with your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key)
-- CONCERT_HUB_URL, replace YOUR_VM_IP with your VM address
-- EXT_URL: replace YOUR_VM_IP with your VM address
+- **CONCERT_REGISTRY_PASSWORD** with your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key)
+- **CONCERT_HUB_URL**: replace YOUR_VM_IP with your VM address
+- **EXT_URL**: replace YOUR_VM_IP with your VM address
 
-1. Source the $HOME/env.sh file to set environment variables
+Save the file (:wq)
+
+3. Source the $HOME/env.sh file to set environment variables
 
 ```bash
 source $HOME/env.sh
@@ -73,7 +77,7 @@ The installation take 5 to 7 minutes, be patient.
   <br><img src="../images/concert_apikey_vm_1.png" alt="drawing" width="400"/>
 - In the API Key window, click **Generate API Key**
   <br><img src="../images/concert_apikey_2.png" alt="drawing" width="400"/>
-- Copy the API key generated in your clipboard
+- Copy the API key generated in a safe place
 
 7. Update environment variables
 
@@ -84,7 +88,7 @@ vi $HOME/env.sh
 Update the values for the following keys:
 
 - CONCERT_APIKEY with the API Key you created in step 5.
-- CONCERT_URL with https://YOUR_VM_IP:12443 (replace YOUR_VM_IP with you own VM address)
+- CONCERT_URL with https://YOUR_VM_IP:12443 (replace YOUR_VM_IP with your own VM address)
 
 Save the file (:wq) and source the $HOME/env.sh file to set environment variables
 

@@ -64,8 +64,8 @@ Then click **next**, **next** and **Create**
 To create a catalog for our  **CIS RHEL9 OpensSCAP Compliance Scan** workflow, follow these steps:
 
 1. Navigate to **Dimensions->Compliance**
-2. Select **Catalog** tab and click **Add catalog** button
-3. Select **CIS Controls** entry and click Add
+2. Select **Catalog** tab and click **Add catalog->From Standards Library** button
+3. Select **CIS Controls** entry and click **Add**
 
 - A compliance profile represents a subset of controls from a compliance catalog. Each profile specifies a set of rules the scan results will use to assess the overall compliance of the application environments.
 
@@ -74,7 +74,7 @@ To create a profile for our **CIS RHEL9 OpensSCAP Compliance Scan** workflow, fo
 1. Select **Profile** tab and click **Create profile** button
 2. Enter following values and click **Create** button
 
-- **Name**: cis_profile
+- **Name**: profile_cis
 - Select one or more **catalogs**: select **CIS Controls** catalog
 - Select **crontrols**: Click Select all (or choose specific compliance rules)
 

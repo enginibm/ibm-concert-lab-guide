@@ -156,7 +156,7 @@ cd $HOME/concert-bootcamp/SBOMs-ingestion/scripts
 ```
 
 Here you can take a look at the SBOMs generated in folder **$HOME/concert-bootcamp/SBOMs-ingestion/concert_data**.    
-One folder as been create for each component (one for hr-app and one for summarizarion-svc)
+One folder as been created for each component (one for hr-app and one for summarization-svc)
 
 #### Upload SBOMs on IBM concert
   

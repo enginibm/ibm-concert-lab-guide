@@ -54,14 +54,14 @@ chmod 600 /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 - To prepare the 500Gb disk, execute the following commands:
 
 ```bash
-ssh itzuser@<VMaddress> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 sudo -i
 lsblk
 mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdd
 blkid | grep /dev/vdd
 ```
 
-- Copy the UUID value somewhere
+- Copy the UUID value and store it in a safe place
 
 ```bash
 mkdir -p /mnt/concert
@@ -121,7 +121,7 @@ The IBM Cloud account selected should match the Cloud Account specified in the I
 
 <br><img src="../images/watsonx_sandbox.png" alt="drawing" width="400"/>
 
-5. In **Manage** tab, copy the "Project ID" and store it somewhere
+5. In **Manage** tab, copy the "Project ID" and store it in a safe place
 
 <br><img src="../images/watsonxai_get_projectid.png" alt="drawing" width="400"/>
 

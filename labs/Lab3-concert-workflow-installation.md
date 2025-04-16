@@ -33,7 +33,7 @@ Concert workflow installation require k3s and helm.
 1. Connect to the VM you have created on Techzone in Lab0
 
 ```bash
-ssh itzuser@<VM ip address> -p 2223
+ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 ```
 
 2. install k3s
@@ -107,7 +107,7 @@ cd /mnt/concert/workflows
 --c-api-key=$CONCERT_APIKEY
 ```
 
-Copy the 3 last lines returned somewhere, we will need the value of **CONCERT_HUB_KEY** and **WORKFLOW_APIKEY** later.
+Copy the 3 last lines returned in a safe place, we will need the value of **CONCERT_HUB_KEY** and **WORKFLOW_APIKEY** later.
 
 1. Update environment variables
 

@@ -34,7 +34,7 @@ Here are the manual steps to follow:
 1. Connect on the machine you have provisioned on Techzone in Lab0
 
 ```bash
-ssh itzuser@<VM ip address> -p 2223
+ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 umask 022
 ```
 
@@ -85,7 +85,7 @@ sudo chmod 666 $HOME/concert-bootcamp/SBOMs-ingestion/concert_data/${COMPONENT_N
 vi $HOME/concert-bootcamp/SBOMs-ingestion/concert_data/${COMPONENT_NAME}/certificates-hr-app.json
 ```
 
-- Duplicate the line **serial_number**, rename the key as **ref** and insert certificate: before the value
+- Duplicate the line **serial_number**, rename the key as **ref** and insert **certificate:** before the value
 <br><img src="../images/certificate_modif1.png" alt="drawing" width="400"/>
 
 - Modify the **validity_start_date** and **validity_end_date** format by adding **+0000 GMT** at the end

@@ -168,15 +168,15 @@ You are going to add a branch in the main workflow in order to add the percentag
     <br><img src="../images/resilience_cw_add_branch.png" alt="drawing" width="400"/>
 
 5. From the palette that is at the left pane of your window, navigate in **Shared->Everyone->Resilience**
-6. Drag and drop the **docker_image_size** node in your new branch
+6. Drag and drop the **docker_image_size** node in your new branch (it is the sub-flow you just create before)
 7. Name the node **get_image_size_flow**
 8. From the **Object Editor** that is in the right pane of your window, enter following values:
 
-- **json_inspect**: $ssh_inspect_image.result
+- **json_inspect**: $ssh_inspect_image.result (the result of the node named ssh_inspect_image is the input of your sub-flow)
   
-8. Then complete your branch as shown in following image
+1. Then complete your branch as shown in following image
 
-> TIPS: most common nodes can also be added by clicking the + that are in the flow where you want to add your node. 
+> TIPS: most common nodes can be added by clicking the + that are in the flow where you want to add your node. 
 
   <br><img src="../images/resilience_cw_branch.png" alt="drawing" width="600"/>
 
