@@ -196,6 +196,19 @@ The best to begin is to run it in debug mode and put a breakpoint for example on
 <br><img src="../images/resilience_cw_breakpoint.png" alt="drawing" width="400"/>
 <br><img src="../images/resilience_cw_check_value.png" alt="drawing" width="400"/>
 
+You should see these values for **concert_data** variable:
+
+<br><img src="../images/resilience_cw_check_value2.png" alt="drawing" width="400"/>
+
+Then you can finish the flow by clicking the Resume debug button
+
+<br><img src="../images/resilience_cw_debug_resume.png" alt="drawing" width="400"/>
+
+If the flow is successfull, you see that in the logs
+
+<br><img src="../images/resilience_cw_logs.png" alt="drawing" width="400"/>
+
+You can now navigate to **Dimensions->Resilience** and select the **components_images_posture**
 
 ## Resilience Management
 
