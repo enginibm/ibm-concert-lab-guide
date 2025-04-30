@@ -71,11 +71,7 @@ The next steps consists in creating a workflow to get images metrics and upload 
 You will start to import a pre-defined workflow available [here](../files/workflows_lab7).   
 
 1. From Concert UI, navigate to **Workflows->Manage**
-2. Navigate in **Shared->Everyone** folder
-3. Create a folder called **Resilience** by clicking **Create folder**
-  <br><img src="../images/resilience_cw_create_folder.png" alt="drawing" width="600"/>
-4. Navigate in the **Resilience** folder you just created
-5. Click the **Import** button (top right of the window) and select the **concert_v110_absolute_docker_images_metrics.zip** workflow from your laptop
+2. Click the **Import** button (top right of the window) and select the **concert_v110_absolute_Resilience.zip** workflow from your laptop
 
 
 This workflow get from your concert VM, the hr-application images you have build in Lab4.    
@@ -102,7 +98,7 @@ You will now create a workflow that will be used as a sub-worflow of **docker_im
 The aim of this workflow is to extract the image size from a json object that have the format of the result of the `podman inspect` command
 
 1. From Concert UI, navigate to **Workflows->Manage**
-2. Navigate in **Shared->Everyone->Resilience** folder
+2. Navigate in **Resilience** folder
 3. Click the button **Create workflow** (top right of the window)
 4. Call it **docker_images_size** and click **Create** button
 5. Define your variables:
@@ -156,7 +152,7 @@ You can now test your workflow:
 You are going to complete the empty branch in the main workflow in order to calculate images metrics
 
 1. From Concert UI, navigate to **Workflows->Manage**
-2. Navigate in **Shared->Everyone->Resilience** folder
+2. Navigate in **Resilience** folder
 3. Open the **docker_images_metrics** workflow
 4. Scroll down the workflow until the **Split_1** node and click **+BRANCH**
 
