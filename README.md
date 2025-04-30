@@ -10,7 +10,7 @@ In this bootcamp, based on a simple python application composed of 2 micro servi
 - [Lab6](labs/Lab6-managing-compliance-using-concert-workflow.md) - Upload Openshift Compliance data in IBM Concert and manage compliance
 - [Lab7](labs/Lab7-managing-resilience-using-concert-workflow.md) - Upload Openshift Resilience data in IBM Concert and manage resilience
 
-All the labs are based on Concert Version 1.0.5.2.     
+All the labs are based on Concert Version 1.1.0.     
 In order to run the labs, you will provision on IBM Techzone some environments.     
 
 Here is the architecture schema of your environment:    

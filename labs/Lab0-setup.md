@@ -83,6 +83,8 @@ chmod 777 /mnt/concert
 
 ## II - Provision a watsonx.ai on techzone
 
+> Note: Concert require model ibm/granite-3-2-8b-instruct on watsonx.ai, so watsonx.ai must be provision in US
+> 
 ### Watsonx.ai Provisioning
 
 1. Navigate to [watsonx.ai on IBM Techzone](https://techzone.ibm.com/my/reservations/create/64b8490a564e190017b8f4eb)
@@ -117,7 +119,7 @@ The IBM Cloud account selected should match the Cloud Account specified in the I
 
 <br><img src="../images/watsonxai_create_project.png" alt="drawing" width="400"/>
 
-4. Select the sandbox that have been created
+4. Select the sandbox that have been created (you should need to refresh the page)
 
 <br><img src="../images/watsonx_sandbox.png" alt="drawing" width="400"/>
 
@@ -127,7 +129,7 @@ The IBM Cloud account selected should match the Cloud Account specified in the I
 
 ### Get API Key and service ID information
 
-1. From your techzone reservation screen, retrieve the APIKey and the service ID and store them somewhere
+1. From your techzone reservation screen, retrieve the APIKey and the service ID and store them in a safe place
 
 <br><img src="../images/watsonxai_reservation_details.png" alt="drawing" width="400"/>
 
@@ -145,7 +147,7 @@ The IBM Cloud account selected should match the Cloud Account specified in the I
 
 <br><img src="../images/watsonxai_apikey3.png" alt="drawing" width="400"/>
 
-4. Give admin right to your access group
+1. Select your group, give it admin right and click **Add** button
 
 <br><img src="../images/watsonxai_apikey4.png" alt="drawing" width="400"/>
 

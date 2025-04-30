@@ -85,31 +85,11 @@ ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_d
 ```bash
 source $HOME/env.sh
 cd /mnt/concert
-wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-std-workflows.tgz
+wget https://github.com/IBM/Concert/releases/download/v1.1.0/ibm-concert-std-workflows.tgz
 tar xfz ibm-concert-std-workflows.tgz
 ```
 
-3. Log on docker
-
-```bash
-${DOCKER_EXE} login ${CONCERT_REGISTRY} \
---username=${CONCERT_REGISTRY_USER} \
---password=${CONCERT_REGISTRY_PASSWORD}
-```
-
-4. Get concert infos and generate CONCERT_HUB_KEY
-
-```bash
-cd /mnt/concert/workflows
-
-./bin/tethering/get_concert_info.sh \
---concert-url=$CONCERT_HUB_URL \
---c-api-key=$CONCERT_APIKEY
-```
-
-Copy the 3 last lines returned in a safe place, we will need the value of **CONCERT_HUB_KEY** and **WORKFLOW_APIKEY** later.
-
-1. Update environment variables
+3. Update environment variables
 
 ```bash
 vi $HOME/env.sh
@@ -117,8 +97,7 @@ vi $HOME/env.sh
 
 Update the values for the following keys:
 
-- CONCERT_HUB_KEY with the value returned by get_concert_info.sh in step 4.
-- WORKFLOW_APIKEY with the value returned by get_concert_info.sh in step 4.
+- IBM_REG_PASS with your entitlement key (same as CONCERT_REGISTRY_PASSWORD value)
 
 Save the file (:wq) and source the $HOME/env.sh file to set environment variables
 
@@ -126,80 +105,25 @@ Save the file (:wq) and source the $HOME/env.sh file to set environment variable
 source $HOME/env.sh
 ```
 
-6. Edit the concert-workflows-values.yaml located in the /mnt/concert/workflows/bin folder:
-
-```bash
-vi /mnt/concert/workflows/bin/concert-workflows-values.yaml
-```
-
-- for **address** and **CONCERT_HUB_URL** keys, replace **VM IP address** with the IP address of the VM 
-- Replace **CONCERT_HUB_KEY** with the CONCERT_HUB_KEY value that you have noted (and also set in $HOME/env.sh file)
-- Add a new variable **CONCERT_API_KEY** under **CONCERT_HUB_KEY** and set its value to the WORKFLOW_APIKEY value that you have noted (and also set in $HOME/env.sh file)
-- save your file (:wq)
-
-1. Create the concert workflow namespace in k3s cluster
-
-```bash
-kubectl create ns $CW_NAMESPACE
-```
-
-8. Create a secret called ibm-entitlement-key in the same namespace
-
-```bash
-kubectl create secret docker-registry ibm-entitlement-key \
---docker-server=cp.icr.io \
---docker-username=cp \
---docker-password="${CONCERT_REGISTRY_PASSWORD}" \
---namespace="${CW_NAMESPACE}"
-```
-
-9. Install concert worflow
+3. Navigate to workflows folder
 
 ```bash
 cd /mnt/concert/workflows
-./bin/setup --namespace="${CW_NAMESPACE}"
 ```
 
-**IMPORTANT**: Wait until the end of the installation. Be patient, it can take up to 20 minutes.
-
-10. Register Concert Workflows as an add-on to your Concert instance.
+4. Launch concert-workflow installation
 
 ```bash
-./bin/tethering/tether-to-hub.sh \
---concert-hub-url="$CONCERT_HUB_URL" \
---concert-hub-key="$CONCERT_HUB_KEY" \
---extn-dir="$EXTNS_DIR" \
---provider="$ADDON_NAME" \
---external-url="$EXT_URL"
+./bin/deploy-k8s --license-acceptance=y \
+--instance-address=$VM_IP \
+--concert-user=$CONCERT_USER \
+--concert-url=$CONCERT_URL \
+--c-api-key=$CONCERT_APIKEY
 ```
 
-**IMPORTANT**: Wait at least 5 minutes
+**IMPORTANT**: Wait until the end of the installation. Be patient, it can take up to 20 minutes. It's time for a coffee break !
 
-11. Establish authentication credentials and a reusable connection for Concert Workflows
-
-```bash
-chmod +x bin/tethering/enable_concert_workflows.sh
-./bin/tethering/enable_concert_workflows.sh --concert-url="$CONCERT_HUB_URL" --c-api-key="$CONCERT_APIKEY" --c-user="$CONCERT_USER" --workflow-apikey="$WORKFLOW_APIKEY"
-```
-
-The result of the command should be similar to that
-
-```txt
-Parsing option: '--concert-url', value: 'https://149.81.7.218:12443'
-Parsing option: '--c-api-key', value: 'aWJtY29uY2VydDpkNmJiMWZhYS1lMWNjLTQ1ODEtYmVkOS04N2RmYTU0OGY0Zjg='
-Parsing option: '--c-user', value: 'ibmconcert'
-Parsing option: '--workflow-apikey', value: '8cce88ca-4aa9-438d-9ad6-3b51a06918a1'
-----------
-PARAMETERS
-CONCERT_URL: (https://149.81.7.218:12443)
-C_API_KEY: (aWJtY29uY2VydDpkNmJiMWZhYS1lMWNjLTQ1ODEtYmVkOS04N2RmYTU0OGY0Zjg=)
-C_USER: (ibmconcert)
-WORKFLOW_APIKEY: (8cce88ca-4aa9-438d-9ad6-3b51a06918a1)
-Concert workflows authentication created
-CONNECTION Created :<{"id":"423935a8-b8ba-41f9-8308-7f8732500e2a","name":"CONCERT_WORKFLOWS","type":"","credentials":null,"expiry":0}>
-```
-
-12. Check Concert Workflow installation
+5. Check Concert Workflow installation
   
 - From a browser, enter the URL of your concert instance (https://YOUR_VM_IP:12443) and log with your concert username and password.
 - You should have now a **Workflows** menu

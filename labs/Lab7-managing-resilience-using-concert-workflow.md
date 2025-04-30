@@ -20,7 +20,7 @@ We will use the 2 images that you have build in lab4.
   - [Content](#content)
   - [Activate the Resilience](#activate-the-resilience)
   - [Import Resilience data using a workflow](#import-resilience-data-using-a-workflow)
-    - [Import a resilience library and a resilience profile](#import-a-resilience-library-and-a-resilience-profile)
+    - [Resilience library and a Resilience profile](#resilience-library-and-a-resilience-profile)
     - [Import a resilience workflow](#import-a-resilience-workflow)
     - [Build your own sub workflow](#build-your-own-sub-workflow)
     - [Complete the resilience workflow previously imported](#complete-the-resilience-workflow-previously-imported)
@@ -31,7 +31,7 @@ We will use the 2 images that you have build in lab4.
 
 1. From Concert UI, navigate to **Administration->Settings**
 2. Select ***Miscellaneous** tab
-3. Enable resilience and resilience custom library
+3. Enable resilience
 
   <br><img src="../images/enable_resilience.png" alt="drawing" width="600"/>
 
@@ -46,30 +46,24 @@ You must also enable resilience for your application:
 
 ## Import Resilience data using a workflow
 
-### Import a resilience library and a resilience profile
+### Resilience library and a Resilience profile
 
-For this lab, we provide a custom non-functional requirements (NFRs) library and profile. 
-The aim of this library is to determine the quality of your docker images based on three metrics:
+For this lab, we will use part of a provided library called **Container Build Integrity Library**.
+These library NFRs are used to assess security, efficiency and maintainability of container image quality.
+We will calculate these metrics:
  
-- Image size
-- Number of image layers
-- Images with latest tag
+- Average image size
+- Max image size
+- Percentage of images with excessive layers
 
-To import this library, follow these steps
+To discover this library, follow these steps
 
 1. From Concert UI, navigate to **Dimensions->Resilience**
 2. Select **Libraries** tab
-3. Click **Upload Libraries** button
-4. Drag and drop the tar file defining the custom library and available [here](../files/resilience_library)
-  
-  <br><img src="../images/resilience_upload_library.png" alt="drawing" width="600"/>
+3. Click **Container Build Integrity Library** link
+4. Expand **Image Layers** and **Image Size**
 
-4. Click **Upload**
-
-Then you should have a new library called **Container build integrity Library** in the libraries list with 3 NFRs.
-
-  <br><img src="../images/resilience_images_library.png" alt="drawing" width="600"/>
-
+And take a look at how the scores are calculated.
 The next steps consists in creating a workflow to get images metrics and upload an assessment in IBM Concert.
 
 ### Import a resilience workflow
@@ -81,10 +75,11 @@ You will start to import a pre-defined workflow available [here](../files/workfl
 3. Create a folder called **Resilience** by clicking **Create folder**
   <br><img src="../images/resilience_cw_create_folder.png" alt="drawing" width="600"/>
 4. Navigate in the **Resilience** folder you just created
-5. Click the **Import** button (top right of the window) and select the **absolute_docker_images_metrics.zip** workflow from your laptop
+5. Click the **Import** button (top right of the window) and select the **concert_v110_absolute_docker_images_metrics.zip** workflow from your laptop
 
 
-This workflow get from your concert VM, the hr-application images you have build in Lab4. Then, for each images it will do a `podman inspect` command and calculate 2 metrics: the average number of layers per images and the percentage of images with a 'latest' tag.   
+This workflow get from your concert VM, the hr-application images you have build in Lab4.    
+Then, for each images it will do a `podman inspect` command and calculate metrics based on the `podman inspect` command result 
 
 To be able to ssh your concert VM, you need to define an SSH Authentication:
 
@@ -158,7 +153,7 @@ You can now test your workflow:
 
 ### Complete the resilience workflow previously imported
 
-You are going to add a branch in the main workflow in order to add the percentage of big images metrics
+You are going to complete the empty branch in the main workflow in order to calculate images metrics
 
 1. From Concert UI, navigate to **Workflows->Manage**
 2. Navigate in **Shared->Everyone->Resilience** folder
@@ -168,7 +163,7 @@ You are going to add a branch in the main workflow in order to add the percentag
     <br><img src="../images/resilience_cw_add_branch.png" alt="drawing" width="400"/>
 
 5. From the palette that is at the left pane of your window, navigate in **Shared->Everyone->Resilience**
-6. Drag and drop the **docker_image_size** node in your new branch (it is the sub-flow you just create before)
+6. Drag and drop the **docker_image_size** node in the empty branch (it is the sub-flow you just create before)
 7. Name the node **get_image_size_flow**
 8. From the **Object Editor** that is in the right pane of your window, enter following values:
 

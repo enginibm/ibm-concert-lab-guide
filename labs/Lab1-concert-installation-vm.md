@@ -31,7 +31,7 @@ IMPORTANT: if you are already logged on the VM, verify that you are connected as
 ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 loginctl enable-linger itzuser
 cd /mnt/concert
-wget https://github.com/IBM/Concert/releases/download/v1.0.5.2/ibm-concert-std.tgz
+wget https://github.com/IBM/Concert/releases/download/v1.1.0/ibm-concert-std.tgz
 tar xfz ibm-concert-std.tgz
 ```
 
@@ -44,13 +44,13 @@ vi $HOME/env.sh
 Copy Paste the content of [env.sh](../files/env.sh) in this $HOME/env.sh file  
 Update the values for the following keys (other keys will be updated later):
 
-- **CONCERT_REGISTRY_PASSWORD** with your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key)
+- **CONCERT_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
 - **CONCERT_HUB_URL**: replace YOUR_VM_IP with your VM address
 - **EXT_URL**: replace YOUR_VM_IP with your VM address
 
 Save the file (:wq)
 
-3. Source the $HOME/env.sh file to set environment variables
+1. Source the $HOME/env.sh file to set environment variables
 
 ```bash
 source $HOME/env.sh
@@ -65,7 +65,7 @@ ibm-concert-std/bin/setup --license_acceptance=y --registry=${CONCERT_REGISTRY} 
 
 The installer will prompt for a password.  
 This will define the default password for the GUI user `ibmconcert`   
-Note this password somewhere to retrieve it easily    
+Note this password in a safe place to retrieve it easily    
 
 The installation take 5 to 7 minutes, be patient.    
 
@@ -98,8 +98,6 @@ source $HOME/env.sh
 
 ## II - Watsonx.ai integration
 
-> Note: Concert require model ibm/granite-3-2-8b-instruct on watsonx.ai, so watsonx.ai must be provision in US
-
 ### Techzone reservation
 
 Be sure to reserve a watsonx.ai instance as explained in [Lab 0 - III - Provision a watsonx.ai on techzone](Lab0-setup.md#iii---provision-a-watsonxai-on-techzone).
@@ -129,7 +127,7 @@ source $HOME/env.sh
 ```bash
 echo "WATSONX_API_KEY=$WATSONX_API_KEY" >> ibm-concert-std/etc/local_config.env
 echo "WATSONX_API_PROJECT_ID=$WATSONX_API_PROJECT_ID" >> ibm-concert-std/etc/local_config.env
-echo WATSONX_API_URL=$WATSONX_API_URL >> ibm-concert-std/etc/local_config.env
+echo "WATSONX_API_URL=$WATSONX_API_URL" >> ibm-concert-std/etc/local_config.env
 ```
 
 3. Then you need to start the appropriate service:
