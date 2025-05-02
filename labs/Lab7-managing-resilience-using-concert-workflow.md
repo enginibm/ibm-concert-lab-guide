@@ -210,5 +210,7 @@ Walkthrough the uploaded assessment:
   - Select "component_images_posture"
     - Open a change request on an assessment
     - Select an assessment
+      - In assessment summary tab, Sort by Assessed score
+      - In Actions tab, sort by Assessed score
 
 <br><img src="../images/resilience_assessment.png" alt="drawing" width="600"/>
