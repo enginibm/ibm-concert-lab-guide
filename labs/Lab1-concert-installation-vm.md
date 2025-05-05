@@ -46,7 +46,6 @@ Update the values for the following keys (other keys will be updated later):
 
 - **CONCERT_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
 - **CONCERT_HUB_URL**: replace YOUR_VM_IP with your VM address
-- **EXT_URL**: replace YOUR_VM_IP with your VM address
 
 Save the file (:wq)
 

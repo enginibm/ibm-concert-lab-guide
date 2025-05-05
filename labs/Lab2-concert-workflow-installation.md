@@ -123,7 +123,30 @@ cd /mnt/concert/workflows
 
 **IMPORTANT**: Wait until the end of the installation. Be patient, it can take up to 20 minutes. It's time for a coffee break !
 
-5. Check Concert Workflow installation
+5. Enable (Python function-as-a-service (FaaS) action blocks)
+
+Insecure access to the internal registry must be enabled and registries.yaml must be defined under /etc/rancher/k3s:
+
+```bash
+sudo vi /etc/rancher/k3s/registries.yaml
+```
+
+Insert
+
+```text
+configs:
+  "YOUR_VM_IP": 
+    "tls": 
+       insecure_skip_verify: true
+```
+
+Restart the Kubernetes service
+
+```bash
+sudo systemctl restart k3s
+```
+
+6. Check Concert Workflow installation
   
 - From a browser, enter the URL of your concert instance (https://YOUR_VM_IP:12443) and log with your concert username and password.
 - You should have now a **Workflows** menu
