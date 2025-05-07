@@ -11,7 +11,10 @@ It will cover:
 
 ## Prerequisite
 
-- You must have an IBM Cloud user.
+- You must have:
+  - An IBM Cloud user
+  - An account on https://github.ibm.com
+  
 - On your laptop, you must have
   - A ssh client
   - A web browser
