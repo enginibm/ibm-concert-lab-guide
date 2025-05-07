@@ -71,7 +71,7 @@ To create a catalog for our  **CIS RHEL9 OpensSCAP Compliance Scan** workflow, f
 
 To create a profile for our **CIS RHEL9 OpensSCAP Compliance Scan** workflow, follow these steps:
 
-1. Select **Profile** tab and click **Create profile** button
+1. Select **Profile** tab, click **Create profile** button and select **From resources**
 2. Enter following values and click **Create** button
 
 - **Name**: profile_cis
@@ -173,7 +173,7 @@ Alternatively, you can also schedule a workflow job for ingestion of compliance 
 
 ## Compliance Management
 
-Walkthrough the uploaded certificates:
+Walkthrough the uploaded compliance assessment:
 
 - Home page - Compliance dimension
 - Compliance Dimension
