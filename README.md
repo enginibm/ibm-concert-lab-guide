@@ -3,8 +3,9 @@
 In this bootcamp, based on a simple python application composed of 2 micro services, you will learn to:
 
 - [Lab0](labs/Lab0-setup.md) - Reserve required environment on techzone
-- [Lab1](labs/Lab1a-concert-installation-vm.md) - Install IBM Concert
-- [Lab3](labs/Lab3-concert-workflow-installation.md) - Install Concert Workflow
+- [Lab1](labs/Lab1-concert-installation-vm.md) - Install IBM Concert
+- [Lab2](labs/Lab2-concert-workflow-installation.md) - Install Concert Workflow
+- [Lab3](labs/Lab3-concert-walkthrough.md) - Concert walkthrough
 - [Lab4](labs/Lab4-managing-software-composition-and-cves.md) - Upload applications SBOMS in IBM Concert and manage software composition
 - [Lab5](labs/Lab5-managing-operations-certificates.md) - Upload applications certificates in IBM Concert and manage operations
 - [Lab6](labs/Lab6-managing-compliance-using-concert-workflow.md) - Upload Openshift Compliance data in IBM Concert and manage compliance
