@@ -45,11 +45,10 @@ Copy Paste the content of [env.sh](../files/env.sh) in this $HOME/env.sh file
 Update the values for the following keys (other keys will be updated later):
 
 - **CONCERT_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
-- **CONCERT_HUB_URL**: replace YOUR_VM_IP with your VM address
 
 Save the file (:wq)
 
-1. Source the $HOME/env.sh file to set environment variables
+3. Source the $HOME/env.sh file to set environment variables
 
 ```bash
 source $HOME/env.sh
@@ -70,6 +69,8 @@ The installation take 5 to 7 minutes, be patient.
 
 5. Connect on Concert and create an API Key
 
+In the following steps, **YOUR_VM_IP** is the public IP defined in your Techzone reservation
+
 - From a browser go to the Concert URL (https://YOUR_VM_IP:12443)
 - Log on concert using **ibmconcert** as user and with the password you have specified in step 4.
 - Click the circle at top right of the window and select **API Key**
@@ -78,7 +79,7 @@ The installation take 5 to 7 minutes, be patient.
   <br><img src="../images/concert_apikey_2.png" alt="drawing" width="400"/>
 - Copy the API key generated in a safe place
 
-7. Update environment variables
+6. Update environment variables
 
 ```bash
 vi $HOME/env.sh

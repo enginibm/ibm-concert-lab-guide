@@ -12,6 +12,9 @@ It will cover:
 ## Prerequisite
 
 - You must have an IBM Cloud user.
+- On your laptop, you must have
+  - A ssh client
+  - A web browser
 
 ## Content
 
