@@ -98,6 +98,7 @@ vi $HOME/env.sh
 Update the values for the following keys:
 
 - IBM_REG_PASS with your entitlement key (same as CONCERT_REGISTRY_PASSWORD value)
+- VM_IP with your VM public IP address (in the format aaa.bbb.ccc.ddd)
 
 Save the file (:wq) and source the $HOME/env.sh file to set environment variables
 
