@@ -30,7 +30,7 @@ We will use the 2 images that you have build in lab4.
 ## Activate the Resilience
 
 1. From Concert UI, navigate to **Administration->Settings**
-2. Select ***Miscellaneous** tab
+2. Select **Miscellaneous** tab
 3. Enable resilience
 
   <br><img src="../images/enable_resilience.png" alt="drawing" width="600"/>
@@ -74,7 +74,7 @@ You will start to import a pre-defined workflow available [here](../files/workfl
 2. Click the **Import** button (top right of the window) and select the **concert_v110_absolute_Resilience.zip** workflow from your laptop
 
 
-This workflow get from your concert VM, the hr-application images you have build in Lab4.    
+This workflow retrieves, from your concert VM, the hr-application images you have build in Lab4.    
 Then, for each images it will do a `podman inspect` command and calculate metrics based on the `podman inspect` command result 
 
 To be able to ssh your concert VM, you need to define an SSH Authentication:
@@ -154,12 +154,12 @@ You are going to complete the empty branch in the main workflow in order to calc
 1. From Concert UI, navigate to **Workflows->Manage**
 2. Navigate in **Resilience** folder
 3. Open the **docker_images_metrics** workflow
-4. Scroll down the workflow until the **Split_1** node and click **+BRANCH**
+4. Scroll the **Split_1** node where you will see an empty  **Branch-2**
 
     <br><img src="../images/resilience_cw_add_branch.png" alt="drawing" width="400"/>
 
-5. From the palette that is at the left pane of your window, navigate in **Shared->Everyone->Resilience**
-6. Drag and drop the **docker_image_size** node in the empty branch (it is the sub-flow you just create before)
+5. From the palette that is at the left pane of your window, navigate in **User->Resilience**
+6. Drag and drop the **docker_image_size** node (it is the sub-flow you just create before) in the empty branch 
 7. Name the node **get_image_size_flow**
 8. From the **Object Editor** that is in the right pane of your window, enter following values:
 

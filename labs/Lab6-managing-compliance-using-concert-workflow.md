@@ -76,7 +76,7 @@ To create a profile for our **CIS RHEL9 OpensSCAP Compliance Scan** workflow, fo
 
 - **Name**: profile_cis
 - Select one or more **catalogs**: select **CIS Controls** catalog
-- Select **crontrols**: Click Select all (or choose specific compliance rules)
+- Select **controls**: Click Select all (or choose specific compliance rules)
 
 ### Install the workflow in IBM Concert
 
