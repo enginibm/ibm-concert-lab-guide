@@ -78,25 +78,19 @@ podman run -v "${SRC_PATH}":/app/sample  -v "${OUTPUTDIR}":/toolkit-data --rm ${
 
 6. Patch the sbom generated
 
-At the time we write this lab (April 2025), there are 3 issues in the sbom generated. Follow these steps to correct them:
+At the time we write this lab (May 2025), there is 1 issue in the sbom generated. Follow this steps to correct it:
 
 ```bash
 sudo chmod 666 $HOME/concert-bootcamp/SBOMs-ingestion/concert_data/${COMPONENT_NAME}/certificates-hr-app.json
 vi $HOME/concert-bootcamp/SBOMs-ingestion/concert_data/${COMPONENT_NAME}/certificates-hr-app.json
 ```
 
-- Duplicate the line **serial_number**, rename the key as **ref** and insert **certificate:** before the value
-<br><img src="../images/certificate_modif1.png" alt="drawing" width="400"/>
-
-- Modify the **validity_start_date** and **validity_end_date** format by adding **+0000 GMT** at the end
-<br><img src="../images/certificate_modif2.png" alt="drawing" width="400"/>
-
 - Reduce the number of **dns_names** entries
 <br><img src="../images/certificate_modif3.png" alt="drawing" width="400"/>
 
 - Save the file (:wq)
 
-7. Upload the certificate file in Concert using Concert API
+1. Upload the certificate file in Concert using Concert API
 
 ```bash
 curl -k -X "POST" -H "accept: application/json" -H "InstanceID: ${CONCERT_INSTANCE_ID}" -H "Authorization: C_API_KEY ${CONCERT_APIKEY}" -H "Content-Type: multipart/form-data" -F "data_type=certificate" -F "filename=@${OUTPUTDIR}/certificates-hr-app.json" "https://${CONCERT_HOST}:${CONCERT_PORT}/ingestion/api/v1/upload_files"
