@@ -42,7 +42,7 @@ We will use this toolkit to generate the SBOMs of a very simple provided python 
 ### Verify that you have a Concert API Key defined, if not create it
 
 - From a browser go to the IBM Concert
-- Log on concert using your cluster credentials
+- Log on concert using your concert credentials
 - Click the circle at top right of the window and select **API Key**
   <br><img src="../images/concert_apikey_1.png" alt="drawing" width="400"/>
 - In the API Key window, click **Generate API Key**
