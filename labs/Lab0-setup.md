@@ -76,7 +76,12 @@ cp /etc/fstab /etc/fstab.orig
 vi /etc/fstab
 ```
 
-- Insert this line at the end of the file: UUID=YOUR_UUID /mnt/concert ext4 discard,defaults,nofail 0 0     
+- Insert this line at the end of the file: 
+
+```bash
+UUID=YOUR_UUID /mnt/concert ext4 discard,defaults,nofail 0 0
+```
+
 - Replace YOUR_UUID by the one listed by the **blkid | grep /dev/vdd** command       
 - Save the file and continue with following commands:
 
