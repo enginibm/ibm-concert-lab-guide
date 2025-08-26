@@ -21,7 +21,7 @@ In this lab, you will install IBM Concert on a standalone server.
   
 ## I - Installing IBM Concert on a VM
 
-> Official documentation [VM installation](https://www.ibm.com/docs/en/concert?topic=concert-deploying-virtual-machine-vm)
+> Official documentation [VM installation](https://www.ibm.com/docs/en/concert/2.0.0?topic=vm-installing-concert-software)
 
 1. Connect on the machine you have provisioned on Techzone in Lab0
 
@@ -29,13 +29,41 @@ IMPORTANT: if you are already logged on the VM, verify that you are connected as
 
 ```bash
 ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+```
+
+2. Change the umask in .bashrc file
+
+```bash
+echo "umask 022" >> $HOME/.bashrc
+source $HOME/.bashrc
+```
+
+3. Modify the techzone machine hostname
+
+In version 2.0.0, concert can be joined only if the machine has a FQDN known by a DNS. This is not the case of techzone VMs. You will then change the vm hostname so that it can be resolvable.  
+Replace **YOUR_VM_PUBLIC_IP** with the public IP defined in your Techzone reservation.
+
+```bash
+hostnamectl set-hostname <YOUR_VM_PUBLIC_IP>.nip.io
+```
+
+4. Reboot the VM
+
+```bash
+reboot
+```
+
+5. Login again and start the installation
+
+```bash
+ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 loginctl enable-linger itzuser
 cd /mnt/concert
-wget https://github.com/IBM/Concert/releases/download/v1.1.0/ibm-concert-std.tgz
+wget https://github.com/IBM/Concert/releases/download/v2.0.0.1/ibm-concert.tar.gz
 tar xfz ibm-concert-std.tgz
 ```
 
-2. Create a $HOME/env.sh file
+6. Create a $HOME/env.sh file
 
 ```bash
 vi $HOME/env.sh
@@ -48,13 +76,32 @@ Update the values for the following keys (other keys will be updated later):
 
 Save the file (:wq)
 
-3. Source the $HOME/env.sh file to set environment variables
+7. Source the $HOME/env.sh file to set environment variables
 
 ```bash
 source $HOME/env.sh
 ```
 
-4. Install concert
+8. Configure the Concert parameter file
+
+```bash
+cd $INSTALL_DIR
+cp $INSTALL_DIR/etc/sample-params/concert-vm-quick-start-params.ini $INSTALL_DIR/etc/params.ini
+```
+
+9. Edit the params.ini file with the required parameters
+
+```text
+DOCKER_EXE=podman
+
+INSTALL_VM=true
+INSTALL_CONCERT=true
+IMAGE_REGISTRY_PREFIX=cp.icr.io/cp
+HUB_IMAGE_REGISTRY_SUFFIX=/solis-hub
+CONCERT_IMAGE_REGISTRY_SUFFIX=/concert
+```
+
+10. Install concert
 
 ```bash
 ${DOCKER_EXE} login ${CONCERT_REGISTRY} --username=${CONCERT_REGISTRY_USER} --password=${CONCERT_REGISTRY_PASSWORD}
@@ -67,34 +114,17 @@ Note this password in a safe place to retrieve it easily
 
 The installation take 5 to 7 minutes, be patient.    
 
-5. Connect on Concert and create an API Key
+11. Connect on Concert and create an API Key
 
-In the following steps, **YOUR_VM_IP** is the public IP defined in your Techzone reservation
+In the following steps, **YOUR_VM_PUBLIC_IP** is the public IP defined in your Techzone reservation
 
-- From a browser go to the Concert URL (https://YOUR_VM_IP:12443)
+- From a browser go to the Concert URL (https://YOUR_VM_PUBLIC_IP.nip.io:12443)
 - Log on concert using **ibmconcert** as user and with the password you have specified in step 4.
 - Click the circle at top right of the window and select **API Key**
   <br><img src="../images/concert_apikey_vm_1.png" alt="drawing" width="400"/>
 - In the API Key window, click **Generate API Key**
   <br><img src="../images/concert_apikey_2.png" alt="drawing" width="400"/>
 - Copy the API key generated in a safe place
-
-6. Update environment variables
-
-```bash
-vi $HOME/env.sh
-```
-
-Update the values for the following keys:
-
-- CONCERT_APIKEY with the API Key you created in step 5.
-- CONCERT_URL with https://YOUR_VM_IP:12443 (replace YOUR_VM_IP with your own VM address)
-
-Save the file (:wq) and source the $HOME/env.sh file to set environment variables
-
-```bash
-source $HOME/env.sh
-```
 
 ## II - Watsonx.ai integration
 

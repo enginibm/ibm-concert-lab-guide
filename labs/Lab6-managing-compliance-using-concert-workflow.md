@@ -34,7 +34,7 @@ We will use your VM concert as the target of the compliance job.
 You are going to use a workflow called **CIS RHEL9 OpensSCAP Compliance Scan** provided by IBM Concert to ingest compliance data in Concert.
 This workflow automates the CIS compliance scan for RHEL 9 using OpenSCAP. 
 
-> Official documentation is [here](https://www.ibm.com/docs/en/concert?topic=cd-using-concert-workflows-generate-import-cis-rhel9-openscap-compliance-scan)
+> Official documentation is [here](https://www.ibm.com/docs/en/concert/2.0.0?topic=icsucw-using-concert-workflows-generate-import-cis-rhel9-openscap-compliance-scans)
 
 #### Create an environment 
 
@@ -58,7 +58,7 @@ Then click **next**, **next** and **Create**
 
 ### Create a compliance catalog and a compliance profile
 
-> Official documentation is [here](https://www.ibm.com/docs/en/concert?topic=dimension-overview-assessing-compliance)
+> Official documentation is [here](https://www.ibm.com/docs/en/concert/2.0.0?topic=compliance-overview-assessing)
 
 - A compliance catalog serves as the single source of truth for an client organization's compliance-related policies, procedures, and standards. Concert supports compliance catalogs based on the NIST 800-53 (Rev4 for OCP and Rev5), PCI, or a custom standard.
 

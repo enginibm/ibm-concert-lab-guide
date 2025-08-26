@@ -42,10 +42,40 @@ ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_d
 
 ```bash
 cd $HOME
-curl -sfL https://get.k3s.io | sudo INSTALL_K3S_VERSION=v1.29.2+k3s1 sh -s - --write-kubeconfig-mode 644 --disable traefik
+curl -sfL https://get.k3s.io | sudo INSTALL_K3S_VERSION=v1.33.3+k3s1 sh -s - --write-kubeconfig-mode 644 --disable traefik
 ```
 
-3. Install Helm
+3. Specify Kubernetes configuration file
+
+```bash
+echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> ~/.bashrc
+source ~/.bashrc
+```
+
+4. Insecure access to the internal registry must be enabled and registries.yaml must be defined under /etc/rancher/k3s:
+
+Replace **YOUR_VM_PUBLIC_IP** with the public IP defined in your Techzone reservation.
+
+```bash
+sudo vi /etc/rancher/k3s/registries.yaml
+```
+
+Insert
+
+```text
+configs:
+  "YOUR_VM_PUBLIC_IP.nip.io": 
+    "tls": 
+       insecure_skip_verify: true
+```
+
+Restart the Kubernetes service
+
+```bash
+sudo systemctl restart k3s
+```
+
+5. Install Helm
 
 - Add /usr/local/bin in your path
 
@@ -60,19 +90,11 @@ source ~/.bashrc
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
-sudo chmod 777 /usr/local/bin/helm
-```
-
-1. Specify Kubernetes configuration file
-
-```bash
-echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> ~/.bashrc
-source ~/.bashrc
 ```
 
 ### Install Concert workflow
 
-> Official documentation: [Concert Worflow installation](https://www.ibm.com/docs/en/concert?topic=workflows-installing-concert-vm)
+> Official documentation: [Concert Worflow installation](https://www.ibm.com/docs/en/concert/2.0.0?topic=vm-installing-concert-software)
 
 1. Connect to the VM you have created on Techzone in Lab0 and source environment variables
 
@@ -80,77 +102,44 @@ source ~/.bashrc
 ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 ```
 
-2. Get concert workflow installation files
+2. Configure the Concert Workflow parameter file
 
 ```bash
 source $HOME/env.sh
-cd /mnt/concert
-wget https://github.com/IBM/Concert/releases/download/v1.1.0/ibm-concert-std-workflows.tgz
-tar xfz ibm-concert-std-workflows.tgz
+cd $INSTALL_DIR
+cp $INSTALL_DIR/etc/sample-params/workflows-quickstart-vm-params.ini $INSTALL_DIR/etc/params.ini
 ```
 
-3. Update environment variables
+3. Edit the params.ini file with the required parameters
 
-```bash
-vi $HOME/env.sh
+Replace **YOUR_VM_PUBLIC_IP** with the public IP defined in your Techzone reservation.
+
+```text
+DOCKER_EXE=podman
+
+INSTALL_VM=true
+INSTALL_WORKFLOWS=true
+# Registry users
+REG_USER=cp
+IMAGE_REGISTRY_PREFIX=cp.icr.io/cp
+HUB_IMAGE_REGISTRY_SUFFIX=/solis-hub
+WORKFLOWS_IMAGE_REGISTRY_SUFFIX=/concert         
+WORKFLOWS_INSTANCE_ADDRESS=YOUR_VM_PUBLIC_IP.nip.io
 ```
 
-Update the values for the following keys:
+4. Install Concert Workflow
 
-- IBM_REG_PASS with your entitlement key (same as CONCERT_REGISTRY_PASSWORD value)
-- VM_IP with your VM public IP address (in the format aaa.bbb.ccc.ddd)
-
-Save the file (:wq) and source the $HOME/env.sh file to set environment variables
+Replace <user> and <password> by your own values
 
 ```bash
-source $HOME/env.sh
-```
-
-3. Navigate to workflows folder
-
-```bash
-cd /mnt/concert/workflows
-```
-
-4. Launch concert-workflow installation
-
-```bash
-./bin/deploy-k8s --license-acceptance=y \
---instance-address=$VM_IP \
---concert-user=$CONCERT_USER \
---concert-url=$CONCERT_URL \
---c-api-key=$CONCERT_APIKEY
+${DOCKER_EXE} login ${CONCERT_REGISTRY} --username=${CONCERT_REGISTRY_USER} --password=${CONCERT_REGISTRY_PASSWORD}
+$INSTALL_DIR/bin/setup --license_acceptance=y --username=<user> --password=<password> --registry_password=${IBM_REGISTRY_PASSWORD}
 ```
 
 **IMPORTANT**: Wait until the end of the installation. Be patient, it can take up to 20 minutes. It's time for a coffee break !
 
-5. Enable (Python function-as-a-service (FaaS) action blocks)
-
-Insecure access to the internal registry must be enabled and registries.yaml must be defined under /etc/rancher/k3s:
-
-```bash
-sudo vi /etc/rancher/k3s/registries.yaml
-```
-
-Insert
-
-```text
-configs:
-  "YOUR_VM_IP": 
-    "tls": 
-       insecure_skip_verify: true
-```
-
-Restart the Kubernetes service
-
-```bash
-sudo systemctl restart k3s
-```
-
-6. Check Concert Workflow installation
+1. Check Concert Workflow installation
   
-- From a browser, enter the URL of your concert instance (https://YOUR_VM_IP:12443) and log with your concert username and password.
-- You should have now a **Workflows** menu
-- Navigate to **Workflows->Manage** and check that a page is displayed successfully
-- Navigate to **Administration->Integrations** and then in **Connections** tab
-- Check that you have a connection named **CONCERT_WORKFLOWS**
+- From a browser, enter the URL of your concert instance (https://YOUR_VM_PUBLIC_IP.nip.io/workflows) and log with your concert username and password.
+- You should have now a **Workflows** menu on the left burger meny
+- Navigate to **Workflows->Workflows** and check that a page is displayed successfully

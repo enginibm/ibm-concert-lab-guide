@@ -39,7 +39,7 @@ It will cover:
 
 ### Provision the VM
 
-Provision your concert VM from this [link](https://techzone.ibm.com/my/reservations/create/67ebbf075322ab022fecaa12).   
+Provision your concert VM from this [link](https://techzone.ibm.com/my/reservations/create/68a831993211144a53c49722).   
 The minimum requirements to install IBM Concert and Concert workflox are: 16 vCPUs/32GB RAM/512GB Disk.     
 On the provisionned VM, a 500GB disk is present but you need to prepare it.
 
