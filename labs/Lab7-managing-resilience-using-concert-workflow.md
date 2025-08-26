@@ -71,7 +71,7 @@ The next steps consists in creating a workflow to get images metrics and upload 
 You will start to import a pre-defined workflow available [here](../files/workflows_lab7).   
 
 1. From Concert UI, navigate to **Workflows->Manage**
-2. Click the **Import** button (top right of the window) and select the **concert_v110_absolute_Resilience.zip** workflow from your laptop
+2. Click the **Import** button (top right of the window) and select the **concert_v2001_absolute_Resilience** workflow from your laptop
 
 
 This workflow retrieves, from your concert VM, the hr-application images you have build in Lab4.    
@@ -103,10 +103,10 @@ The aim of this workflow is to extract the image size from a json object that ha
 4. Call it **docker_images_size** and click **Create** button
 5. Define your variables:
 
-| Name          |    Type       | Default Value  |Selected box    |
-| :------------ | :-------------| :------------- | :-------------: |
-| json_inspect  | Array         | [{"Architecture": "amd64", "Os": "linux", "Size": 1378729490}] | in / required |
-| image_size    | Number        | 0                                                              | out / log     |
+| Name         | Type   | Default Value                                                  | Selected box  |
+| :----------- | :----- | :------------------------------------------------------------- | :-----------: |
+| json_inspect | Array  | [{"Architecture": "amd64", "Os": "linux", "Size": 1378729490}] | in / required |
+| image_size   | Number | 0                                                              |   out / log   |
 
 
 Then you are going to use a "jq" node in order to extract the size from the **json_inspect** input variable:
@@ -176,10 +176,10 @@ You are going to complete the empty branch in the main workflow in order to calc
 
 Before running your flow, you need to modify the value of these variables:
 
-| Name          |    Value    |
-| :------------ | :-------------| 
-| concert_host     | The IP address of your Concert VM                                                                |
-| concert_api_key  | The API key of your concert installation (can be retrieved from your env.sh file create in lab1) |
+| Name            | Value                                                                                            |
+| :-------------- | :----------------------------------------------------------------------------------------------- |
+| concert_host    | The IP address of your Concert VM                                                                |
+| concert_api_key | The API key of your concert installation (can be retrieved from your env.sh file create in lab1) |
 
 Now, you can now run your flow.   
 The best to begin is to run it in debug mode and put a breakpoint for example on node **Upload_to_concert** and take a look at the value of your **concert_data** variable

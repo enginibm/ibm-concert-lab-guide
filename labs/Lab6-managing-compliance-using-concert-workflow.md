@@ -23,6 +23,7 @@ We will use your VM concert as the target of the compliance job.
     - [Create a compliance catalog and a compliance profile](#create-a-compliance-catalog-and-a-compliance-profile)
     - [Install the workflow in IBM Concert](#install-the-workflow-in-ibm-concert)
     - [Create an Authentication to ssh the Concert VM](#create-an-authentication-to-ssh-the-concert-vm)
+    - [Create an Authentication for concert](#create-an-authentication-for-concert)
     - [Run manually the workflow](#run-manually-the-workflow)
     - [Run the workflow from an ingestion job](#run-the-workflow-from-an-ingestion-job)
     - [Scheduling the workflow job](#scheduling-the-workflow-job)
@@ -105,6 +106,19 @@ Follow these step to create an SSH Authentication:
 
   <br><img src="../images/cw_compliance_ssh_authentication.png" alt="drawing" width="600"/>
 
+### Create an Authentication for concert
+
+CIS_RHEL9_OpenSCAP_Compliance_Scan workflow will upload the scan result to IBM Concert.
+Follow these step to create an IBM Hub - Self Authentication:
+
+1. On concert UI, select **Workflows->Authentications** menu 
+2. Click the **Create authentication** button and enter following informations:
+
+- **name**: concert-auth
+- **service**: IBM Hub - Self
+
+  <br><img src="../images/cw_compliance_hubself_authentication.png" alt="drawing" width="600"/>
+
 ### Run manually the workflow
 
 1. On concert UI, select **Workflows->Manage** menu 
@@ -117,20 +131,25 @@ Follow these step to create an SSH Authentication:
 
   <br><img src="../images/cw_modify_step.png" alt="drawing" width="600"/>
 
-6. Execute the worflow
+6. In the **Start** box, update the value of following variables (keep the "):
 
-- Select **Run->Run with Custom Inputs**, select the authentication entries and click run
+- **concert_auth**: "concert_auth"
+- **ssh_authentication**: "concert-vm-ssh"
 
-  <br><img src="../images/cw_run.png" alt="drawing" width="400"/>
-  <br><img src="../images/cw_run_inputs.png" alt="drawing" width="400"/>
+  <br><img src="../images/cw_change_variables.png" alt="drawing" width="600"/>
 
+1. Execute the worflow
+
+- Click the **Run** button
+
+  <br><img src="../images/cw_run_button.png" alt="drawing"/>
 >
-> Note: You can also run the workflow in debug mode. In this case you must give the authentication values in the workflow Start box
+> Note: You can also run the workflow in debug mode.
 >
 
 The execution of the flow take at least 5 minutes, be patient.
 
-7. Check the ingested data
+1. Check the ingested data
 
 - When the workflow is finished, navigate to **Administration->Event log** menu and check that the compliance file upload is successfull
   <br><img src="../images/cw_compliance_file_upload.png" alt="drawing" width="600"/>
