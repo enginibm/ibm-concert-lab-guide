@@ -139,7 +139,7 @@ Then you will clone a project containing a directory structure and a script to g
 
 ```bash
 cd $HOME/concert-bootcamp
-git clone https://github.ibm.com/concert-bootcamp/SBOMs-ingestion.git
+git clone -b concert-2.0.0 https://github.ibm.com/concert-bootcamp/SBOMs-ingestion.git
 ```
 
 Create an output directory for the generated SBOMs
