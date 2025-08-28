@@ -42,13 +42,12 @@ In order to be able to ingest compliance data in IBM Concert, you must have an e
 
 To create this environment, follow these steps:
 
-1. From your VM Rhel 9 reservation page, get the VM hostname (If you are connected in ssh on your vm, you can also get your hostname with the `hostname`command)
-  <br><img src="../images/tz_vm_hostname.png" alt="drawing" width="600"/>
+1. Get your hostname with the `hostname`command
 
 2. From the arena view on your concert UI, select **Define and upload->Define Environment->From resources**
   <br><img src="../images/concert_define_environment.png" alt="drawing" width="600"/>
 
-3. In the **Define an environment** screen, enter following informations:
+1. In the **Define an environment** screen, enter following informations:
 
 - **name**: your VM hostname
 - **type**: other
@@ -85,7 +84,7 @@ To create a profile for our **CIS RHEL9 OpensSCAP Compliance Scan** workflow, fo
 
 2. Upload the workflow in concert 
 
-- On concert UI, select **Workflows->Manage** menu
+- From the burger menu, select **Workflows->Worflows** menu
 - Select **Import** button
 - And choose the zip file corresponding to the workflow you downloaded in step1 (name CIS_RHEL9_OpenSCAP_Compliance_Scan.zip)
    
@@ -94,7 +93,7 @@ To create a profile for our **CIS RHEL9 OpensSCAP Compliance Scan** workflow, fo
 CIS_RHEL9_OpenSCAP_Compliance_Scan workflow will do an ssh connection to the target machine to run an OpenSCAP compliance scan. In our case, the target machine is our Concert VM.   
 Follow these step to create an SSH Authentication:
 
-1. On concert UI, select **Workflows->Authentications** menu 
+1. From the burger menu, select **Workflows->Authentications** menu 
 2. Click the **Create authentication** button and enter following informations:
 
 - **name**: concert-vm-ssh
@@ -111,7 +110,7 @@ Follow these step to create an SSH Authentication:
 CIS_RHEL9_OpenSCAP_Compliance_Scan workflow will upload the scan result to IBM Concert.
 Follow these step to create an IBM Hub - Self Authentication:
 
-1. On concert UI, select **Workflows->Authentications** menu 
+1. From the burger menu, select **Workflows->Authentications** menu 
 2. Click the **Create authentication** button and enter following informations:
 
 - **name**: concert-auth
@@ -121,7 +120,7 @@ Follow these step to create an IBM Hub - Self Authentication:
 
 ### Run manually the workflow
 
-1. On concert UI, select **Workflows->Manage** menu 
+1. From the burger menu, select **Workflows->Workflows** menu 
 2. Select **CIS_RHEL9_OpenSCAP_Compliance_Scan** workflow
 3. Edit the RHEL_OSCAP_Scan step
 
