@@ -87,18 +87,16 @@ CONCERT_IMAGE_REGISTRY_SUFFIX=/concert
 
 10. Install concert
 
+Replace **CONCERT_USER** and **CONCERT_PASSWORD** by values of your choice
+
 ```bash
 ${DOCKER_EXE} login ${CONCERT_REGISTRY} --username=${CONCERT_REGISTRY_USER} --password=${CONCERT_REGISTRY_PASSWORD}
-ibm-concert-std/bin/setup --license_acceptance=y --registry=${CONCERT_REGISTRY} --runtime=${DOCKER_EXE} --username=ibmconcert --password
+ibm-concert-std/bin/setup --license_acceptance=y --registry=${CONCERT_REGISTRY} --runtime=${DOCKER_EXE} --username=CONCERT_USER --password=CONCERT_PASSWORD
 ```
-
-The installer will prompt for a password.  
-This will define the default password for the GUI user `ibmconcert`   
-Note this password in a safe place to retrieve it easily    
 
 The installation take 5 to 7 minutes, be patient.    
 
-11. Connect on Concert and create an API Key
+1.  Connect on Concert and create an API Key
 
 In the following steps, **YOUR_VM_PUBLIC_IP** is the public IP defined in your Techzone reservation
 
