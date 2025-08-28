@@ -132,7 +132,7 @@ Follow these step to create an IBM Hub - Self Authentication:
 
 6. In the **Start** box, update the value of following variables (keep the "):
 
-- **concert_auth**: "concert_auth"
+- **concert_auth**: "concert-auth"
 - **ssh_authentication**: "concert-vm-ssh"
 
   <br><img src="../images/cw_change_variables.png" alt="drawing" width="600"/>
@@ -150,7 +150,7 @@ The execution of the flow take at least 5 minutes, be patient.
 
 1. Check the ingested data
 
-- When the workflow is finished, navigate to **Administration->Event log** menu and check that the compliance file upload is successfull
+- When the workflow is finished, navigate to **Concert->Administration->Event log** menu and check that the compliance file upload is successfull
   <br><img src="../images/cw_compliance_file_upload.png" alt="drawing" width="600"/>
 
 - Navigate to **Dimensions->Compliance** menu and consult compliance data for your concert VM.

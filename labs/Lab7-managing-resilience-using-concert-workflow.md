@@ -18,7 +18,6 @@ We will use the 2 images that you have build in lab4.
   - [Objective](#objective)
   - [Prerequisite](#prerequisite)
   - [Content](#content)
-  - [Activate the Resilience](#activate-the-resilience)
   - [Import Resilience data using a workflow](#import-resilience-data-using-a-workflow)
     - [Resilience library and a Resilience profile](#resilience-library-and-a-resilience-profile)
     - [Import a resilience workflow](#import-a-resilience-workflow)
@@ -26,23 +25,6 @@ We will use the 2 images that you have build in lab4.
     - [Complete the resilience workflow previously imported](#complete-the-resilience-workflow-previously-imported)
     - [Run the workflow to populate you application resilience posture](#run-the-workflow-to-populate-you-application-resilience-posture)
   - [Resilience Management](#resilience-management)
-
-## Activate the Resilience
-
-1. From Concert UI, navigate to **Administration->Settings**
-2. Select **Miscellaneous** tab
-3. Enable resilience
-
-  <br><img src="../images/enable_resilience.png" alt="drawing" width="600"/>
-
-You must also enable resilience for your application:
-
-1. From Concert UI, navigate to **Inventory->Applications**
-2. Select your **hr-application**
-3. Select **Settings** tab
-4. In Resilience menu, enable resilience
-
-  <br><img src="../images/enable_resilience_app.png" alt="drawing" width="600"/>
 
 ## Import Resilience data using a workflow
 
@@ -70,7 +52,7 @@ The next steps consists in creating a workflow to get images metrics and upload 
 
 You will start to import a pre-defined workflow available [here](../files/workflows_lab7).   
 
-1. From Concert UI, navigate to **Workflows->Manage**
+1. From burger menu, navigate to **Workflows->Workflow**
 2. Click the **Import** button (top right of the window) and select the **concert_v2001_absolute_Resilience** workflow from your laptop
 
 
@@ -97,11 +79,10 @@ To be able to ssh your concert VM, you need to define an SSH Authentication:
 You will now create a workflow that will be used as a sub-worflow of **docker_images_metrics** workflow in order to define a new metric: the percentage of big images.
 The aim of this workflow is to extract the image size from a json object that have the format of the result of the `podman inspect` command
 
-1. From Concert UI, navigate to **Workflows->Manage**
-2. Navigate in **Resilience** folder
-3. Click the button **Create workflow** (top right of the window)
-4. Call it **docker_images_size** and click **Create** button
-5. Define your variables:
+1. From burger menu, navigate to **Workflows->Workflow**
+2. Click the button **Create workflow** (top right of the window)
+3. Call it **docker_images_size** and click **Create** button
+4. Define your variables:
 
 | Name         | Type   | Default Value                                                  | Selected box  |
 | :----------- | :----- | :------------------------------------------------------------- | :-----------: |
@@ -118,7 +99,7 @@ Then you are going to use a "jq" node in order to extract the size from the **js
 3. From the **Object Editor** that is in the right pane of your window, click on **OneOf>**
     <br><img src="../images/resilience_cw_oneof.png" alt="drawing" width="400"/>
 
-4. Select **Array**, Click **OK** and Click **Cancel**    
+4. Select **Object**, Click **Save** 
     <br><img src="../images/resilience_cw_oneof2.png" alt="drawing" width="400"/>
 
 5. Then select the pencil to set the JSON variable that jq will use as input
@@ -151,7 +132,7 @@ You can now test your workflow:
 
 You are going to complete the empty branch in the main workflow in order to calculate images metrics
 
-1. From Concert UI, navigate to **Workflows->Manage**
+1. From burger menu, navigate to **Workflows->Workflow**
 2. Navigate in **Resilience** folder
 3. Open the **docker_images_metrics** workflow
 4. Scroll the **Split_1** node where you will see an empty  **Branch-2**
@@ -176,10 +157,10 @@ You are going to complete the empty branch in the main workflow in order to calc
 
 Before running your flow, you need to modify the value of these variables:
 
-| Name            | Value                                                                                            |
-| :-------------- | :----------------------------------------------------------------------------------------------- |
-| concert_host    | The IP address of your Concert VM                                                                |
-| concert_api_key | The API key of your concert installation (can be retrieved from your env.sh file create in lab1) |
+| Name            | Value                                    |
+| :-------------- | :--------------------------------------- |
+| concert_host    | The IP address of your Concert VM        |
+| concert_api_key | The API key of your concert installation |
 
 Now, you can now run your flow.   
 The best to begin is to run it in debug mode and put a breakpoint for example on node **Upload_to_concert** and take a look at the value of your **concert_data** variable
