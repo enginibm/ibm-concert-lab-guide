@@ -38,25 +38,9 @@ echo "umask 022" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
-3. Modify the techzone machine hostname
-
-In version 2.0.0, concert can be joined only if the machine has a FQDN known by a DNS. This is not the case of techzone VMs. You will then change the vm hostname so that it can be resolvable.  
-Replace **YOUR_VM_PUBLIC_IP** with the public IP defined in your Techzone reservation.
+5. Start the installation
 
 ```bash
-sudo hostnamectl set-hostname <YOUR_VM_PUBLIC_IP>.nip.io
-```
-
-4. Reboot the VM
-
-```bash
-sudo reboot
-```
-
-5. Login again and start the installation
-
-```bash
-ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 loginctl enable-linger itzuser
 cd /mnt/concert
 wget https://github.com/IBM/Concert/releases/download/v2.0.0.1/ibm-concert.tar.gz

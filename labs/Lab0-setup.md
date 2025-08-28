@@ -27,6 +27,7 @@ It will cover:
   - [Content](#content)
   - [I - Provision a vm on techzone](#i---provision-a-vm-on-techzone)
     - [Provision the VM](#provision-the-vm)
+    - [Modify the techzone machine hostname](#modify-the-techzone-machine-hostname)
     - [Prepare VM disk](#prepare-vm-disk)
   - [II - Provision a watsonx.ai on techzone](#ii---provision-a-watsonxai-on-techzone)
     - [Watsonx.ai Provisioning](#watsonxai-provisioning)
@@ -53,6 +54,21 @@ Save it somewhere, you will need to use it to connect to your instance using SSH
 > Note: On Linux/MacOS, you need to modify the SSH Key permission to be able to use it.
 ```bash 
 chmod 600 /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+```
+
+### Modify the techzone machine hostname
+
+In version 2.0.0, concert can be joined only if the machine has a FQDN known by a DNS. This is not the case of techzone VMs. You will then change the vm hostname so that it can be resolvable.  
+Replace **YOUR_VM_PUBLIC_IP** with the public IP defined in your Techzone reservation.
+
+```bash
+sudo hostnamectl set-hostname <YOUR_VM_PUBLIC_IP>.nip.io
+```
+
+4. Reboot the VM
+
+```bash
+sudo reboot
 ```
 
 ### Prepare VM disk
