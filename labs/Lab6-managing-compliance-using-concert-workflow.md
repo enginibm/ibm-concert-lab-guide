@@ -25,7 +25,6 @@ We will use your VM concert as the target of the compliance job.
     - [Create an Authentication to ssh the Concert VM](#create-an-authentication-to-ssh-the-concert-vm)
     - [Create an Authentication for concert](#create-an-authentication-for-concert)
     - [Run manually the workflow](#run-manually-the-workflow)
-    - [Run the workflow from an ingestion job](#run-the-workflow-from-an-ingestion-job)
     - [Scheduling the workflow job](#scheduling-the-workflow-job)
   - [Compliance Management](#compliance-management)
 
@@ -155,34 +154,11 @@ The execution of the flow take at least 5 minutes, be patient.
 
 - Navigate to **Dimensions->Compliance** menu and consult compliance data for your concert VM.
 
-### Run the workflow from an ingestion job
-
-You can create an ingestion job to run the compliance scan
-
-1. Navigate to the **Administration->Integrations** menu
-2. Click **Create ingestion job** button
-3. Enter following values and click Create
-
-- **Name**: Concert VM Compliance
-- **Connection type**: Concert Workflows
-- **Connection**: CONCERT_WORKFLOWS
-- **Workflow reference**: /User/CIS_RHEL9_OpenSCAP_Compliance_Scan
-- **Concert auth**: ibmconcert@0000-0000-0000-0000/ConcertAPIKey
-- **Ssh authentication**: ibmconcert@0000-0000-0000-0000/concert-vm-ssh
-
-4. Then you can launch the job
-
-  <br><img src="../images/cw_ingestion_job.png" alt="drawing" width="600"/>
-
->
-> Note: you need to reload the page to see if the job is finished
->
-
 ### Scheduling the workflow job
 
-Alternatively, you can also schedule a workflow job for ingestion of compliance scans into Concert if needed.
+You can also schedule a workflow job for ingestion of compliance scans into Concert if needed.
 
-1. Navigate to **Workflows->Schedule** menu
+1. Navigate to **Workflows->Job** menu
 2. Select **Create job** button
 3. Populate the values and click **Create**
 
