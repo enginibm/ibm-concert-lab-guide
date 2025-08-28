@@ -132,7 +132,7 @@ WORKFLOWS_INSTANCE_ADDRESS=YOUR_VM_PUBLIC_IP.nip.io
 Replace <user> and <password> by your own values
 
 ```bash
-${DOCKER_EXE} login ${CONCERT_REGISTRY} --username=${CONCERT_REGISTRY_USER} --password=${CONCERT_REGISTRY_PASSWORD}
+${DOCKER_EXE} login ${IBM_REGISTRY} --username=${IBM_REGISTRY_USER} --password=${IBM_REGISTRY_PASSWORD}
 $INSTALL_DIR/bin/setup --license_acceptance=y --username=<user> --password=<password> --registry_password=${IBM_REGISTRY_PASSWORD}
 ```
 
