@@ -91,7 +91,7 @@ Replace **CONCERT_USER** and **CONCERT_PASSWORD** by values of your choice
 
 ```bash
 ${DOCKER_EXE} login ${CONCERT_REGISTRY} --username=${CONCERT_REGISTRY_USER} --password=${CONCERT_REGISTRY_PASSWORD}
-ibm-concert-std/bin/setup --license_acceptance=y --registry=${CONCERT_REGISTRY} --runtime=${DOCKER_EXE} --username=CONCERT_USER --password=CONCERT_PASSWORD
+$INSTALL_DIR/bin/setup --license_acceptance=y --username=CONCERT_USER --password=CONCERT_PASSWORD
 ```
 
 The installation take 5 to 7 minutes, be patient.    
