@@ -44,7 +44,7 @@ source $HOME/.bashrc
 loginctl enable-linger itzuser
 cd /mnt/concert
 wget https://github.com/IBM/Concert/releases/download/v2.0.0.1/ibm-concert.tar.gz
-tar xfz ibm-concert-std.tgz
+tar xfz ibm-concert.tar.gz
 ```
 
 6. Create a $HOME/env.sh file
