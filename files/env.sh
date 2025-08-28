@@ -1,6 +1,6 @@
 export INSTALL_DIR=/mnt/concert/ibm-concert
 
 export DOCKER_EXE=podman
-export CONCERT_REGISTRY=cp.icr.io/cp/concert
-export CONCERT_REGISTRY_USER=cp
-export CONCERT_REGISTRY_PASSWORD="YOUR_ENTITLEMENT_KEY"
+export IBM_REGISTRY=cp.icr.io/cp
+export IBM_REGISTRY_USER=cp
+export IBM_REGISTRY_PASSWORD="YOUR_ENTITLEMENT_KEY"

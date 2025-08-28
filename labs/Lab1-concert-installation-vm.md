@@ -90,7 +90,7 @@ CONCERT_IMAGE_REGISTRY_SUFFIX=/concert
 Replace **CONCERT_USER** and **CONCERT_PASSWORD** by values of your choice
 
 ```bash
-${DOCKER_EXE} login ${CONCERT_REGISTRY} --username=${CONCERT_REGISTRY_USER} --password=${CONCERT_REGISTRY_PASSWORD}
+${DOCKER_EXE} login ${IBM_REGISTRY} --username=${IBM_REGISTRY_USER} --password=${IBM_REGISTRY_PASSWORD}
 $INSTALL_DIR/bin/setup --license_acceptance=y --username=CONCERT_USER --password=CONCERT_PASSWORD
 ```
 
