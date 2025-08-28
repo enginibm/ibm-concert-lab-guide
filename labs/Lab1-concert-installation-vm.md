@@ -44,13 +44,13 @@ In version 2.0.0, concert can be joined only if the machine has a FQDN known by 
 Replace **YOUR_VM_PUBLIC_IP** with the public IP defined in your Techzone reservation.
 
 ```bash
-hostnamectl set-hostname <YOUR_VM_PUBLIC_IP>.nip.io
+sudo hostnamectl set-hostname <YOUR_VM_PUBLIC_IP>.nip.io
 ```
 
 4. Reboot the VM
 
 ```bash
-reboot
+sudo reboot
 ```
 
 5. Login again and start the installation
