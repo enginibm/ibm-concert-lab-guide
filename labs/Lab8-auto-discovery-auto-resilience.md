@@ -87,7 +87,12 @@ Then Concert discover the content of the namespace and run a Resilience Assessme
 ## Explore the actions generated in the Action Center and the created resilience assessment 
 
 Thanks to watsonx.ai, some actions have been created in the **Actions center**. Take the time to explore them.
+
+  <br><img src="../images/auto-discovery-actions-run1.png" alt="drawing" width="600"/>
+
 You can also navigate to the Resilience assessment: **Concert->Dimension->Resilience**. Take the time to explore this assessment.
+
+  <br><img src="../images/auto-discovery-resilience-run1.png" alt="drawing" width="600"/>
 
 ## Remediation: Improve the quality of the application deployment
 
@@ -127,7 +132,9 @@ oc apply -f ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml
 oc get pods
 ```
 
-You can see that the pods are restarting and become running less quickly
+You can see that the pods are restarting and become running less quickly.
+
+> Note: you can take a look at the 2 yamls files (before and after improvment) to understand the improvments that have been done
 
 ## Run again the integration job to generate a new resilience assessment
 
@@ -135,4 +142,9 @@ You can see that the pods are restarting and become running less quickly
 - Select the last discovery job, click the 3 points at the end of the line and select **Run now**
 - When finished, 
   - go back in the **Actions center**, you will see that some actions are now in **Success** mode
+
+  <br><img src="../images/auto-discovery-actions-run2.png" alt="drawing" width="600"/>
+
   - Navigate also in the **Resilience** dimension, you will see that NFRs have a better score
+
+  <br><img src="../images/auto-discovery-resilience-run2.png" alt="drawing" width="600"/>
