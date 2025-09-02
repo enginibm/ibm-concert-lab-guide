@@ -19,7 +19,7 @@ You will analyze the result of the resilience assessment and try to solve the ap
   - [Content](#content)
   - [Clear the previously imported data](#clear-the-previously-imported-data)
   - [Deploy the application on openshift](#deploy-the-application-on-openshift)
-  - [Run the **Discover your data** feature](#run-the-discover-your-data-feature)
+  - [Run **Discover your data**](#run-discover-your-data)
   - [Explore the actions generated in the Action Center and the created resilience assessment](#explore-the-actions-generated-in-the-action-center-and-the-created-resilience-assessment)
   - [Remediation: Improve the quality of the application deployment](#remediation-improve-the-quality-of-the-application-deployment)
   - [Run again the integration job to generate a new resilience assessment](#run-again-the-integration-job-to-generate-a-new-resilience-assessment)
@@ -67,7 +67,7 @@ oc apply -f ocp-deploy-summarization-svc.yaml
 oc get pods
 ```
 
-## Run the **Discover your data** feature
+## Run **Discover your data** 
 
 - From the burger menu, navigate to **Concert->Home**
 - On the top right of the screen, click the **Discover Your Data** button
