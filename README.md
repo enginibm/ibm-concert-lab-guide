@@ -17,4 +17,4 @@ In order to run the labs, you will provision on IBM Techzone some environments.
 
 Here is the High Level architecture of your environment:    
 
- <br><img src="images/bootcamp-architecture-v2.png" alt="drawing" width="600"/>
+ <br><img src="images/bootcamp-architecture-v2.png" alt="drawing"/>
