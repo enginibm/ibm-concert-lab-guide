@@ -15,6 +15,6 @@ In this bootcamp, based on a simple python application composed of 2 micro servi
 All the labs are based on Concert Version 2.0.0.     
 In order to run the labs, you will provision on IBM Techzone some environments.     
 
-Here is the architecture schema of your environment:    
+Here is the High Level architecture of your environment:    
 
- <br><img src="images/bootcamp-architecture.png" alt="drawing" width="600"/>
+ <br><img src="images/bootcamp-architecture-v2.png" alt="drawing" width="600"/>
