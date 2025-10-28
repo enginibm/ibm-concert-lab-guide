@@ -56,7 +56,7 @@ vi $HOME/env.sh
 Copy Paste the content of [env.sh](../files/env.sh) in this $HOME/env.sh file  
 Update the values for the following keys (other keys will be updated later):
 
-- **CONCERT_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
+- **IBM_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
 
 Save the file (:wq)
 
@@ -73,7 +73,7 @@ cd $INSTALL_DIR
 cp $INSTALL_DIR/etc/sample-params/concert-vm-quick-start-params.ini $INSTALL_DIR/etc/params.ini
 ```
 
-9. Edit the params.ini file with the required parameters
+9. Edit the $INSTALL_DIR/etc/params.ini file with the required parameters
 
 ```text
 DOCKER_EXE=podman

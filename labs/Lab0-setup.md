@@ -54,8 +54,16 @@ From your reservation page, download the ssh key to connect to your VM instance.
 Save it somewhere, you will need to use it to connect to your instance using SSH.
 
 > Note: On Linux/MacOS, you need to modify the SSH Key permission to be able to use it.
+
 ```bash 
 chmod 600 /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+```
+
+> Note: On Windows, you need to modify the SSH Key permission from a via PowerShell to be able to use it.
+
+```bash 
+icacls "path\to\your\key.pem" /inheritance:r
+icacls "path\to\your\key.pem" /grant:r "${env:USERNAME}:(R)"
 ```
 
 ### Modify the techzone machine hostname
@@ -188,6 +196,7 @@ Create a GitHub Token to clone using cli thru HTTPS:
 - Login to [https://github.ibm.com](https://github.ibm.com)
 - Click your profile in the right top
 - Settings —&gt; Developer settings —&gt; Personal access tokens
+- Choose **Tokens (classic)**
 - Click **Generate new token**
 - Enter a name you can remember, for example **IBM GitHub Clone**
 - Check **repo**, the underlying boxes such as `repo:status` will also be checked
