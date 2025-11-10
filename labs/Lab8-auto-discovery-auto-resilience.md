@@ -51,15 +51,39 @@ Then you will start to clear these data.
 ### Install the oc command
 
 1. Create a directory that we call here **$ConcertBootcampLab8Dir** on YOUR LAPTOP
-   
-2. Download the $ConcertBootcampLab8Dir/oc command in this directory (choose the good command depending of your OS)
+
+2. Create an environment file
 
 ```bash
 cd $ConcertBootcampLab8Dir
-Linux: wget <Openshift downloads>/amd64/linux/$ConcertBootcampLab8Dir/oc.tar
-Mac x86: wget <Openshift downloads>/amd64/mac/$ConcertBootcampLab8Dir/oc.zip
-Mac ARM: wget <Openshift downloads>/arm64/mac/$ConcertBootcampLab8Dir/oc.zip
-Windows: <Openshift downloads>/amd64/windows/$ConcertBootcampLab8Dir/oc.zip
+vi env.sh
+```
+
+Copy and paste this content in the file
+
+```txt
+ConcertBootcampLab8Dir=$(pwd)
+
+OCP_API_ENDPOINT=https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
+OCP_DOWNLOADS=https://downloads-openshift-console.apps.itz-pg334v.infra01-lb.tok04.techzone.ibm.com
+OCP_LOGIN_TOKEN=sha256~s4TJ66iPVhyzc82H5mm5xD55xUmbeTERjMOqsBekyzo
+OCP_CLUSTER_NAME=itz-pg334v
+```
+
+Source the env.sh file
+
+```bash
+source env.sh
+```
+   
+1. Download the oc command in this directory (choose the good command depending of your OS)
+
+```bash
+cd $ConcertBootcampLab8Dir
+Linux: wget $OCP_DOWNLOADS/amd64/linux/oc.tar
+Mac x86: wget$OCP_DOWNLOADS/amd64/mac/oc.zip
+Mac ARM: wget $OCP_DOWNLOADS/arm64/mac/oc.zip
+Windows: wget $OCP_DOWNLOADS/amd64/windows/oc.zip
 ```
 
 3. untar or unzip the file downloaded
@@ -69,7 +93,7 @@ Windows: <Openshift downloads>/amd64/windows/$ConcertBootcampLab8Dir/oc.zip
 1. From your your laptop, connect to openshift
 
 ```bash
-cd $ConcertBootcampLab8Dir/oc login --token=<Openshift Token> --server=<Openshift API endpoint>
+$ConcertBootcampLab8Dir/oc login --token=<Openshift Token> --server=<Openshift API endpoint>
 ```
 
 2. Navigate in the application folder and deploy the application in your namespace
