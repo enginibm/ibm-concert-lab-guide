@@ -60,7 +60,7 @@ metadata:
 spec:
   ports:
   - port: 30091
-    nodePort: 31910
+#    nodePort: 31910
     protocol: TCP
     name: tcp
     targetPort: app-port

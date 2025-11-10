@@ -109,8 +109,8 @@ $ConcertBootcampLab8Dir/oc project hca-genai-apps-XX (replace XX by your student
 4. Deploy the application
 
 ```bash
-$ConcertBootcampLab8Dir/oc apply -f $ConcertBootcampLab8Dir/ocp-deploy-HR-app.yaml
-$ConcertBootcampLab8Dir/oc apply -f $ConcertBootcampLab8Dir/ocp-deploy-summarization-svc.yaml
+$ConcertBootcampLab8Dir/oc apply -f ocp-deploy-HR-app.yaml
+$ConcertBootcampLab8Dir/oc apply -f ocp-deploy-summarization-svc.yaml
 ```
 
 5. Verify the deployment and wait until the pods are in running state
@@ -126,9 +126,9 @@ $ConcertBootcampLab8Dir/oc get pods
 - Select **Kubernetes**
 - Choose **Openshift** integration
 - Enter following information:
-  - **Endpoint**: <Openshift API endpoint>
-  - **Token**: <Openshift Token>
-  - **Cluster Name**: <Cluster Name>
+  - **Endpoint**: https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
+  - **Token**: sha256~s4TJ66iPVhyzc82H5mm5xD55xUmbeTERjMOqsBekyzo
+  - **Cluster Name**: itz-pg334v
 - Validate the connexion from the **Revalidate** label
 - Click **Next**
 - Select the namespace named hca-genai-apps-XX (XX is your student number)
@@ -148,14 +148,14 @@ You can also navigate to the Resilience assessment: **Concert->Dimension->Resili
 
 ## Remediation: Improve the quality of the application deployment
 
-You are going to f$ConcertBootcampLab8Dir/ocus on these actions listed in the **Actions Center**:
+You are going to focus on these actions listed in the **Actions Center**:
 - Assign Dedicated Service Accounts
 - Configure InitialDelaySeconds
 - Define CPU Limits
 
 For that, you will deploy again the application using a new yaml file
 
-> Note: you can take a look at the 2 yamls files (before and after improvment) to understand the improvments that have been done
+> Note: you can take a look at the 2 yamls files (before and after improvement) to understand the improvments that have been done
 
 1. From your techzone concert VM or your laptop, connect to openshift
 
@@ -170,14 +170,14 @@ $ConcertBootcampLab8Dir/oc project hca-genai-apps-XX (replace XX by your student
 ```
 
 3. Download these deployment files:
-   - [hr-app](../files/lab8/$ConcertBootcampLab8Dir/ocp-deploy-HR-app-mem-limit-sa-readinessprobe.yaml)
-   - [summarization-svc](../files/lab8/$ConcertBootcampLab8Dir/ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml)
+   - [hr-app](../files/lab8/ocp-deploy-HR-app-mem-limit-sa-readinessprobe.yaml)
+   - [summarization-svc](../files/lab8/ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml)
 
 4. Deploy the application
 
 ```bash
-$ConcertBootcampLab8Dir/oc apply -f $ConcertBootcampLab8Dir/ocp-deploy-HR-app-mem-limit-sa-readinessprobe.yaml
-$ConcertBootcampLab8Dir/oc apply -f $ConcertBootcampLab8Dir/ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml
+$ConcertBootcampLab8Dir/oc apply -f ocp-deploy-HR-app-mem-limit-sa-readinessprobe.yaml
+$ConcertBootcampLab8Dir/oc apply -f ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml
 ```
 
 5. Verify the deployment and wait until the pods are in running state
