@@ -145,7 +145,7 @@ echo "WATSONX_API_URL=$WATSONX_API_URL" >> ibm-concert-std/etc/local_config.env
 3. Then you need to start the appropriate service:
 
 ```bash
-cd /mnt/concert
+cd $INSTALL_DIR
 ibm-concert-std/bin/start_service ibm-roja-py-utils
 ```
 

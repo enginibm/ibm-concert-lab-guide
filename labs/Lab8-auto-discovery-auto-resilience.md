@@ -14,7 +14,8 @@ You will analyze the result of the resilience assessment and try to solve the ap
 - A namespace named **hca-genai-apps-XX** has been created for you (XX is a number the instructor will give to you)
 - Your instructor provided you with:
   - **Your student number**: ex: XX
-  - **Openshift endpoint**: ex: https://api.itz-ow5hkm.infra01-lb.fra02.techzone.ibm.com:6443
+  - **Openshift API endpoint**: ex: https://api.itz-ow5hkm.infra01-lb.fra02.techzone.ibm.com:6443
+  - **Openshift downloads**: ex: https://downloads-openshift-console.apps.itz-ykoy60.infra01-lb.fra02.techzone.ibm.com
   - **Openshift Token**: ex: sha256~piQ_gJT81JdV1q9zzh2ZqkMAoWoHNaR-Y4VHbYiXt-A
   - **Cluster Name**: ex: itz-ow5hkm
   
@@ -26,6 +27,8 @@ You will analyze the result of the resilience assessment and try to solve the ap
   - [Content](#content)
   - [Clear the previously imported data](#clear-the-previously-imported-data)
   - [Deploy the application on openshift](#deploy-the-application-on-openshift)
+    - [Install the oc command](#install-the-oc-command)
+    - [Deploy the application](#deploy-the-application)
   - [Run **Discover your data**](#run-discover-your-data)
   - [Explore the actions generated in the Action Center and the created resilience assessment](#explore-the-actions-generated-in-the-action-center-and-the-created-resilience-assessment)
   - [Remediation: Improve the quality of the application deployment](#remediation-improve-the-quality-of-the-application-deployment)
@@ -45,33 +48,51 @@ Then you will start to clear these data.
 
 ## Deploy the application on openshift
 
-1. From your techzone concert VM or your laptop, connect to openshift
+### Install the oc command
+
+1. Create a directory that we call here **$ConcertBootcampLab8Dir** on YOUR LAPTOP
+   
+2. Download the $ConcertBootcampLab8Dir/oc command in this directory (choose the good command depending of your OS)
 
 ```bash
-oc login --token=<Openshift Token> --server=<Openshift endpoint>
+cd $ConcertBootcampLab8Dir
+Linux: wget <Openshift downloads>/amd64/linux/$ConcertBootcampLab8Dir/oc.tar
+Mac x86: wget <Openshift downloads>/amd64/mac/$ConcertBootcampLab8Dir/oc.zip
+Mac ARM: wget <Openshift downloads>/arm64/mac/$ConcertBootcampLab8Dir/oc.zip
+Windows: <Openshift downloads>/amd64/windows/$ConcertBootcampLab8Dir/oc.zip
+```
+
+3. untar or unzip the file downloaded
+
+### Deploy the application
+
+1. From your your laptop, connect to openshift
+
+```bash
+cd $ConcertBootcampLab8Dir/oc login --token=<Openshift Token> --server=<Openshift API endpoint>
 ```
 
 2. Navigate in the application folder and deploy the application in your namespace
 
 ```bash
-oc project hca-genai-apps-XX (replace XX by your student number)
+$ConcertBootcampLab8Dir/oc project hca-genai-apps-XX (replace XX by your student number)
 ```
 
-3. Download these deployment files:
-   - [hr-app](../files/lab8/ocp-deploy-HR-app.yaml)
-   - [summarization-svc](../files/lab8/ocp-deploy-summarization-svc.yaml)
+3. Download these deployment files in $ConcertBootcampLab8Dir
+   - [hr-app](../files/lab8/$ConcertBootcampLab8Dir/ocp-deploy-HR-app.yaml)
+   - [summarization-svc](../files/lab8/$ConcertBootcampLab8Dir/ocp-deploy-summarization-svc.yaml)
 
 4. Deploy the application
 
 ```bash
-oc apply -f ocp-deploy-HR-app.yaml
-oc apply -f ocp-deploy-summarization-svc.yaml
+$ConcertBootcampLab8Dir/oc apply -f $ConcertBootcampLab8Dir/ocp-deploy-HR-app.yaml
+$ConcertBootcampLab8Dir/oc apply -f $ConcertBootcampLab8Dir/ocp-deploy-summarization-svc.yaml
 ```
 
 5. Verify the deployment and wait until the pods are in running state
 
 ```bash
-oc get pods
+$ConcertBootcampLab8Dir/oc get pods
 ```
 
 ## Run **Discover your data** 
@@ -81,7 +102,7 @@ oc get pods
 - Select **Kubernetes**
 - Choose **Openshift** integration
 - Enter following information:
-  - **Endpoint**: <Openshift endpoint>
+  - **Endpoint**: <Openshift API endpoint>
   - **Token**: <Openshift Token>
   - **Cluster Name**: <Cluster Name>
 - Validate the connexion from the **Revalidate** label
@@ -103,7 +124,7 @@ You can also navigate to the Resilience assessment: **Concert->Dimension->Resili
 
 ## Remediation: Improve the quality of the application deployment
 
-You are going to focus on these actions listed in the **Actions Center**:
+You are going to f$ConcertBootcampLab8Dir/ocus on these actions listed in the **Actions Center**:
 - Assign Dedicated Service Accounts
 - Configure InitialDelaySeconds
 - Define CPU Limits
@@ -115,30 +136,30 @@ For that, you will deploy again the application using a new yaml file
 1. From your techzone concert VM or your laptop, connect to openshift
 
 ```bash
-oc login --token=<Openshift Token> --server=<Openshift endpoint>
+$ConcertBootcampLab8Dir/oc login --token=<Openshift Token> --server=<Openshift API endpoint>
 ```
 
 2. Navigate in the application folder and deploy the application in your namespace
 
 ```bash
-oc project hca-genai-apps-XX (replace XX by your student number)
+$ConcertBootcampLab8Dir/oc project hca-genai-apps-XX (replace XX by your student number)
 ```
 
 3. Download these deployment files:
-   - [hr-app](../files/lab8/ocp-deploy-HR-app-mem-limit-sa-readinessprobe.yaml)
-   - [summarization-svc](../files/lab8/ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml)
+   - [hr-app](../files/lab8/$ConcertBootcampLab8Dir/ocp-deploy-HR-app-mem-limit-sa-readinessprobe.yaml)
+   - [summarization-svc](../files/lab8/$ConcertBootcampLab8Dir/ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml)
 
 4. Deploy the application
 
 ```bash
-oc apply -f ocp-deploy-HR-app-mem-limit-sa-readinessprobe.yaml
-oc apply -f ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml
+$ConcertBootcampLab8Dir/oc apply -f $ConcertBootcampLab8Dir/ocp-deploy-HR-app-mem-limit-sa-readinessprobe.yaml
+$ConcertBootcampLab8Dir/oc apply -f $ConcertBootcampLab8Dir/ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml
 ```
 
 5. Verify the deployment and wait until the pods are in running state
 
 ```bash
-oc get pods
+$ConcertBootcampLab8Dir/oc get pods
 ```
 
 You can see that the pods are restarting and take more time to become running.

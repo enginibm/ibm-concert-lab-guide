@@ -72,6 +72,7 @@ In version 2.0.0, concert can be joined only if the machine has a FQDN known by 
 Replace **YOUR_VM_PUBLIC_IP** with the public IP defined in your Techzone reservation.
 
 ```bash
+ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
 sudo hostnamectl set-hostname <YOUR_VM_PUBLIC_IP>.nip.io
 ```
 
