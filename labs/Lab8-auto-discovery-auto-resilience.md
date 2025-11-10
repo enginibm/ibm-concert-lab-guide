@@ -14,10 +14,10 @@ You will analyze the result of the resilience assessment and try to solve the ap
 - A namespace named **hca-genai-apps-XX** has been created for you (XX is a number the instructor will give to you)
 - Your instructor provided you with:
   - **Your student number**: ex: XX
-  - **Openshift API endpoint**: ex: https://api.itz-ow5hkm.infra01-lb.fra02.techzone.ibm.com:6443
-  - **Openshift downloads**: ex: https://downloads-openshift-console.apps.itz-ykoy60.infra01-lb.fra02.techzone.ibm.com
+  - **Openshift API endpoint**: ex: https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
+  - **Openshift downloads**: ex: https://downloads-openshift-console.apps.itz-pg334v.infra01-lb.tok04.techzone.ibm.com
   - **Openshift Token**: ex: sha256~piQ_gJT81JdV1q9zzh2ZqkMAoWoHNaR-Y4VHbYiXt-A
-  - **Cluster Name**: ex: itz-ow5hkm
+  - **Cluster Name**: ex: itz-pg334v
   
 ## Content
 
