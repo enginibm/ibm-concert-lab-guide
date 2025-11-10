@@ -103,8 +103,8 @@ $ConcertBootcampLab8Dir/oc project hca-genai-apps-XX (replace XX by your student
 ```
 
 3. Download these deployment files in $ConcertBootcampLab8Dir
-   - [hr-app](../files/lab8/$ConcertBootcampLab8Dir/ocp-deploy-HR-app.yaml)
-   - [summarization-svc](../files/lab8/$ConcertBootcampLab8Dir/ocp-deploy-summarization-svc.yaml)
+   - [hr-app](../files/lab8/ocp-deploy-HR-app.yaml)
+   - [summarization-svc](../files/lab8/ocp-deploy-summarization-svc.yaml)
 
 4. Deploy the application
 
