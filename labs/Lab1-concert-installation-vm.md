@@ -103,7 +103,7 @@ In the following steps, **YOUR_VM_PUBLIC_IP** is the public IP defined in your T
 - From a browser go to the Concert URL (https://YOUR_VM_PUBLIC_IP.nip.io:12443)
 - Log on concert using **ibmconcert** as user and with the password you have specified in step 4.
 - Click the circle at top right of the window and select **API Key**
-  <br><img src="../images/concert_apikey_vm_1.png" alt="drawing" width="400"/>
+  <br><img src="../images/concert_apikey_vm2.0_1.png" alt="drawing" width="400"/>
 - In the API Key window, click **Generate API Key**
   <br><img src="../images/concert_apikey_2.png" alt="drawing" width="400"/>
 - Copy the API key generated in a safe place
@@ -137,6 +137,7 @@ source $HOME/env.sh
 2. Apply the watsonx.ai configuration
 
 ```bash
+cd $INSTALL_DIR
 echo "WATSONX_API_KEY=$WATSONX_API_KEY" >> ibm-concert-std/etc/local_config.env
 echo "WATSONX_API_PROJECT_ID=$WATSONX_API_PROJECT_ID" >> ibm-concert-std/etc/local_config.env
 echo "WATSONX_API_URL=$WATSONX_API_URL" >> ibm-concert-std/etc/local_config.env

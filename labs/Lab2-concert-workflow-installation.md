@@ -112,6 +112,10 @@ cp $INSTALL_DIR/etc/sample-params/workflows-quickstart-vm-params.ini $INSTALL_DI
 
 3. Edit the $INSTALL_DIR/etc/params.ini file with the required parameters
 
+```bash
+vi $INSTALL_DIR/etc/params.ini
+```
+
 Replace **YOUR_VM_PUBLIC_IP** with the public IP defined in your Techzone reservation.
 
 ```text
