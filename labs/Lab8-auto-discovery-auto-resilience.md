@@ -16,7 +16,7 @@ You will analyze the result of the resilience assessment and try to solve the ap
   - **Your student number**: ex: XX
   - **Openshift API endpoint**: ex: https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
   - **Openshift downloads**: ex: https://downloads-openshift-console.apps.itz-pg334v.infra01-lb.tok04.techzone.ibm.com
-  - **Openshift Token**: ex: sha256~piQ_gJT81JdV1q9zzh2ZqkMAoWoHNaR-Y4VHbYiXt-A
+  - **Openshift Token**: ex: sha256~p28kXX33l-m5dKk-Yd4Jf9hCaLC_gTCze7nI2yVGeZk
   - **Cluster Name**: ex: itz-pg334v
   
 ## Content
@@ -66,7 +66,7 @@ ConcertBootcampLab8Dir=$(pwd)
 
 OCP_API_ENDPOINT=https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
 OCP_DOWNLOADS=https://downloads-openshift-console.apps.itz-pg334v.infra01-lb.tok04.techzone.ibm.com
-OCP_LOGIN_TOKEN=sha256~s4TJ66iPVhyzc82H5mm5xD55xUmbeTERjMOqsBekyzo
+OCP_LOGIN_TOKEN=sha256~p28kXX33l-m5dKk-Yd4Jf9hCaLC_gTCze7nI2yVGeZk
 OCP_CLUSTER_NAME=itz-pg334v
 ```
 
@@ -127,7 +127,7 @@ $ConcertBootcampLab8Dir/oc get pods
 - Choose **Openshift** integration
 - Enter following information:
   - **Endpoint**: https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
-  - **Token**: sha256~s4TJ66iPVhyzc82H5mm5xD55xUmbeTERjMOqsBekyzo
+  - **Token**: sha256~p28kXX33l-m5dKk-Yd4Jf9hCaLC_gTCze7nI2yVGeZk
   - **Cluster Name**: itz-pg334v
 - Validate the connexion from the **Revalidate** label
 - Click **Next**
@@ -192,7 +192,7 @@ You can see that the pods are restarting and take more time to become running.
 ## Run again the integration job to generate a new resilience assessment
 
 - From the burger menu, navigate to **Concert->Administration->Integrations**
-- Select the more recent discovery job, click the 3 points at the end of the line and select **Run now**
+- Select the first **discovery job** in the list, click the 3 points at the end of the line and select **Run now**
 - When finished, 
   - go back in the **Actions center**, you will see that some actions are now in **Success** mode
 
