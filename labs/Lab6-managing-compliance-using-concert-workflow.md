@@ -100,7 +100,7 @@ Follow these step to create an SSH Authentication:
 - **Host**: your VM Ip public address (from your reservation page)
 - **Port**: 2223
 - **Username**: itzuser
-- **RSA Private Key**: the content of your VM pem key (downloaded from your reservation page)
+- **RSA Private Key**: the content of the pem file you download from your reservation page: open the pem file and copy/paste the content
 
   <br><img src="../images/cw_compliance_ssh_authentication.png" alt="drawing" width="600"/>
 

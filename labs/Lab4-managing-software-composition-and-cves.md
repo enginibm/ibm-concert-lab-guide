@@ -97,7 +97,7 @@ For this lab, follow these steps to ingest our application data in Concert:
 
 #### Clone and build the micro-services
 
-You will start to clone the 2 micro-services composing the application.
+You will start to clone from github the 2 micro-services **hr-app** and **summarization-svc** composing the application.
 
 1. Connect on the machine you have provisioned on Techzone in Lab0
 
