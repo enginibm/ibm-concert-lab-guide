@@ -80,9 +80,10 @@ You will now create a workflow that will be used as a sub-worflow of **docker_im
 The aim of this workflow is to extract the image size from a json object that have the format of the result of the `podman inspect` command
 
 1. From burger menu, navigate to **Workflows->Workflow**
-2. Click the button **Create workflow** (top right of the window)
-3. Call it **docker_images_size** and click **Create** button
-4. Define your variables:
+2. Navigate in the **Resilience** folder
+3. Click the button **Create workflow** (top right of the window)
+4. Call it **docker_images_size** and click **Create** button
+5. Define your variables:
 
 | Name         | Type   | Default Value                                                  | Selected box  |
 | :----------- | :----- | :------------------------------------------------------------- | :-----------: |
