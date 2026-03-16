@@ -129,7 +129,7 @@ $INSTALL_DIR/bin/setup --license_acceptance=y --username=<user> --password=<pass
 
 The installation take 5 to 7 minutes, be patient.    
 
-1.  Connect on Concert and create an API Key
+Connect on Concert and create an API Key
 
 In the following steps, **YOUR_VM_PUBLIC_IP** is the public IP defined in your Techzone reservation
 
