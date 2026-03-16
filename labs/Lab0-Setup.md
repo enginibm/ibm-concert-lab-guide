@@ -5,9 +5,9 @@
 This lab covers the prerequisite to the IBM Concert bootcamp.
 
 It will cover:
--  booking a VM on Techzone, where IBM Concert will be deployed
--  booking a watsonx.ai instance on Techzone
--  creating a github token to clone the required files
+-  Reserve a VM on Techzone for IBM Concert deployment
+-  Reserve a watsonx.ai instance on Techzone
+-  Generate a GitHub token to clone required files
 
 ## Prerequisite
 
