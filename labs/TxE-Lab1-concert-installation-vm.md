@@ -78,8 +78,8 @@ export IBM_REGISTRY_USER=cp
 export IBM_REGISTRY_PASSWORD=yJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE3NzM2NDU3NTQsImp0aSI6ImQ2ZmM1ODk1YjA2YzQzNjNhNjcwZjE4MjgzZmExNzhhIn0.PCQKeFDulyE9CFFedGfJEqV3h-lPFtq9YxQGE1WM3kY
 ```
 
+```bash
 DOCKER_EXE=podman
-
 INSTALL_VM=true
 
 # ----- Hub Configuration -----
@@ -106,9 +106,8 @@ INSTALL_WORKFLOWS=true
 # Fully Qualified Domain Name (FQDN) of your VM
 # Example: test-vm.my-domain.com  
 WORKFLOWS_INSTANCE_ADDRESS=149.81.13.54.nip.io
-
-
 ```
+
 Install concert
 
 7. Run a Docker or Podman log in to authenticate with the source image registry.
