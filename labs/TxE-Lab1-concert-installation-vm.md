@@ -59,6 +59,7 @@ Export install directory.
 export INSTALL_DIR=/mnt/concert/ibm-concert
 cd $INSTALL_DIR
 ```
+Set up the environment variables to enable authentication with the IBM Container Registry for installation: 
 
 ```bash
 export DOCKER_EXE=<podman|docker> 
@@ -77,8 +78,8 @@ Open and edit the $INSTALL_DIR/etc/params.ini file with required parameters.
 ```bash
 vi $INSTALL_DIR/etc/params.ini
 ```
-Set up the environment variables to enable authentication with the IBM Container Registry for installation:
 
+Configure the params.ini
 
 ```bash
 DOCKER_EXE=podman
