@@ -56,7 +56,7 @@ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 Export install directory.
 
 ```bash
-export INSTALL_DIR=<install_directory>/ibm-concert
+export INSTALL_DIR=/mnt/concert/ibm-concert
 cd $INSTALL_DIR
 ```
 ## Configure the params.ini file
