@@ -46,7 +46,8 @@ cd /mnt/concert
 wget https://github.com/IBM/Concert/releases/download/v2.3.1/ibm-concert-x86.tar.gz
 tar xfz ibm-concert-x86.tar.gz
 ```
-When installing Concert Workflows on a VM, ensure that IPv6 is enabled on your operating system. You can verify that IPv6 is active by using the following command.
+When installing Concert Workflows on a VM, ensure that IPv6 is enabled on your operating system. You can verify that IPv6 is active by using the following command. A value of 0 confirms that IPv6 is enabled.
+
 
 ```bash
 cat /proc/sys/net/ipv6/conf/all/disable_ipv6
