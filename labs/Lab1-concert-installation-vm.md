@@ -28,58 +28,85 @@ In this lab, you will install IBM Concert on a standalone server.
 IMPORTANT: if you are already logged on the VM, verify that you are connected as itzuser (not root).   
 
 ```bash
-ssh -i ~/Downloads/pem_ibmcloudvsi_download.pem -p 2223 itzuser@149.81.13.54
+ssh -i ~/Downloads/pem_ibmcloudvsi_download.pem -p 2223 itzuser@149.81.15.26
 ```
 
-2. Change the umask in .bashrc file
+2. Once connected, set the default file creation mask to ensure proper permissions for files you create
 
 ```bash
 echo "umask 022" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
 
-5. Start the installation
 
-```bash
-loginctl enable-linger itzuser
-cd /mnt/concert
-wget https://github.com/IBM/Concert/releases/download/v2.3.1/ibm-concert-x86.tar.gz
-umask 0022
-tar xfz ibm-concert-x86.tar.gz
-```
-When installing Concert Workflows on a VM, ensure that IPv6 is enabled on your operating system. You can verify that IPv6 is active by using the following command. A value of 0 confirms that IPv6 is enabled.
-
+3. Check if IPv6 is disabled (some IBM Concert components may require it):
 
 ```bash
 cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 ```
-Export install directory.
+2. Set Environment Variables
 
 ```bash
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+export XDG_RUNTIME_DIR="/run/user/$UID"
+export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
 export INSTALL_DIR=/mnt/concert/ibm-concert
 cd $INSTALL_DIR
+source ~/.bashrc
 ```
-Set up the environment variables to enable authentication with the IBM Container Registry for installation: 
+
+3. Install K3s (Lightweight Kubernetes)
+   Download and install K3s, specifying the version and disabling Traefik if you plan to manage ingress differently:
+   
+```bash
+curl -sfL https://get.k3s.io | sudo INSTALL_K3S_VERSION=v1.33.4+k3s1 sh -s - --write-kubeconfig-mode 644 --disable traefik
+```
+Add the kubeconfig to your bash profile for easier kubectl usage:
 
 ```bash
-export DOCKER_EXE=<podman|docker> 
+echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> ~/.bashrc
+source ~/.bashrc
+```
+Verify your K3s cluster is running:
+```bash
+kubectl cluster-info
+kubectl get nodes
+```
+You should see your VM listed as a ready node.
+
+4. Install Helm (Package Manager for Kubernetes)
+Helm allows you to install and manage Kubernetes applications easily. Install Helm on the VM:
+```bash
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod +x get_helm.sh
+./get_helm.sh
+helm version
+```
+5. Configure Docker or Podman
+IBM Concert uses container images stored in IBM’s registry. Configure Podman as the container runtime:
+```bash
+export DOCKER_EXE=podman
 export IBM_REGISTRY=cp.icr.io/cp
 export IBM_REGISTRY_USER=cp
-export IBM_REGISTRY_PASSWORD=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE3NzM2NDU3NTQsImp0aSI6ImQ2ZmM1ODk1YjA2YzQzNjNhNjcwZjE4MjgzZmExNzhhIn0.PCQKeFDulyE9CFFedGfJEqV3h-lPFtq9YxQGE1WM3kY
+export IBM_REGISTRY_PASSWORD=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
 ```
+Log in to the IBM container registry:
 
-## Configure the params.ini file
+```bash
+${DOCKER_EXE} login ${IBM_REGISTRY} --username=${IBM_REGISTRY_USER} --password=${IBM_REGISTRY_PASSWORD}
+```
+6. Prepare Installation Parameters
+Copy the sample parameters file for VM quickstart to the main params file:
 
-6.Copy the required parameters from the sample-params file as per your installation type.
 ```bash
 cp $INSTALL_DIR/etc/sample-params/concert-dataapps-workflows-vm-quickstart-params.ini $INSTALL_DIR/etc/params.ini
 ```
-Open and edit the $INSTALL_DIR/etc/params.ini file with required parameters.
+Edit the params file to configure:
+
 ```bash
 vi $INSTALL_DIR/etc/params.ini
 ```
-
-Configure the params.ini
+- **IBM_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
 
 ```bash
 DOCKER_EXE=podman
@@ -111,23 +138,19 @@ INSTALL_WORKFLOWS=true
 WORKFLOWS_INSTANCE_ADDRESS=149.81.13.54.nip.io
 ```
 
-Install concert
 
-7. Run a Docker or Podman log in to authenticate with the source image registry.
+7.Run IBM Concert Setup
+Run the installation script with license acceptance, user credentials, and registry password:
 ```bash
-${DOCKER_EXE} login ${IBM_REGISTRY} --username=${IBM_REGISTRY_USER} --password=${IBM_REGISTRY_PASSWORD}
+$INSTALL_DIR/bin/setup --license_acceptance=y --username=concertuser --password=concert2403! --registry_password=${IBM_REGISTRY_PASSWORD}
 ```
-Run the bin/setup script to prepare your machine. Set up the environment variables to enable authentication with the IBM Container Registry for installation: 
+After the installation:
+The URL for IBM Concert will be provided:
 
 ```bash
-$INSTALL_DIR/bin/setup --license_acceptance=y --username=<user> --password=<password> --registry_password=${IBM_REGISTRY_PASSWORD}
+https://149.81.15.26.nip.io:12443
 ```
 
-
-- **IBM_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
-
-
-The installation take 5 to 7 minutes, be patient.    
 
 Connect on Concert and create an API Key
 
@@ -161,14 +184,13 @@ Update the following variables:
 - **WATSONX_API_KEY**: use the API key you got in [Lab 0 - Get API Key and service ID information](Lab0-setup.md#get-api-key-and-service-id-information), from your techzone wx.ai reservation page
 - **WATSONX_API_PROJECT_ID**: use the project ID you got from [Lab 0 - Create a watsonx project and get project ID](Lab0-setup.md#create-a-watsonx-project-and-get-project-id),
 - **WATSONX_API_URL**: https://us-south.ml.cloud.ibm.com , since the instance is provision in US.
-
-Save the file (:wq) and source the $HOME/env.sh file to set environment variables
-
+  
 ```bash
-source $HOME/env.sh
+WATSONX_API_KEY=BxjhwO7okm1T-dpERmm7pXH6s87kTE6Xwzs3gtfGCF2v
+WATSONX_API_PROJECT_ID=9a6c38a6-9f83-49b0-9c33-b30b162a9393
+WATSONX_API_URL=https://us-south.ml.cloud.ibm.com
 ```
-
-2. Apply the watsonx.ai configuration
+Add the Watsonx.ai configuration to the local environment:
 
 ```bash
 cd $INSTALL_DIR
@@ -177,14 +199,16 @@ echo "WATSONX_API_PROJECT_ID=$WATSONX_API_PROJECT_ID" >> ibm-concert-std/etc/loc
 echo "WATSONX_API_URL=$WATSONX_API_URL" >> ibm-concert-std/etc/local_config.env
 ```
 
-3. Then you need to start the appropriate service:
+Save the file (:wq) and source the $HOME/env.sh file to set environment variables
+
+Start the Watsonx.ai utility service:
 
 ```bash
 cd $INSTALL_DIR
 ibm-concert-std/bin/start_service ibm-roja-py-utils
 ```
 
-4. Test the integration 
+Test the integration 
 
 To verify that the integration with watsonx.ai is successfull, you can look at the **ibm-roja-py-utils** pod logs:
 
@@ -192,8 +216,7 @@ To verify that the integration with watsonx.ai is successfull, you can look at t
 podman logs ibm-roja-py-utils
 ```
 
-The 2 first lines of the logs should be:
-
+Expected log messages:
 ```txt
 {'timestamp': 2025-04-13:13:45:15, 'logLevel': info, 'callerMethod': client.py:L459, 'message': Client successfully initialized}
 {'timestamp': 2025-04-13:13:45:15, 'logLevel': info, 'callerMethod': genai.py:L129, 'message': Connection to watsonx.ai successful!}
