@@ -59,6 +59,14 @@ Export install directory.
 export INSTALL_DIR=/mnt/concert/ibm-concert
 cd $INSTALL_DIR
 ```
+
+```bash
+export DOCKER_EXE=<podman|docker> 
+export IBM_REGISTRY=cp.icr.io/cp
+export IBM_REGISTRY_USER=cp
+export IBM_REGISTRY_PASSWORD=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE3NzM2NDU3NTQsImp0aSI6ImQ2ZmM1ODk1YjA2YzQzNjNhNjcwZjE4MjgzZmExNzhhIn0.PCQKeFDulyE9CFFedGfJEqV3h-lPFtq9YxQGE1WM3kY
+```
+
 ## Configure the params.ini file
 
 6.Copy the required parameters from the sample-params file as per your installation type.
@@ -71,12 +79,6 @@ vi $INSTALL_DIR/etc/params.ini
 ```
 Set up the environment variables to enable authentication with the IBM Container Registry for installation:
 
-```bash
-export DOCKER_EXE=<podman|docker> 
-export IBM_REGISTRY=cp.icr.io/cp
-export IBM_REGISTRY_USER=cp
-export IBM_REGISTRY_PASSWORD=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE3NzM2NDU3NTQsImp0aSI6ImQ2ZmM1ODk1YjA2YzQzNjNhNjcwZjE4MjgzZmExNzhhIn0.PCQKeFDulyE9CFFedGfJEqV3h-lPFtq9YxQGE1WM3kY
-```
 
 ```bash
 DOCKER_EXE=podman
