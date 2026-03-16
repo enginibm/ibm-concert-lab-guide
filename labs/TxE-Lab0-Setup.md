@@ -1,4 +1,4 @@
-# IBM Concert bootcamp - Lab setup
+# IBM Concert Bootcamp - Lab setup
 
 ## Objective
 
