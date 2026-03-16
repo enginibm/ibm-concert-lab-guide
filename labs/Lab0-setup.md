@@ -56,7 +56,7 @@ Save it somewhere, you will need to use it to connect to your instance using SSH
 > Note: On Linux/MacOS, you need to modify the SSH Key permission to be able to use it.
 
 ```bash 
-chmod 600 /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+chmod 600 ~/Downloads/pem_ibmcloudvsi_download.pem
 ```
 
 > Note: On Windows, you need to modify the SSH Key permission from a via PowerShell to be able to use it.
