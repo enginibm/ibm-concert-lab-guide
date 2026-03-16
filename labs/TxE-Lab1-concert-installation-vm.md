@@ -117,11 +117,9 @@ Install concert
 ```bash
 ${DOCKER_EXE} login ${IBM_REGISTRY} --username=${IBM_REGISTRY_USER} --password=${IBM_REGISTRY_PASSWORD}
 ```
-Run the bin/setup script to prepare your machine.
+Run the bin/setup script to prepare your machine. Set up the environment variables to enable authentication with the IBM Container Registry for installation: 
+
 ```bash
-
-Replace **CONCERT_USER** and **CONCERT_PASSWORD** by values of your choice
-
 $INSTALL_DIR/bin/setup --license_acceptance=y --username=<user> --password=<password> --registry_password=${IBM_REGISTRY_PASSWORD}
 ```
 
