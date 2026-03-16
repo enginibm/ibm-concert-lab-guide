@@ -72,6 +72,12 @@ vi $INSTALL_DIR/etc/params.ini
 Set up the environment variables to enable authentication with the IBM Container Registry for installation:
 
 ```bash
+export DOCKER_EXE=<podman|docker> 
+export IBM_REGISTRY=cp.icr.io/cp
+export IBM_REGISTRY_USER=cp
+export IBM_REGISTRY_PASSWORD=<your_entitlement_key>
+```
+
 DOCKER_EXE=podman
 
 INSTALL_VM=true
