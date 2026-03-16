@@ -58,56 +58,42 @@ Export install directory.
 ```bash
 export INSTALL_DIR=<install_directory>/ibm-concert
 cd $INSTALL_DIR
-
 ```
+## Configure the params.ini file
 
-6. Create a $HOME/env.sh file
-
+6.Copy the required parameters from the sample-params file as per your installation type.
 ```bash
-vi $HOME/env.sh
+cp $INSTALL_DIR/etc/sample-params/concert-dataapps-workflows-vm-quickstart-params.ini $INSTALL_DIR/etc/params.ini
 ```
-
-Copy Paste the content of [env.sh](../files/env.sh) in this $HOME/env.sh file  
-Update the values for the following keys (other keys will be updated later):
-
-- **IBM_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
-
-Save the file (:wq)
-
-7. Source the $HOME/env.sh file to set environment variables
-
+Open and edit the $INSTALL_DIR/etc/params.ini file with required parameters.
 ```bash
-source $HOME/env.sh
-```
-
-8. Configure the Concert parameter file
-
-```bash
-cd $INSTALL_DIR
-cp $INSTALL_DIR/etc/sample-params/concert-vm-quick-start-params.ini $INSTALL_DIR/etc/params.ini
 vi $INSTALL_DIR/etc/params.ini
 ```
+Set up the environment variables to enable authentication with the IBM Container Registry for installation:
 
-9. Edit the $INSTALL_DIR/etc/params.ini file with the required parameters
-
-```text
-DOCKER_EXE=podman
-
-INSTALL_VM=true
-INSTALL_CONCERT=true
-IMAGE_REGISTRY_PREFIX=cp.icr.io/cp
-HUB_IMAGE_REGISTRY_SUFFIX=/solis-hub
-CONCERT_IMAGE_REGISTRY_SUFFIX=/concert
+```bash
+export DOCKER_EXE=<podman|docker> 
+export IBM_REGISTRY=cp.icr.io/cp
+export IBM_REGISTRY_USER=cp
+export IBM_REGISTRY_PASSWORD=<your_entitlement_key>
 ```
+Install concert
 
-10. Install concert
+7. Run a Docker or Podman log in to authenticate with the source image registry.
+```bash
+${DOCKER_EXE} login ${IBM_REGISTRY} --username=${IBM_REGISTRY_USER} --password=${IBM_REGISTRY_PASSWORD}
+```
+Run the bin/setup script to prepare your machine.
+```bash
 
 Replace **CONCERT_USER** and **CONCERT_PASSWORD** by values of your choice
 
-```bash
-${DOCKER_EXE} login ${IBM_REGISTRY} --username=${IBM_REGISTRY_USER} --password=${IBM_REGISTRY_PASSWORD}
-$INSTALL_DIR/bin/setup --license_acceptance=y --username=CONCERT_USER --password=CONCERT_PASSWORD
+$INSTALL_DIR/bin/setup --license_acceptance=y --username=<user> --password=<password> --registry_password=${IBM_REGISTRY_PASSWORD}
 ```
+
+
+- **IBM_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
+
 
 The installation take 5 to 7 minutes, be patient.    
 
