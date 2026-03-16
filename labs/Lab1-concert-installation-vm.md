@@ -134,7 +134,8 @@ Connect on Concert and create an API Key
 In the following steps, **YOUR_VM_PUBLIC_IP** is the public IP defined in your Techzone reservation
 
 - From a browser go to the Concert URL (https://YOUR_VM_PUBLIC_IP.nip.io:12443)
-- Log on concert using **ibmconcert** as user and with the password you have specified in step 4.
+- Open the Concert Workflows UI by entering https://<VM_FQDN>:443/workflows/
+- Log on concert using **concertuser** as user and with the password you have specified in step 4.
 - Click the circle at top right of the window and select **API Key**
   <br><img src="../images/concert_apikey_vm2.0_1.png" alt="drawing" width="400"/>
 - In the API Key window, click **Generate API Key**
