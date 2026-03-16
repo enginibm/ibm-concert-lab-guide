@@ -71,6 +71,7 @@ source $HOME/env.sh
 ```bash
 cd $INSTALL_DIR
 cp $INSTALL_DIR/etc/sample-params/concert-vm-quick-start-params.ini $INSTALL_DIR/etc/params.ini
+vi $INSTALL_DIR/etc/params.ini
 ```
 
 9. Edit the $INSTALL_DIR/etc/params.ini file with the required parameters
