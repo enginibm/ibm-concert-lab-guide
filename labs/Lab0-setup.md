@@ -72,7 +72,7 @@ In version 2.0.0, concert can be joined only if the machine has a FQDN known by 
 Replace **YOUR_VM_PUBLIC_IP** with the public IP defined in your Techzone reservation.
 
 ```bash
-ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+ssh -i ~/Downloads/pem_ibmcloudvsi_download.pem -p 2223 itzuser@158.177.4.70
 sudo hostnamectl set-hostname <YOUR_VM_PUBLIC_IP>.nip.io
 ```
 
@@ -87,7 +87,7 @@ sudo reboot
 - To prepare the 500Gb disk, execute the following commands:
 
 ```bash
-ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+ssh -i ~/Downloads/pem_ibmcloudvsi_download.pem -p 2223 itzuser@158.177.4.70
 sudo -i
 lsblk
 mkfs.ext4 -m 0 -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/vdd
