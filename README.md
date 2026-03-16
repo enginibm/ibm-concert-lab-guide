@@ -1,4 +1,4 @@
-# IBM Concert bootcamp
+# IBM Concert Bootcamp v2.3.1
 
 In this bootcamp, based on a simple python application composed of 2 micro services, you will learn to:
 
@@ -12,7 +12,7 @@ In this bootcamp, based on a simple python application composed of 2 micro servi
 - [Lab7](labs/Lab7-managing-resilience-using-concert-workflow.md) - Upload Resilience data in IBM Concert and manage resilience
 - [Lab8](labs/Lab8-auto-discovery-auto-resilience.md) - Auto-discovery and Auto-resilience
 
-All the labs are based on Concert Version 2.0.0.     
+All the labs are based on Concert Version v2.3.1     
 In order to run the labs, you will provision on IBM Techzone some environments.     
 
 Here is the High Level architecture of your environment:    
