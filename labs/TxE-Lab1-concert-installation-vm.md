@@ -28,7 +28,7 @@ In this lab, you will install IBM Concert on a standalone server.
 IMPORTANT: if you are already logged on the VM, verify that you are connected as itzuser (not root).   
 
 ```bash
-ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+ssh -i ~/Downloads/pem_ibmcloudvsi_download.pem -p 2223 itzuser@149.81.13.54
 ```
 
 2. Change the umask in .bashrc file
