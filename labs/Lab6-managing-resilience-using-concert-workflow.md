@@ -160,7 +160,7 @@ Before running your flow, you need to modify the value of these variables:
 
 | Name            | Value                                    |
 | :-------------- | :--------------------------------------- |
-| concert_host    | The IP address of your Concert VM        |
+| concert_host    | The IP address of your Concert VM   (149.81.15.26.nip.io)     |
 | concert_api_key | The API key of your concert installation |
 
 Now, you can now run your flow.   
