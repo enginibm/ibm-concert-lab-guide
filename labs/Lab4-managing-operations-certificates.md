@@ -34,7 +34,7 @@ Here are the manual steps to follow:
 1. Connect on the machine you have provisioned on Techzone in Lab0
 
 ```bash
-ssh itzuser@<VM ip address> -p 2223 -i /path/to/concert/sshkey/pem_ibmcloudvsi_download.pem
+ssh -i ~/Downloads/pem_ibmcloudvsi_download.pem -p 2223 itzuser@149.81.15.26
 umask 022
 ```
 
