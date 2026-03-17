@@ -56,7 +56,6 @@ Then click **next**, **next** and **Create**
 
 ### Create a compliance catalog and a compliance profile
 
-> Official documentation is [here](https://www.ibm.com/docs/en/concert/2.0.0?topic=compliance-overview-assessing)
 
 - A compliance catalog serves as the single source of truth for an client organization's compliance-related policies, procedures, and standards. Concert supports compliance catalogs based on the NIST 800-53 (Rev4 for OCP and Rev5), PCI, or a custom standard.
 
