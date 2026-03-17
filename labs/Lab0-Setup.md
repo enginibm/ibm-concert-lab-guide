@@ -205,7 +205,7 @@ These credentials are required to authenticate the project with WML.
 <br><img src="../images/watsonxai_apikey4.png" alt="drawing" width="400"/>
 
 
-## III - Create an IBM Github token to clone the github repo
+## III - Create an Github token to clone the github repo
 
 Create a GitHub Token to clone using cli thru HTTPS:
 
