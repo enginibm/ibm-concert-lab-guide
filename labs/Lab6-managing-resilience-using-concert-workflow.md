@@ -149,6 +149,14 @@ You are going to complete the empty branch in the main workflow in order to calc
   
 1. Then complete your branch as shown in following image
 
+| Name            | Value                                    |
+| :-------------- | :--------------------------------------- |
+| json_inspect    | $ssh_inspect_image.result                 |
+| $image_size     |  $get_image_size_flow                    |
+|                 |   if($image_size > $temp_max_image_size){$temp_max_image_size=$image_size}  |
+|                 |   $total_image_size=$total_image_size+$image_size  |
+
+
 > TIPS: most common nodes can be added by clicking the + that are in the flow where you want to add your node. 
 
   <br><img src="../images/resilience_cw_branch.png" alt="drawing" width="600"/>
