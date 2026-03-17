@@ -119,7 +119,7 @@ mkdir -p $HOME/concert-bootcamp/Applications
 
 ```bash
 cd $HOME/concert-bootcamp/Applications
-git clone https://github.ibm.com/concert-bootcamp/hr-app.git
+git clone https://github.com/enginibm/hr-app.git
 cd hr-app
 ./buildImage.sh
 ```
@@ -128,7 +128,7 @@ cd hr-app
 
 ```bash
 cd $HOME/concert-bootcamp/Applications
-git clone https://github.ibm.com/concert-bootcamp/summarization-svc.git
+git clone https://github.com/enginibm/summarization-svc.git
 cd summarization-svc
 ./buildImage.sh
 ```
@@ -139,7 +139,7 @@ Then you will clone a project containing a directory structure and a script to g
 
 ```bash
 cd $HOME/concert-bootcamp
-git clone -b concert-2.0.0 https://github.ibm.com/concert-bootcamp/SBOMs-ingestion.git
+git clone -b concert-2.0.0 https://github.com/enginibm/SBOMs-ingestion.git
 ```
 
 Create an output directory for the generated SBOMs
