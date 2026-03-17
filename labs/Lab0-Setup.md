@@ -13,7 +13,7 @@ It will cover:
 
 - You must have:
   - An IBM Cloud user
-  - An account on https://github.ibm.com
+  - An account on https://github.com
   
 - On your laptop, you must have
   - A ssh client
@@ -145,7 +145,13 @@ The IBM Cloud account selected should match the Cloud Account specified in the I
 
 ### Create a watsonx project and get project ID
 
-1. Select watsonx to from the burger menu on the left
+- From the burger menu → watsonx → click Launch
+
+- Scroll down → Create a sandbox project in the Projects tile
+
+- Select the newly created sandbox (refresh page if needed)
+
+- Go to Manage tab → copy the Project ID and store it safely
 
 <br><img src="../images/select_watsonx.png" alt="drawing" width="400"/>
 
@@ -165,10 +171,19 @@ The IBM Cloud account selected should match the Cloud Account specified in the I
 
 <br><img src="../images/watsonxai_get_projectid.png" alt="drawing" width="400"/>
 
+### Associate a WML (Watson Machine Learning) instance to the Project
+
+In Watsonx → Manage tab → Services & Integrations → Associate Service
+
+Select an existing WML instance or create a new one if needed
+
+This step is mandatory: without a WML association, all embedding and foundation model calls will fail with 403 (no_associated_service_instance_error).
+
 ### Get API Key and service ID information
 
-1. From your techzone reservation screen, retrieve the APIKey and the service ID and store them in a safe place
+- From your TechZone reservation screen, get API Key and Service ID and store them securely.
 
+These credentials are required to authenticate the project with WML.
 <br><img src="../images/watsonxai_reservation_details.png" alt="drawing" width="400"/>
 
 ### API key - import the Service ID as part of the project
@@ -194,7 +209,7 @@ The IBM Cloud account selected should match the Cloud Account specified in the I
 
 Create a GitHub Token to clone using cli thru HTTPS:
 
-- Login to [https://github.ibm.com](https://github.ibm.com)
+- Login to [https://github.com](https://github.ibm.com)
 - Click your profile in the right top
 - Settings —&gt; Developer settings —&gt; Personal access tokens
 - Choose **Tokens (classic)**
