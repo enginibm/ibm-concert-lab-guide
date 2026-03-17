@@ -1,8 +1,4 @@
--
-Pre-requisites	3
-1 - Creating an auto-discovery integration	3
-2 - Reviewing the Resilience Actions	4
-3 - Remediating the Resilience action with Concert Workflows	5
+
 
 
 Introduction
