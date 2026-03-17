@@ -2,7 +2,7 @@
 
 In this hands-on bootcamp, you will explore IBM Concert by working on a simple Python-based application composed of two microservices. Step by step, you will discover how to manage application health, risk, compliance, and resilience in a modern environment.
 
-- [Lab0](labs/Lab0-setup.md) - Reserve required environment on techzone
+- [Lab0](labs/Lab0-Setup.md) - Reserve required environment on techzone
 - [Lab1](labs/Lab1-concert-installation-vm.md) - Install IBM Concert
 - [Lab2](labs/Lab2-concert-walkthrough.md) - Concert walkthrough
 - [Lab3](labs/Lab3-managing-software-composition-and-cves.md) - Upload applications SBOMS in IBM Concert and manage software composition
