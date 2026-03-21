@@ -37,7 +37,14 @@ ssh -i ~/Downloads/pem_ibmcloudvsi_download.pem -p 2223 itzuser@149.81.15.26
 echo "umask 022" >> $HOME/.bashrc
 source $HOME/.bashrc
 ```
-
+Start the installation
+```bash
+loginctl enable-linger itzuser
+cd /mnt/concert
+ wget https://github.com/IBM/Concert/releases/download/v2.3.1/ibm-concert-x86.tar.gz
+umask 0022
+tar xfz ibm-concert-x86.tar.gz
+```
 
 3. Check if IPv6 is disabled (some IBM Concert components may require it):
 
