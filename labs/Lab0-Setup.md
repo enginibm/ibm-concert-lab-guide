@@ -12,7 +12,7 @@ It will cover:
 ## Prerequisite
 
 - You must have:
-  - An IBM Cloud user
+  - An IBM Cloud user : https://www.ibm.com/docs/en/storage-defender/base?topic=in-creating-ibmid
   - An account on https://github.com
   
 - On your laptop, you must have
