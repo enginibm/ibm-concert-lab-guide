@@ -97,22 +97,18 @@ export IBM_REGISTRY=cp.icr.io/cp
 export IBM_REGISTRY_USER=cp
 export IBM_REGISTRY_PASSWORD=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
 ```
-Log in to the IBM container registry:
+Configure the Concert parameter file
 
 ```bash
-${DOCKER_EXE} login ${IBM_REGISTRY} --username=${IBM_REGISTRY_USER} --password=${IBM_REGISTRY_PASSWORD}
+cp $INSTALL_DIR/etc/sample-params/concert-dataapps-workflows-vm-quickstart-params.ini $INSTALL_DIR/etc/params.ini
 ```
 6. Prepare Installation Parameters
 Copy the sample parameters file for VM quickstart to the main params file:
 
 ```bash
-cp $INSTALL_DIR/etc/sample-params/concert-dataapps-workflows-vm-quickstart-params.ini $INSTALL_DIR/etc/params.ini
-```
-Edit the params file to configure:
-
-```bash
 vi $INSTALL_DIR/etc/params.ini
 ```
+
 - **IBM_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
 
 ```bash
@@ -143,6 +139,11 @@ INSTALL_WORKFLOWS=true
 # Fully Qualified Domain Name (FQDN) of your VM
 # Example: test-vm.my-domain.com  
 WORKFLOWS_INSTANCE_ADDRESS=149.81.13.54.nip.io
+```
+Log in to the IBM container registry:
+
+```bash
+${DOCKER_EXE} login ${IBM_REGISTRY} --username=${IBM_REGISTRY_USER} --password=${IBM_REGISTRY_PASSWORD}
 ```
 
 
