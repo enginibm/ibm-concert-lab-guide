@@ -212,7 +212,6 @@ Save the file (:wq) and source the $HOME/env.sh file to set environment variable
 Start the Watsonx.ai utility service:
 
 ```bash
-cd $INSTALL_DIR
 ibm-concert-std/bin/start_service ibm-roja-py-utils
 ```
 
