@@ -186,6 +186,8 @@ The watsonx.ai integration is simply done through setting some config parameters
 1. You will need to update the $HOME/env.sh file.
 ```bash
 vim $HOME/env.sh
+source $HOME/env.sh
+
 ```
 
 Update the following variables:
