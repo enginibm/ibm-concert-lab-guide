@@ -114,8 +114,8 @@ mkdir -p $HOME/concert-bootcamp/Applications
 
 3. Clone and build the hr-app component
 
-> NOTE: `git clone` command will ask you a for username and password. Enter here your github.ibm email and the token you create in Part III of [lab0](https://github.ibm.com/concert-bootcamp/ibm-concert-lab-guide/blob/main/labs/Lab0-setup.md)
-
+> NOTE: `git clone` command will ask you a for username and password. Enter here your github email and the token you create in Part III of [[lab0](https://github.ibm.com/concert-bootcamp/ibm-concert-lab-guide/blob/main/labs/Lab0-setup.md)
+](https://github.com/enginibm/ibm-concert-lab-guide/blob/TeX--Bootcamp/labs/Lab0-Setup.md)
 
 ```bash
 cd $HOME/concert-bootcamp/Applications
