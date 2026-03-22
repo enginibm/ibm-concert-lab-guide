@@ -48,7 +48,7 @@ To create this environment, follow these steps:
 
 1. In the **Define an environment** screen, enter following informations:
 
-- **name**: your VM hostname
+- **name**: your VM hostname  (158.177.6.120.nip.io)
 - **type**: other
 - **purpose**: what you want
 
