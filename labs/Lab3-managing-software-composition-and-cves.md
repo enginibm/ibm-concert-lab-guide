@@ -231,7 +231,7 @@ Here are the steps to follow:
 
 5. Select the card and enter following value:
    
-- **Name**: Github.ibm connection
+- **Name**: Github connection
 - **Host**: (https://api.github.com)
 - **Personal access token**: your personal access token you created in step III of [Lab0](Lab0-setup.md)
 - Click **Validate connection**
