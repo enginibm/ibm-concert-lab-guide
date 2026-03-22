@@ -186,7 +186,6 @@ The watsonx.ai integration is simply done through setting some config parameters
 1. You will need to update the $HOME/env.sh file.
 ```bash
 vim $HOME/env.sh
-source $HOME/env.sh
 
 ```
 
@@ -196,9 +195,9 @@ Update the following variables:
 - **WATSONX_API_URL**: https://us-south.ml.cloud.ibm.com , since the instance is provision in US.
   
 ```bash
-WATSONX_API_KEY=BxjhwO7okm1T-dpERmm7pXH6s87kTE6Xwzs3gtfGCF2v
-WATSONX_API_PROJECT_ID=9a6c38a6-9f83-49b0-9c33-b30b162a9393
-WATSONX_API_URL=https://us-south.ml.cloud.ibm.com
+WATSONX_API_KEY="BxjhwO7okm1T-dpERmm7pXH6s87kTE6Xwzs3gtfGCF2v"
+WATSONX_API_PROJECT_ID="9a6c38a6-9f83-49b0-9c33-b30b162a9393"
+WATSONX_API_URL="https://us-south.ml.cloud.ibm.com"
 ```
 Add the Watsonx.ai configuration to the local environment:
 
@@ -210,6 +209,8 @@ echo "WATSONX_API_URL=$WATSONX_API_URL" >> ibm-concert-std/etc/local_config.env
 ```
 
 Save the file (:wq) and source the $HOME/env.sh file to set environment variables
+
+source $HOME/env.sh
 
 Start the Watsonx.ai utility service:
 
