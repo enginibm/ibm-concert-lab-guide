@@ -87,8 +87,21 @@ Windows: wget $OCP_DOWNLOADS/amd64/windows/oc.zip
 ```
 
 3. untar or unzip the file downloaded
-
+```bash
+echo $ConcertBootcampLab8Dir
 unzip oc.zip
+ls -l
+chmod +x oc
+./oc version
+```
+
+```bash
+output 
+Client Version: 4.18.0-202602261953.p2.g3a48fc2.assembly.stream.el9-3a48fc2
+Kustomize Version: v5.4.2
+Server Version: 4.18.35
+Kubernetes Version: v1.31.14
+```
 
 ### Deploy the application
 
@@ -109,7 +122,11 @@ $ConcertBootcampLab8Dir/oc project hca-genai-apps-XX (replace XX by your student
    - [summarization-svc](../files/lab8/ocp-deploy-summarization-svc.yaml)
 
 4. Deploy the application
+before download change your namespace ( hca-genai-apps-xx)
 
+```bash
+vi ~/downloads/ocp-deploy-HR-app.yaml
+```
 ```bash
 $ConcertBootcampLab8Dir/oc apply -f ocp-deploy-HR-app.yaml
 $ConcertBootcampLab8Dir/oc apply -f ocp-deploy-summarization-svc.yaml
