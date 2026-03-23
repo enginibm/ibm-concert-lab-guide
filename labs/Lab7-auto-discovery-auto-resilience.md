@@ -1,72 +1,203 @@
-In this demo, we will set up a Concert integration to understand how a customer will automate the Resilience discovery and ingestion process directly from a runtime environment. This method can then be used for assessing Resilience during a Proof of Value with a customer. The value to customer for using this method is that they can automatically discover their applications data to populate the Arena View in IBM Concert, create a resilience assessment automatically, then resolve the issues discovered, all within IBM Concert. 
+# Auto-discovery and Auto-resilience
 
-### 1 - Creating an auto-discovery integration
+## Objective
 
-1.1: Start by showing an empty home page. Then on the home page, select Discover your data.
+In concert 2.0.0, a new feature named **Discover your data** is available. In this lab, you will use this **Auto-discovery** feature to discover the hr-application deployed on an Openshift environment.
+This feature also do **Auto-resilience**, generating a resilience assessment and Actions in the **Action center**.   
+You will analyze the result of the resilience assessment and try to solve the application deployment quality as a remediation to the proposed actions.
 
- 
-<img width="468" height="96" alt="image" src="https://github.com/user-attachments/assets/f6bb91c5-3ff3-4149-a4d4-ede8869114bd" />
+## Prerequisite
 
-1.2: Choose the integration type Red Hat OpenShift Container Platform (OCP).
+- IBM Concert must be installed
+- IBM Concert is linked to a watsonx.ai instance
+- An openshift deployment environment has been created for you 
+- A namespace named **hca-genai-apps-XX** has been created for you (XX is a number the instructor will give to you)
+- Your instructor provided you with:
+  - **Your student number**: ex: XX
+  - **Openshift API endpoint**: ex: https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
+  - **Openshift downloads**: ex: https://downloads-openshift-console.apps.itz-pg334v.infra01-lb.tok04.techzone.ibm.com
+  - **Openshift Token**: ex: sha256~p28kXX33l-m5dKk-Yd4Jf9hCaLC_gTCze7nI2yVGeZk
+  - **Cluster Name**: ex: itz-pg334v
+  
+## Content
 
- <img width="468" height="139" alt="image" src="https://github.com/user-attachments/assets/d19007f2-bcdf-48f6-ade0-a221855e8c2b" />
+- [Auto-discovery and Auto-resilience](#auto-discovery-and-auto-resilience)
+  - [Objective](#objective)
+  - [Prerequisite](#prerequisite)
+  - [Content](#content)
+  - [Clear the previously imported data](#clear-the-previously-imported-data)
+  - [Deploy the application on openshift](#deploy-the-application-on-openshift)
+    - [Install the oc command](#install-the-oc-command)
+    - [Deploy the application](#deploy-the-application)
+  - [Run **Discover your data**](#run-discover-your-data)
+  - [Explore the actions generated in the Action Center and the created resilience assessment](#explore-the-actions-generated-in-the-action-center-and-the-created-resilience-assessment)
+  - [Remediation: Improve the quality of the application deployment](#remediation-improve-the-quality-of-the-application-deployment)
+  - [Run again the integration job to generate a new resilience assessment](#run-again-the-integration-job-to-generate-a-new-resilience-assessment)
 
-1.3: Enter details for the Endpoint, Token and Cluster name. Ensure these are in a place easy to copy from.
+## Clear the previously imported data
+
+In this lab, we use the same application you have imported manually in lab 4.  
+Then you will start to clear these data.
+
+- From the burger menu, navigate to **Concert->Inventory->Application Inventory**
+- Go in the **Build artifacts** tab
+- For each build artifact listed, at the end of the line click the 3 points, select **Delete**, check the 'Do you want ...' checkbox and click **Delete**
+- Do the same for the **Repository** tab
+- Do the same for the **Application** tab
+- Navigate in the Arena View and check that all as been deleted except the environment data
+
+## Deploy the application on openshift
+
+### Install the oc command
+
+1. Create a directory that we call here **$ConcertBootcampLab8Dir** on YOUR LAPTOP
+
+2. Create an environment file
+
+```bash
+cd $ConcertBootcampLab8Dir
+vi env.sh
+```
+
+Copy and paste this content in the file
+
+```txt
+ConcertBootcampLab8Dir=$(pwd)
+
+OCP_API_ENDPOINT=https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
+OCP_DOWNLOADS=https://downloads-openshift-console.apps.itz-pg334v.infra01-lb.tok04.techzone.ibm.com
+OCP_LOGIN_TOKEN=sha256~p28kXX33l-m5dKk-Yd4Jf9hCaLC_gTCze7nI2yVGeZk
+OCP_CLUSTER_NAME=itz-pg334v
+```
+
+Source the env.sh file
+
+```bash
+source env.sh
+```
+   
+1. Download the oc command in this directory (choose the good command depending of your OS)
+
+```bash
+cd $ConcertBootcampLab8Dir
+Linux: wget $OCP_DOWNLOADS/amd64/linux/oc.tar
+Mac x86: wget$OCP_DOWNLOADS/amd64/mac/oc.zip
+Mac ARM: wget $OCP_DOWNLOADS/arm64/mac/oc.zip
+Windows: wget $OCP_DOWNLOADS/amd64/windows/oc.zip
+```
+
+3. untar or unzip the file downloaded
+
+### Deploy the application
+
+1. From your your laptop, connect to openshift
+
+```bash
+$ConcertBootcampLab8Dir/oc login --token=<Openshift Token> --server=<Openshift API endpoint>
+```
+
+2. Navigate in the application folder and deploy the application in your namespace
+
+```bash
+$ConcertBootcampLab8Dir/oc project hca-genai-apps-XX (replace XX by your student number)
+```
+
+3. Download these deployment files in $ConcertBootcampLab8Dir
+   - [hr-app](../files/lab8/ocp-deploy-HR-app.yaml)
+   - [summarization-svc](../files/lab8/ocp-deploy-summarization-svc.yaml)
+
+4. Deploy the application
+
+```bash
+$ConcertBootcampLab8Dir/oc apply -f ocp-deploy-HR-app.yaml
+$ConcertBootcampLab8Dir/oc apply -f ocp-deploy-summarization-svc.yaml
+```
+
+5. Verify the deployment and wait until the pods are in running state
+
+```bash
+$ConcertBootcampLab8Dir/oc get pods
+```
+
+## Run **Discover your data** 
+
+- From the burger menu, navigate to **Concert->Home**
+- On the top right of the screen, click the **Discover Your Data** button
+- Select **Kubernetes**
+- Choose **Openshift** integration
+- Enter following information:
+  - **Endpoint**: https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
+  - **Token**: sha256~p28kXX33l-m5dKk-Yd4Jf9hCaLC_gTCze7nI2yVGeZk
+  - **Cluster Name**: itz-pg334v
+- Validate the connexion from the **Revalidate** label
+- Click **Next**
+- Select the namespace named hca-genai-apps-XX (XX is your student number)
+- Select **Next**
+
+Then Concert discover the content of the namespace and run a Resilience Assessment. You can see the result on the left of your screen.
+
+## Explore the actions generated in the Action Center and the created resilience assessment 
+
+Thanks to watsonx.ai, some actions have been created in the **Actions center**. Take the time to explore them.
+
+  <br><img src="../images/auto-discovery-actions-run1.png" alt="drawing" width="600"/>
+
+You can also navigate to the Resilience assessment: **Concert->Dimension->Resilience**. Take the time to explore this assessment.
+
+  <br><img src="../images/auto-discovery-resilience-run1.png" alt="drawing" width="600"/>
+
+## Remediation: Improve the quality of the application deployment
+
+You are going to focus on these actions listed in the **Actions Center**:
+- Assign Dedicated Service Accounts
+- Configure InitialDelaySeconds
+- Define CPU Limits
+
+For that, you will deploy again the application using a new yaml file
+
+> Note: you can take a look at the 2 yamls files (before and after improvement) to understand the improvments that have been done
+
+1. From your techzone concert VM or your laptop, connect to openshift
+
+```bash
+$ConcertBootcampLab8Dir/oc login --token=<Openshift Token> --server=<Openshift API endpoint>
+```
+
+2. Navigate in the application folder and deploy the application in your namespace
+
+```bash
+$ConcertBootcampLab8Dir/oc project hca-genai-apps-XX (replace XX by your student number)
+```
+
+3. Download these deployment files:
+   - [hr-app](../files/lab8/ocp-deploy-HR-app-mem-limit-sa-readinessprobe.yaml)
+   - [summarization-svc](../files/lab8/ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml)
+
+4. Deploy the application
+
+```bash
+$ConcertBootcampLab8Dir/oc apply -f ocp-deploy-HR-app-mem-limit-sa-readinessprobe.yaml
+$ConcertBootcampLab8Dir/oc apply -f ocp-deploy-summarization-svc-mem-limit-sa-readinessprobe.yaml
+```
+
+5. Verify the deployment and wait until the pods are in running state
+
+```bash
+$ConcertBootcampLab8Dir/oc get pods
+```
+
+You can see that the pods are restarting and take more time to become running.
 
 
-Credential 
+## Run again the integration job to generate a new resilience assessment
 
-1.4: On the Inventory page, select all applications to discover from the environment by checking the box next to us-south-dev01.
+- From the burger menu, navigate to **Concert->Administration->Integrations**
+- Select the first **discovery job** in the list, click the 3 points at the end of the line and select **Run now**
+- When finished, 
+  - go back in the **Actions center**, you will see that some actions are now in **Success** mode
 
- <img width="468" height="167" alt="image" src="https://github.com/user-attachments/assets/c0a4a7f1-c0c4-411d-91e5-10e556cc3e69" />
+  <br><img src="../images/auto-discovery-actions-run2.png" alt="drawing" width="600"/>
 
-1.5: Click Next. A Resilience assessment has now been discovered from the customer’s cluster and ingested.
+  - Navigate also in the **Resilience** dimension, you will see that NFRs have a better score
 
-### 2 - Reviewing the Resilience Actions
-
-2.1: On the Resilience dimension, a posture has now been created for all applications discovered above. 
-<img width="403" height="105" alt="image" src="https://github.com/user-attachments/assets/5be2c652-c010-4c42-ba8c-428cfdf5863d" />
-
-2.2: Click into the ecommerce-backend_posture and then the Actions tab. This is a list of AI-generated recommendations to improve the resilience of this application.
-
-<img width="391" height="140" alt="image" src="https://github.com/user-attachments/assets/fc274e22-4f49-4847-8ec0-0840090ddbe2" />
-
-
-2.3: On the Define CPU limits action, click View details. The Overview page will show a recommendation on how to resolve this Resilience issue. 
-
-### 3 - Remediating the Resilience action with Concert Workflows 
-
-If using your own TechZone instance, download the following workflow, and load it into the Concert instance.
-
-3.2: In Concert Workflows, navigate to Authentications and create a new authentication. 
-
-<img width="139" height="54" alt="image" src="https://github.com/user-attachments/assets/bd27cc59-057b-4c03-be11-1bdbb87699cf" />
-
-3.3: Name the authentication “Concert_Config_Auth.” Set the service to Config Data. In the Data field, enter the details of your Concert instance in the format below. Then, click Create.
-
-{
- "concert_host": "9.30.213.68",
- "concert_port": "12443",
- "concert_instance_id": "0000-0000-0000-0000" 
-}
-
-<img width="349" height="272" alt="image" src="https://github.com/user-attachments/assets/4448f072-c6d9-4509-9da9-ec3c14f3c8ad" />
-
-3.4: Create a second authentication called “Concert_APIKey”. Set the service to API Key. In the Header Name field, type “Authorization.” 
-
-In the API Key value field, copy an API Key from Concert, in the format “C_API_KEY aWJtY29uY2VydDphMjI1YThkMi0wN2RmLTRmNDYtYmM4OS1lMmUxOTI5NzY2YWU=”. Then, click Create on the authentication.
-
-3.5: Navigate to the OpenShift_Resilience_Sample workflow that was loaded in earlier. Click Run. This workflow will apply a rule on the OpenShift cluster to enforce a CPU limit of 60% on an application.
-
-3.6: Navigate back to the Actions Center and sort the Status to have Success at the top. Note that the action for Define CPU Limit is now closed.
-
-<img width="468" height="176" alt="image" src="https://github.com/user-attachments/assets/438af7e9-1614-49d5-838e-441a56ba48ed" />
-
-### Summary
-
-In this demo, we explored how to perform auto-discovery on an OpenShift cluster, review the resulting resilience assessments and recommendations, and then configure a Concert Workflow to automate the remediation of those resilience recommendations.
-
-
-
-
-
+  <br><img src="../images/auto-discovery-resilience-run2.png" alt="drawing" width="600"/>
