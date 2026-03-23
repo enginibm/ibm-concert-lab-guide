@@ -128,8 +128,8 @@ before download change your namespace ( hca-genai-apps-xx)
 vi ~/downloads/ocp-deploy-HR-app.yaml
 ```
 ```bash
-$ConcertBootcampLab8Dir/oc apply -f ocp-deploy-HR-app.yaml
-$ConcertBootcampLab8Dir/oc apply -f ocp-deploy-summarization-svc.yaml
+$ConcertBootcampLab8Dir/oc apply -f ~/downloads/ocp-deploy-HR-app.yaml
+$ConcertBootcampLab8Dir/oc apply -f ~/downloads/ocp-deploy-summarization-svc.yaml
 ```
 
 5. Verify the deployment and wait until the pods are in running state
