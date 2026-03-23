@@ -64,10 +64,10 @@ Copy and paste this content in the file
 ```txt
 ConcertBootcampLab8Dir=$(pwd)
 
-OCP_API_ENDPOINT=https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
-OCP_DOWNLOADS=https://downloads-openshift-console.apps.itz-pg334v.infra01-lb.tok04.techzone.ibm.com
-OCP_LOGIN_TOKEN=sha256~p28kXX33l-m5dKk-Yd4Jf9hCaLC_gTCze7nI2yVGeZk
-OCP_CLUSTER_NAME=itz-pg334v
+OCP_API_ENDPOINT="https://api.itz-19etzk.hub01-lb.techzone.ibm.com:6443"
+OCP_DOWNLOADS="https://downloads-openshift-console.apps.itz-19etzk.hub01-lb.techzone.ibm.com"
+OCP_LOGIN_TOKEN="sha256~ETZ3j3-aiMwh7FOohx6KYsw9f08sf0Tu0m0IthJL8ZM"
+OCP_CLUSTER_NAME="itz-19etzk-nxdrn"
 ```
 
 Source the env.sh file
