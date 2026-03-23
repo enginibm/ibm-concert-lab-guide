@@ -88,6 +88,8 @@ Windows: wget $OCP_DOWNLOADS/amd64/windows/oc.zip
 
 3. untar or unzip the file downloaded
 
+unzip oc.zip
+
 ### Deploy the application
 
 1. From your your laptop, connect to openshift
