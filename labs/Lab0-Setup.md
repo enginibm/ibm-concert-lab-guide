@@ -121,6 +121,7 @@ mount -a
 systemctl daemon-reload
 lsblk
 chmod 777 /mnt/concert
+exit
 ```
 
 ## II - Provision a watsonx.ai on techzone  ///  
