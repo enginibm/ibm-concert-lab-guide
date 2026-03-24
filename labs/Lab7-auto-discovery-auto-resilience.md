@@ -13,11 +13,11 @@ You will analyze the result of the resilience assessment and try to solve the ap
 - An openshift deployment environment has been created for you 
 - A namespace named **hca-genai-apps-XX** has been created for you (XX is a number the instructor will give to you)
 - Your instructor provided you with:
-  - **Your student number**: ex: XX
-  - **Openshift API endpoint**: ex: https://api.itz-pg334v.infra01-lb.tok04.techzone.ibm.com:6443
-  - **Openshift downloads**: ex: https://downloads-openshift-console.apps.itz-pg334v.infra01-lb.tok04.techzone.ibm.com
-  - **Openshift Token**: ex: sha256~p28kXX33l-m5dKk-Yd4Jf9hCaLC_gTCze7nI2yVGeZk
-  - **Cluster Name**: ex: itz-pg334v
+  - **Your student number**: hca-genai-apps-xxx
+  - **Openshift API endpoint**:"https://api.itz-19etzk.hub01-lb.techzone.ibm.com:6443"
+  - **Openshift downloads**:"https://downloads-openshift-console.apps.itz-19etzk.hub01-lb.techzone.ibm.com"
+  - **Openshift Token**:"sha256~ETZ3j3-aiMwh7FOohx6KYsw9f08sf0Tu0m0IthJL8ZM"
+  - **Cluster Name**:"itz-19etzk-nxdrn"
   
 ## Content
 
