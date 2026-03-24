@@ -70,6 +70,8 @@ curl -sfL https://get.k3s.io | sudo INSTALL_K3S_VERSION=v1.33.4+k3s1 sh -s - --w
 ```
 Add the kubeconfig to your bash profile for easier kubectl usage:
 
+
+
 ```bash
 echo "export KUBECONFIG=/etc/rancher/k3s/k3s.yaml" >> ~/.bashrc
 source ~/.bashrc
