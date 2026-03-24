@@ -121,9 +121,9 @@ chmod 777 /mnt/concert
 
 ## II - Provision a watsonx.ai on techzone  ///  
 
-## WATSONX_API_KEY="BxjhwO7okm1T-dpERmm7pXH6s87kTE6Xwzs3gtfGCF2v"
-## WATSONX_API_PROJECT_ID="9a6c38a6-9f83-49b0-9c33-b30b162a9393"
-## WATSONX_API_URL="https://us-south.ml.cloud.ibm.com"
+ WATSONX_API_KEY="BxjhwO7okm1T-dpERmm7pXH6s87kTE6Xwzs3gtfGCF2v"
+ WATSONX_API_PROJECT_ID="9a6c38a6-9f83-49b0-9c33-b30b162a9393"
+ WATSONX_API_URL="https://us-south.ml.cloud.ibm.com"
 
 > Note: Concert require model ibm/granite-3-2-8b-instruct on watsonx.ai, so watsonx.ai must be provision in US
 > 
