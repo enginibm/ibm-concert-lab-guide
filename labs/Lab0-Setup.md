@@ -1,5 +1,6 @@
 # IBM Concert Bootcamp - Lab setup
 
+
 ## Objective
 
 This lab covers the prerequisite to the IBM Concert bootcamp.
@@ -37,6 +38,9 @@ It will cover:
   - [III - Create an IBM Github token to clone the github repo](#iii---create-an-ibm-github-token-to-clone-the-github-repo)
 
 ## I - Provision a vm on techzone
+
+https://techzone.ibm.com/my/workshops/student/69b82053de1608693b480aca
+Concert24032025!
 
 ### Provision the VM
 
