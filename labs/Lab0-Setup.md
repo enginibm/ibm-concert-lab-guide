@@ -218,7 +218,7 @@ These credentials are required to authenticate the project with WML.
 
 Create a GitHub Token to clone using cli thru HTTPS:
 
-- Login to [https://github.com](https://github.ibm.com)
+- Login to [https://github.com](https://github.com)
 - Click your profile in the right top
 - Settings —&gt; Developer settings —&gt; Personal access tokens
 - Choose **Tokens (classic)**
