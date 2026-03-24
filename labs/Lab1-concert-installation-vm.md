@@ -111,6 +111,8 @@ vi $INSTALL_DIR/etc/params.ini
 
 - **IBM_REGISTRY_PASSWORD**: your [entitlement key](https://www.ibm.com/docs/en/concert?topic=concert-obtaining-entitlement-api-key) surrounded by double quotes
 
+ Entitlement key: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJJQk0gTWFya2V0cGxhY2UiLCJpYXQiOjE3NzM2NDU3NTQsImp0aSI6ImQ2ZmM1ODk1YjA2YzQzNjNhNjcwZjE4MjgzZmExNzhhIn0.PCQKeFDulyE9CFFedGfJEqV3h-lPFtq9YxQGE1WM3kY
+
 ```bash
 DOCKER_EXE=podman
 INSTALL_VM=true
